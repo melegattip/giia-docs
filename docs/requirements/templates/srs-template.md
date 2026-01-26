@@ -1,12 +1,12 @@
-# SRS: [Nombre de la Feature/Módulo]
+# SRS: GIIA
 
-> **Instrucción para el Agente:** Completa todas las secciones de este template basándote en el Discovery aprobado. Reemplaza los textos entre corchetes `[...]` con la información correspondiente. Elimina las instrucciones en cursiva una vez completado.
+> **Instrucción para el Agente:** Completa todas las secciones de este template basándote en el Discovery aprobado del producto. Reemplaza los textos entre corchetes `[...]` con la información correspondiente. Elimina las instrucciones en cursiva una vez completado.
 
 ---
 
 ## Resumen Ejecutivo
 
-*Proporciona un resumen de 3-5 oraciones que describa qué se va a construir, para quién, y el valor que aporta. Debe ser comprensible sin leer el documento completo.*
+*Proporciona un resumen de 3-5 oraciones que describa el producto completo: qué es GIIA, para quién está diseñado, y el valor que aporta. Debe ser comprensible sin leer el documento completo.*
 
 [Escribe aquí el resumen ejecutivo]
 
@@ -18,11 +18,11 @@
 
 *Describe brevemente el propósito de este documento SRS.*
 
-Este documento especifica los requerimientos funcionales y no funcionales para [nombre de la feature/módulo] del sistema GIIA.
+Este documento especifica los requerimientos funcionales y no funcionales del producto GIIA (Gestión de Inventario con Inteligencia Artificial) en su versión MVP.
 
-### 1.2 Alcance
+### 1.2 Alcance del Producto
 
-*Copia el alcance del Discovery, ajustando si hubo cambios durante la elaboración del SRS.*
+*Copia el alcance del Discovery del producto, ajustando si hubo cambios durante la elaboración del SRS.*
 
 #### Dentro del Alcance (In-Scope)
 

@@ -63,10 +63,10 @@ SRS-DD es una metodología de desarrollo dirigido por especificación que garant
 
 ### 2.2 Flujo del Proceso
 
-1. **Inicio:** El Product Owner identifica una necesidad o problema
-2. **Fase 1:** El Analista de Negocio genera `discovery.md`
+1. **Inicio:** El Product Owner identifica la visión del producto/MVP
+2. **Fase 1:** El Analista de Negocio genera `discovery.md` del producto completo
 3. **Validación 1:** El Orquestador valida el Discovery
-4. **Fase 2:** El Ingeniero de Requerimientos genera `srs.md`
+4. **Fase 2:** El Ingeniero de Requerimientos genera `srs.md` del producto completo
 5. **Validación 2:** El Orquestador valida el SRS
 6. **Completación:** Documentos listos para desarrollo
 
@@ -304,8 +304,8 @@ Eres un **Analista de Negocio** experto trabajando en el proyecto GIIA (Gestión
 - **Equipo:** 2 Ingenieros de Software + 1 Product Owner
 - **Metodología:** SRS-DD (SRS-Driven Development)
 
-## Necesidad/Problema a Analizar
-[INSERTAR DESCRIPCIÓN DEL PROBLEMA O NECESIDAD]
+## Visión del Producto/MVP a Analizar
+[INSERTAR DESCRIPCIÓN COMPLETA DE LA VISIÓN DEL PRODUCTO O MVP]
 
 ## Tu Tarea
 Genera el documento `discovery.md` que incluya:
@@ -382,23 +382,27 @@ Al finalizar, indica: "**SRS COMPLETADO - Listo para validación del Orquestador
 docs/requirements/
 ├── templates/                    # Templates y guías
 │   ├── srs-guide.md              # Esta guía (documento actual)
-│   ├── discovery-template.md     # Template para discovery (pendiente)
-│   └── srs-template.md           # Template para SRS (pendiente)
+│   ├── discovery-template.md     # Template para Discovery
+│   ├── srs-template.md           # Template para SRS
+│   └── user-story-template.md    # Template para Historias de Usuario
 │
-└── [feature-name]/               # Crear carpeta por cada feature/módulo
+├── user-stories/                 # Historias de usuario individuales
+│   ├── HU-001.md
+│   ├── HU-002.md
+│   └── ...
+│
+└── v1/                           # Versión del producto (MVP v1)
     ├── discovery.md              # Output Fase 1
     └── srs.md                    # Output Fase 2
 
-Ejemplos:
+Ejemplos de versionado:
 docs/requirements/
 ├── templates/
-├── inventory-management/
+├── user-stories/
+├── v1/                           # MVP inicial
 │   ├── discovery.md
 │   └── srs.md
-├── user-authentication/
-│   ├── discovery.md
-│   └── srs.md
-└── ai-predictions/
+└── v2/                           # Segunda versión mayor
     ├── discovery.md
     └── srs.md
 ```
@@ -429,11 +433,12 @@ docs/requirements/
 
 | Práctica | Beneficio |
 |----------|-----------|
-| Limitar historias de usuario a 8-12 por feature | Mantiene alcance manejable |
+| Organizar RF por módulo/componente dentro del SRS | Facilita navegación y asignación |
 | Priorizar Must Have primero | Asegura entrega de valor mínimo |
 | Peer review en cada fase | Detecta problemas temprano |
 | Usar checklists de validación | Estandariza calidad |
 | Documentar decisiones importantes | Preserva contexto |
+| Un Discovery + SRS por versión mayor | Mantiene trazabilidad clara |
 
 ### 9.3 Señales de Alerta
 
@@ -447,8 +452,9 @@ docs/requirements/
 ## 10. Referencias
 
 ### Documentos Relacionados
-- `discovery-template.md` - Template para documento Discovery (pendiente de creación)
-- `srs-template.md` - Template para documento SRS (pendiente de creación)
+- `discovery-template.md` - Template para documento Discovery
+- `srs-template.md` - Template para documento SRS
+- `user-story-template.md` - Template para Historias de Usuario
 
 ### Recursos Externos
 - IEEE 830 - Práctica recomendada para SRS

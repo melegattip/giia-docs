@@ -1,12 +1,12 @@
-# Discovery: [Nombre de la Feature/Módulo]
+# Discovery: GIIA
 
-> **Instrucción para el Agente:** Completa todas las secciones de este template. Reemplaza los textos entre corchetes `[...]` con la información correspondiente. Elimina las instrucciones en cursiva una vez completado.
+> **Instrucción para el Agente:** Completa todas las secciones de este template para documentar la visión completa del producto/MVP. Reemplaza los textos entre corchetes `[...]` con la información correspondiente. Elimina las instrucciones en cursiva una vez completado.
 
 ---
 
 ## Resumen Ejecutivo
 
-*Proporciona un resumen de 3-5 oraciones que capture la esencia del discovery. Debe permitir a cualquier lector entender rápidamente de qué trata sin leer el documento completo.*
+*Proporciona un resumen de 3-5 oraciones que capture la esencia del producto/MVP. Debe permitir a cualquier lector entender rápidamente la visión del producto sin leer el documento completo.*
 
 [Escribe aquí el resumen ejecutivo]
 
@@ -14,11 +14,11 @@
 
 ## 1. Contexto de Negocio
 
-*Explica por qué GIIA necesita esta feature/módulo ahora. Incluye contexto de mercado, tendencias, o situaciones internas que motivan esta iniciativa.*
+*Explica por qué GIIA existe y qué problema del mercado resuelve. Incluye contexto de mercado, tendencias, o situaciones que motivan el desarrollo de este producto.*
 
 ### 1.1 Situación Actual
 
-[Describe la situación actual del negocio o producto relacionada con esta feature]
+[Describe la situación actual del mercado o problema que enfrentan los usuarios potenciales]
 
 ### 1.2 Motivación
 
@@ -36,7 +36,7 @@
 
 ### 2.2 Impacto del Problema
 
-*¿Qué sucede si no se resuelve este problema?*
+*¿Qué sucede si este problema no se resuelve? ¿Cuál es el costo de no actuar?*
 
 [Describe las consecuencias de no abordar este problema]
 
@@ -44,7 +44,7 @@
 
 ## 3. Objetivos de Negocio
 
-*Define los objetivos que se esperan lograr. Cada objetivo debe ser medible.*
+*Define los objetivos del MVP completo. Cada objetivo debe ser medible y representar el éxito del producto.*
 
 | ID | Objetivo | Métrica de Éxito | Valor Actual | Valor Objetivo |
 |----|----------|------------------|--------------|----------------|
@@ -55,11 +55,11 @@
 
 ---
 
-## 4. Alcance
+## 4. Alcance del MVP
 
 ### 4.1 Dentro del Alcance (In-Scope)
 
-*Lista las funcionalidades, características o aspectos que SÍ serán abordados en esta iniciativa.*
+*Lista los módulos, funcionalidades y características que SÍ serán parte del MVP.*
 
 - [ ] [Elemento dentro del alcance 1]
 - [ ] [Elemento dentro del alcance 2]
