@@ -4,12 +4,120 @@
 
 ## *Programa DDMRP para Distribuidoras*
 
-# **1\. Introducción y Contexto**
+# **1\. Resumen Ejecutivo**
 
-Este documento presenta una propuesta para el desarrollo de un software enfocado en la gestión de inventario basado en la metodología **Demand Driven Material Requirements Planning (DDMRP)**.
+## 1.1. Introducción
+
+Este documento presenta una propuesta para el desarrollo de **GIIA (Gestión de Inventario IA)**, un software innovador enfocado en la gestión de inventario basado en la metodología **Demand Driven Material Requirements Planning (DDMRP)**, adaptada específicamente para el sector **Retail y Distribución**.
 
 * **Idea Central:** Desarrollar una herramienta que permita a los usuarios visualizar y gestionar su inventario de forma proactiva, alineada con los principios de DDMRP.  
-* **Objetivo Principal:** Crear un programa dirigido a **Comercios y Distribuidores** para optimizar significativamente la gestión de su inventario, a través de DDMRP.
+* **Objetivo Principal:** Crear un programa dirigido a **Comercios y Distribuidores** para optimizar significativamente la gestión de su inventario, mediante la aplicación práctica de DDMRP.
+* **Alcance del MVP:** Este producto mínimo viable se enfoca en una **posición estratégica única** (el almacén o punto de venta del comercio), simplificando la implementación de DDMRP sin perder sus beneficios fundamentales.
+
+## 1.2. Contexto y Problemática
+
+Los sistemas tradicionales de planificación de inventario (MRP/ERP) presentan desafíos significativos en el sector retail y distribución:
+
+| Desafío | Impacto en el Negocio |
+| :---- | :---- |
+| **Efecto Látigo (Bullwhip)** | Amplificación de variaciones de demanda desde el proveedor |
+| **Dependencia del Pronóstico** | Errores de predicción generan excesos o faltantes de stock |
+| **Lead Times Variables** | Proveedores con tiempos de entrega impredecibles |
+| **Inventario Desbalanceado** | Capital inmovilizado en productos de baja rotación y faltantes en los de alta |
+| **Decisiones Reactivas** | Se compra tarde (rotura) o demasiado (sobrestock) |
+| **Falta de Visibilidad** | No saber qué comprar, cuánto y cuándo |
+
+### El Problema Central en Retail
+
+> *"¿Cuánto debo comprar hoy de cada producto para no quedarme sin stock, pero sin inmovilizar capital innecesariamente?"*
+
+Esta pregunta, aparentemente simple, requiere considerar múltiples variables: demanda variable, lead times de proveedores, órdenes en tránsito, ventas comprometidas, estacionalidad, y más. GIIA automatiza esta toma de decisiones.
+
+## 1.3. ¿Qué es DDMRP?
+
+**Demand Driven MRP (DDMRP)** es una metodología de planificación y ejecución que responde a la **demanda real** en lugar de depender de pronósticos. Fusiona las fortalezas de sistemas convencionales (MRP, Lean, TOC) en un enfoque práctico y visual.
+
+### DDMRP Aplicado a Retail: Los 4 Pilares Operativos
+
+En una implementación completa de DDMRP existen 5 componentes. Sin embargo, para el sector **Retail y Distribución**, el primer componente (*Posicionamiento Estratégico*) ya está resuelto: **el buffer se ubica en el almacén/punto de venta**. Por lo tanto, GIIA se enfoca en los **4 pilares operativos**:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│              DDMRP PARA RETAIL - 4 PILARES OPERATIVOS                        │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐         │
+│  │   1. PERFILES   │    │   2. AJUSTES    │    │ 3. PLANIFICACIÓN│         │
+│  │   DE BUFFER     │    │   DINÁMICOS     │    │   POR DEMANDA   │         │
+│  ├─────────────────┤    ├─────────────────┤    ├─────────────────┤         │
+│  │ Configurar      │    │ Adaptar buffers │    │ Ecuación de     │         │
+│  │ zonas según:    │    │ según:          │    │ Flujo Neto:     │         │
+│  │ • Lead Time     │──▶│ • Estacionalidad │──▶│                 │         │
+│  │ • Variabilidad  │    │ • Promociones   │    │ Stock Físico    │         │
+│  │ • MOQ           │    │ • Tendencias    │    │ + En Tránsito   │         │
+│  │ • Frecuencia    │    │                 │    │ - Demanda Calif.│         │
+│  └─────────────────┘    └─────────────────┘    └─────────────────┘         │
+│                                                        │                   │
+│                                                        ▼                   │
+│                              ┌─────────────────────────────────────┐       │
+│                              │      4. EJECUCIÓN VISUAL            │       │
+│                              ├─────────────────────────────────────┤       │
+│                              │  🔴 ROJO: Comprar urgente           │       │
+│                              │  🟡 AMARILLO: Generar orden         │       │
+│                              │  🟢 VERDE: Sin acción requerida     │       │
+│                              └─────────────────────────────────────┘       │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Sistema de Zonas del Buffer
+
+Cada SKU en el inventario se gestiona mediante un **buffer de tres zonas** que determina cuándo y cuánto comprar:
+
+| Zona | Función | Cálculo Base |
+| :---- | :---- | :---- |
+| 🔴 **Roja** | Stock de seguridad contra variabilidad | Lead Time × CPD × %LT + (Zona Roja Base × %Variabilidad) |
+| 🟡 **Amarilla** | Cobertura de demanda durante el lead time | Lead Time × CPD |
+| 🟢 **Verde** | Frecuencia y tamaño de reposición | Mayor de: MOQ, FO×CPD, o LT×CPD×%LT |
+
+> **CPD** = Consumo Promedio Diario | **LT** = Lead Time | **MOQ** = Cantidad Mínima de Orden | **FO** = Frecuencia de Orden
+
+### Ecuación de Flujo Neto: El Corazón de DDMRP
+
+La decisión de compra se basa en una ecuación simple pero poderosa:
+
+```
+Flujo Neto = Inventario Físico + Inventario en Tránsito - Demanda Calificada
+```
+
+* Si el **Flujo Neto** cae en zona **ROJA** → Compra prioritaria
+* Si el **Flujo Neto** cae en zona **AMARILLA** → Generar orden de reposición
+* Si el **Flujo Neto** está en zona **VERDE** → No se requiere acción
+
+## 1.4. Beneficios Esperados
+
+La implementación de DDMRP en retail ha demostrado generar mejoras significativas:
+
+| Métrica | Mejora Típica | Impacto en Retail |
+| :---- | :---- | :---- |
+| **Nivel de Servicio** | +10% a +30% | Menos ventas perdidas por faltantes |
+| **Reducción de Inventario** | -30% a -50% | Mayor capital de trabajo disponible |
+| **Roturas de Stock** | -50% a -80% | Clientes satisfechos, fidelización |
+| **Obsolescencia** | -40% a -60% | Menos productos vencidos o pasados de moda |
+| **Tiempo de Gestión** | -50% a -70% | Personal enfocado en actividades de valor |
+
+## 1.5. Propuesta de Valor de GIIA
+
+GIIA busca **democratizar el acceso a DDMRP** para comercios y distribuidores pymes
+
+## 1.6. Público Objetivo
+
+| Segmento | Características |
+| :---- | :---- |
+| **Comercios Minoristas** | Tiendas con inventarios de múltiples SKUs que compran a distribuidores |
+| **Distribuidores** | Empresas que compran a fabricantes y venden a comercios |
+| **Importadores** | Negocios con lead times largos y alta variabilidad |
+| **Perfil Común** | Buscan reducir capital inmovilizado, enfrentan variabilidad, desean mejorar servicio |
 
 # **2\. Premisas Fundamentales del Diseño**
 
