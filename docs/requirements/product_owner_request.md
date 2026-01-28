@@ -72,45 +72,17 @@ En una implementación completa de DDMRP existen 5 componentes. Sin embargo, par
 
 ### Sistema de Zonas del Buffer
 
-Cada SKU en el inventario se gestiona mediante un **buffer de tres zonas** que determina cuándo y cuánto comprar:
-
-| Zona | Función | Cálculo Base |
-| :---- | :---- | :---- |
-| 🔴 **Roja** | Stock de seguridad contra variabilidad | Lead Time × CPD × %LT + (Zona Roja Base × %Variabilidad) |
-| 🟡 **Amarilla** | Cobertura de demanda durante el lead time | Lead Time × CPD |
-| 🟢 **Verde** | Frecuencia y tamaño de reposición | Mayor de: MOQ, FO×CPD, o LT×CPD×%LT |
-
-> **CPD** = Consumo Promedio Diario | **LT** = Lead Time | **MOQ** = Cantidad Mínima de Orden | **FO** = Frecuencia de Orden
-
-### Ecuación de Flujo Neto: El Corazón de DDMRP
-
-La decisión de compra se basa en una ecuación simple pero poderosa:
-
-```
-Flujo Neto = Inventario Físico + Inventario en Tránsito - Demanda Calificada
-```
+Cada SKU en el inventario se gestiona mediante un **buffer de tres zonas** que determina cuándo y cuánto comprar.
 
 * Si el **Flujo Neto** cae en zona **ROJA** → Compra prioritaria
 * Si el **Flujo Neto** cae en zona **AMARILLA** → Generar orden de reposición
-* Si el **Flujo Neto** está en zona **VERDE** → No se requiere acción
+* Si el **Flujo Neto** está en zona **VERDE** → No se requiere acción|
 
-## 1.4. Beneficios Esperados
-
-La implementación de DDMRP en retail ha demostrado generar mejoras significativas:
-
-| Métrica | Mejora Típica | Impacto en Retail |
-| :---- | :---- | :---- |
-| **Nivel de Servicio** | +10% a +30% | Menos ventas perdidas por faltantes |
-| **Reducción de Inventario** | -30% a -50% | Mayor capital de trabajo disponible |
-| **Roturas de Stock** | -50% a -80% | Clientes satisfechos, fidelización |
-| **Obsolescencia** | -40% a -60% | Menos productos vencidos o pasados de moda |
-| **Tiempo de Gestión** | -50% a -70% | Personal enfocado en actividades de valor |
-
-## 1.5. Propuesta de Valor de GIIA
+## 1.4. Propuesta de Valor de GIIA
 
 GIIA busca **democratizar el acceso a DDMRP** para comercios y distribuidores pymes
 
-## 1.6. Público Objetivo
+## 1.5. Público Objetivo
 
 | Segmento | Características |
 | :---- | :---- |
