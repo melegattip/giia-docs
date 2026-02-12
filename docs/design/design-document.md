@@ -27,7 +27,6 @@ GIIA adopta un patron de **Monolito Modular event-driven** como arquitectura pri
 ### Backend: Go (Golang)
 
 **Decision:** Go como lenguaje del backend.
-**Alternativas consideradas:** Node.js (TypeScript), Rust, Java (Spring Boot).
 **Justificacion:**
 - Compilacion a binario unico -- simplifica el deployment en plataformas serverless (cold starts rapidos).
 - Modelo de concurrencia nativo con goroutines -- ideal para el procesamiento event-driven del motor DDMRP (RF-034, RF-045, RF-052) y recalculos masivos (RNF-003: 1000 productos < 10s).
@@ -38,7 +37,6 @@ GIIA adopta un patron de **Monolito Modular event-driven** como arquitectura pri
 ### Base de datos: PostgreSQL
 
 **Decision:** PostgreSQL como unica base de datos relacional.
-**Alternativas consideradas:** MySQL, CockroachDB, multi-database (SQL + NoSQL).
 **Justificacion:**
 - Row-Level Security (RLS) nativo -- esencial para multi-tenancy con aislamiento por fila (RNF-008, RF-101).
 - Soporte para tipos NUMERIC con precision arbitraria -- critico para montos monetarios (RF-102 a RF-105) sin errores de punto flotante.
@@ -49,7 +47,6 @@ GIIA adopta un patron de **Monolito Modular event-driven** como arquitectura pri
 ### Frontend: Next.js
 
 **Decision:** Next.js con App Router desplegado en Vercel.
-**Alternativas consideradas:** Vite + React SPA, Angular, SvelteKit.
 **Justificacion:**
 - Server-Side Rendering (SSR) y Static Site Generation (SSG) mejoran tiempos de carga inicial (RNF-001: dashboard < 3s).
 - App Router con layouts anidados facilita la estructura de navegacion con guards de permisos (RF-097 a RF-099).
@@ -59,14 +56,13 @@ GIIA adopta un patron de **Monolito Modular event-driven** como arquitectura pri
 ### Deployment: Serverless
 
 **Decision:** Arquitectura serverless para backend y frontend.
-**Alternativas consideradas:** VMs dedicadas, Kubernetes, containers en ECS.
 **Justificacion:**
 - Escalado automatico sin gestion de infraestructura (RES-006: recursos limitados).
 - Costo proporcional al uso -- ideal para un MVP sin trafico predecible.
 - Stateless by design fuerza buenas practicas de arquitectura.
 - Cold starts mitigados por Go (binarios compilados, startup en ~100ms).
 
-> **ADVERTENCIA:** El diseno stateless implica que el event bus interno debe operar in-process (no persistido). Para el MVP, cada request que dispare eventos los procesara sincronicamente o via goroutines dentro del mismo proceso. La transicion a un broker externo se planifica post-MVP.
+> **ADVERTENCIA:** El diseño stateless implica que el event bus interno debe operar in-process (no persistido). Para el MVP, cada request que dispare eventos los procesara sincronicamente o via goroutines dentro del mismo proceso. La transicion a un broker externo se planifica post-MVP.
 
 ## 1.3 Principios de Diseno
 
