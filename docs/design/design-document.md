@@ -1340,7 +1340,8 @@ La cadena de calculo sigue este orden estricto:
    - Si `Flujo_Neto < TOG`:
      - `Cantidad_Sugerida = TOG - Flujo_Neto`
      - `Prioridad = penetration_pct` (mayor penetracion = mayor urgencia)
-   - Si `Flujo_Neto >= TOG`: no se genera sugerencia.
+   - Si `Flujo_Neto > TOG`: se genera alerta de sobrestock.
+   - Si `Flujo_Neto = TOG`: no se genera sugerencia.
    - Trazabilidad: RF-053 a RF-057; HU-011
 
 ## 3.3 Tabla de Eventos y sus Efectos
