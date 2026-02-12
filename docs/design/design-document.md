@@ -141,8 +141,8 @@ graph TB
 
     GIIA["GIIA<br/>Sistema de Gestion de<br/>Inventario DDMRP<br/>(SaaS Multi-tenant)"]
 
-    ADMIN -->|"Configura proveedores,<br/>productos, usuarios,<br/>importa CSV"| GIIA
-    USER -->|"Registra OC/OV,<br/>consulta dashboard,<br/>planifica reposiciones"| GIIA
+    ADMIN -->|"Configura usuarios,<br/>"| GIIA
+    USER -->|"Registra proveedores,<br/>productos, OC/OV,<br/>consulta dashboard,<br/>planifica reposiciones", importa CSV| GIIA
     READONLY -->|"Consulta dashboard,<br/>KPIs, reportes"| GIIA
     GIIA -->|"Envia emails de<br/>recuperacion de<br/>contrasena"| EMAIL
 ```
