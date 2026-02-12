@@ -340,11 +340,7 @@ CREATE TABLE audit_logs (
 
 ## 2.4 Estrategia de Tipos Monetarios
 
-**Decision:** `NUMERIC(15,4)` para todos los campos monetarios.
-**Alternativas consideradas:**
-1. `DECIMAL(10,2)` -- Insuficiente para escenarios multi-moneda con tipos de cambio fraccionarios.
-2. `BIGINT` almacenando centavos -- Requiere conversion constante y no soporta 4 decimales para tipos de cambio.
-3. `NUMERIC(15,4)` (seleccionado) -- Soporta hasta 99,999,999,999.9999 sin perdida de precision. 4 decimales permiten tipos de cambio precisos (RF-104).
+**Decision:** `NUMERIC(13,2)` para todos los campos monetarios.
 
 ## 2.5 Estrategia de Persistencia Transaccional
 
