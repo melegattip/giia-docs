@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GIIA - Crear Producto: Proveedores</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2424eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111121",
+                        "success": "#10b981",
+                        "neutral-gray": "#64748b"
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-200 antialiased">
+<div class="flex min-h-screen">
+<!-- Sidebar -->
+<aside class="w-64 bg-slate-900 text-white flex-shrink-0 flex flex-col">
+<div class="p-6">
+<div class="flex items-center gap-2 mb-8">
+<div class="w-8 h-8 bg-primary rounded flex items-center justify-center font-bold text-xl">G</div>
+<span class="text-xl font-bold tracking-tight">GIIA Systems</span>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded transition-colors" href="#">
+<span class="material-icons text-xl">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary text-white rounded transition-colors" href="#">
+<span class="material-icons text-xl">inventory_2</span>
+<span class="text-sm font-medium">Productos</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded transition-colors" href="#">
+<span class="material-icons text-xl">local_shipping</span>
+<span class="text-sm font-medium">Proveedores</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded transition-colors" href="#">
+<span class="material-icons text-xl">analytics</span>
+<span class="text-sm font-medium">Reportes</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded transition-colors" href="#">
+<span class="material-icons text-xl">settings</span>
+<span class="text-sm font-medium">Configuración</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6 border-t border-slate-800">
+<div class="flex items-center gap-3">
+<img alt="Usuario" class="w-10 h-10 rounded-full border border-slate-700" data-alt="Profile picture of an executive man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVFlj9CGi6862rHk6_MteVJK6pSc-cOxTkxuyd8Yu2VLOLajVRrfYZWCNeNktUaXbLqrWtc78mBMe6VuPTeRtvsPglfMsGiMWzVhR6ZH2PbKxL2PgnOwD5l6yjbnVdGduQq_7txEveKwZ3kvi46J7rQ8bdJqPqIvzFBBu3kX2PctkTgfF6URuQKd8i45QZv31PaMEmLk98nL2ol9U_po6CUZnvKO3mjv273tzia1XP-vsZg5g0GSnBXNhek8ldx_FqOMG4aRQukN9T"/>
+<div class="overflow-hidden">
+<p class="text-sm font-medium truncate">Carlos Mendoza</p>
+<p class="text-xs text-slate-500 truncate">Admin de Inventario</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-screen overflow-hidden">
+<!-- Header -->
+<header class="h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 shrink-0">
+<h1 class="text-lg font-semibold">Crear Producto</h1>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-icons">notifications</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-icons">help_outline</span>
+</button>
+</div>
+</header>
+<!-- Wizard Flow Area -->
+<div class="flex-1 overflow-y-auto p-8">
+<div class="max-w-5xl mx-auto">
+<!-- Stepper -->
+<div class="mb-10">
+<div class="flex items-center justify-center">
+<!-- Step 1 (Completed) -->
+<div class="flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-success text-white flex items-center justify-center mb-2">
+<span class="material-icons text-xl">check</span>
+</div>
+<span class="text-sm font-medium text-success">1. Datos Básicos</span>
+</div>
+<div class="w-24 h-[2px] bg-success mx-4 -mt-6"></div>
+<!-- Step 2 (Active) -->
+<div class="flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center mb-2 ring-4 ring-primary/20">
+<span class="text-sm font-bold">2</span>
+</div>
+<span class="text-sm font-bold text-primary">2. Proveedores</span>
+</div>
+<div class="w-24 h-[2px] bg-slate-200 dark:bg-slate-700 mx-4 -mt-6"></div>
+<!-- Step 3 (Pending) -->
+<div class="flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-500 flex items-center justify-center mb-2">
+<span class="text-sm font-bold">3</span>
+</div>
+<span class="text-sm font-medium text-slate-500">3. Stock e Inventario</span>
+</div>
+<div class="w-24 h-[2px] bg-slate-200 dark:bg-slate-700 mx-4 -mt-6"></div>
+<!-- Step 4 (Pending) -->
+<div class="flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-500 flex items-center justify-center mb-2">
+<span class="text-sm font-bold">4</span>
+</div>
+<span class="text-sm font-medium text-slate-500">4. Resumen</span>
+</div>
+</div>
+</div>
+<!-- Main Content Card -->
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="p-6 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center">
+<div>
+<h2 class="text-xl font-semibold">Proveedores del Producto</h2>
+<p class="text-sm text-slate-500 mt-1">Gestione los proveedores asociados y sus condiciones comerciales particulares.</p>
+</div>
+</div>
+<div class="p-0">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50">
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800">Proveedor</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800">Lead Time (días)</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800">MOQ (unidades)</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800">Frecuencia (días)</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800 text-center">Preferido</th>
+<th class="px-6 py-4 border-b border-slate-200 dark:border-slate-800"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="relative">
+<input class="w-full bg-transparent border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary text-sm py-2 px-3" placeholder="Buscar proveedor..." type="text" value="ProveedorA S.A."/>
+<span class="material-icons absolute right-3 top-2.5 text-slate-400 text-sm">search</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<input class="w-24 bg-transparent border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary text-sm py-2 px-3" type="number" value="15"/>
+</td>
+<td class="px-6 py-4">
+<input class="w-24 bg-transparent border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary text-sm py-2 px-3" type="number" value="100"/>
+</td>
+<td class="px-6 py-4">
+<input class="w-24 bg-transparent border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary text-sm py-2 px-3" type="number" value="30"/>
+</td>
+<td class="px-6 py-4 text-center">
+<input checked="" class="w-5 h-5 text-primary border-slate-300 focus:ring-primary" name="preferred_supplier" type="radio"/>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-icons">delete_outline</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="relative">
+<input class="w-full bg-transparent border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary text-sm py-2 px-3" placeholder="Buscar proveedor..." type="text" value="Plásticos XYZ"/>
+<span class="material-icons absolute right-3 top-2.5 text-slate-400 text-sm">search</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<input class="w-24 bg-transparent border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary text-sm py-2 px-3" type="number" value="20"/>
+</td>
+<td class="px-6 py-4">
+<input class="w-24 bg-transparent border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary text-sm py-2 px-3" type="number" value="500"/>
+</td>
+<td class="px-6 py-4">
+<input class="w-24 bg-transparent border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary text-sm py-2 px-3" type="number" value="60"/>
+</td>
+<td class="px-6 py-4 text-center">
+<input class="w-5 h-5 text-primary border-slate-300 focus:ring-primary" name="preferred_supplier" type="radio"/>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-icons">delete_outline</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-6">
+<button class="flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors">
+<span class="material-icons">add_circle_outline</span>
+<span>Agregar Proveedor</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Navigation -->
+<footer class="h-20 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 shrink-0">
+<button class="px-6 py-2 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 rounded-lg font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors flex items-center gap-2">
+<span class="material-icons text-sm">arrow_back</span>
+                    Anterior
+                </button>
+<div class="flex items-center gap-4">
+<button class="px-6 py-2 text-slate-500 font-medium hover:text-slate-700 dark:hover:text-slate-300">Guardar Borrador</button>
+<button class="px-8 py-2 bg-primary text-white rounded-lg font-medium hover:bg-primary/90 transition-all flex items-center gap-2 shadow-lg shadow-primary/20">
+                        Siguiente
+                        <span class="material-icons text-sm">arrow_forward</span>
+</button>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

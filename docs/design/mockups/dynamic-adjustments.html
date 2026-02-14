@@ -1,0 +1,342 @@
+<html class="light" lang="es"><head>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/></head><body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex">```html
+
+
+
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GIIA Dynamic Adjustments List</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2463eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .sidebar-item-active {
+            background-color: rgba(36, 99, 235, 0.15);
+            border-left: 4px solid #2463eb;
+            color: #2463eb;
+        }
+        .pulse-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            margin-right: 6px;
+            box-shadow: 0 0 0 rgba(34, 197, 94, 0.4);
+            animation: pulse-ring 2s infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+    </style>
+<!-- Sidebar -->
+<aside class="w-64 bg-background-dark text-slate-400 flex-shrink-0 flex flex-col border-r border-slate-800 hidden lg:flex">
+<div class="p-6 flex items-center gap-3">
+<div class="bg-primary p-2 rounded-lg">
+<span class="material-icons-outlined text-white">analytics</span>
+</div>
+<span class="text-xl font-bold text-white tracking-tight">GIIA System</span>
+</div>
+<nav class="flex-1 px-4 py-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons-outlined text-lg">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons-outlined text-lg">inventory_2</span>
+<span>Inventarios</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg sidebar-item-active font-medium" href="#">
+<span class="material-icons-outlined text-lg">tune</span>
+<span>Ajustes Dinámicos</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons-outlined text-lg">assessment</span>
+<span>Reportes</span>
+</a>
+<div class="pt-4 pb-2 px-3 text-xs font-semibold text-slate-600 uppercase tracking-wider">Configuración</div>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons-outlined text-lg">settings</span>
+<span>Ajustes</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-800">
+<div class="flex items-center gap-3 p-2">
+<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">JD</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-white truncate">Juan Delgado</p>
+<p class="text-xs text-slate-500 truncate">Admin de Planta</p>
+</div>
+<span class="material-icons-outlined text-slate-500 cursor-pointer">logout</span>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0">
+<!-- Header -->
+<header class="h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 z-10">
+<div class="flex items-center gap-4">
+<span class="material-icons-outlined lg:hidden text-slate-600">menu</span>
+<nav aria-label="Breadcrumb" class="flex text-sm text-slate-500">
+<ol class="flex items-center space-x-2">
+<li><a class="hover:text-primary" href="#">GIIA</a></li>
+<li><span class="material-icons-outlined text-xs">chevron_right</span></li>
+<li class="text-slate-900 dark:text-slate-100 font-medium">Ajustes Dinámicos</li>
+</ol>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-icons-outlined">notifications</span>
+</button>
+<div class="h-8 w-px bg-slate-200 dark:bg-slate-700 mx-2"></div>
+<div class="text-right">
+<p class="text-xs text-slate-400">Planta Principal</p>
+<p class="text-sm font-medium">Madrid, ES</p>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<div class="p-8 space-y-6">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h1 class="text-2xl font-bold text-slate-900 dark:text-white">Ajustes Dinámicos</h1>
+<p class="text-slate-500 mt-1">Gestión de factores DDMRP para optimización de buffers.</p>
+</div>
+<button class="inline-flex items-center gap-2 bg-primary hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg font-medium transition-colors shadow-sm shadow-primary/20">
+<span class="material-icons-outlined text-lg">add</span>
+                    Nuevo Ajuste
+                </button>
+</div>
+<!-- Info Card -->
+<div class="bg-primary/5 border border-primary/20 rounded-xl p-5 flex items-start gap-4">
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-icons-outlined">info</span>
+</div>
+<div class="flex-1">
+<h3 class="font-semibold text-primary">Sobre los Ajustes Dinámicos</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                        Los ajustes dinámicos permiten modificar temporalmente las zonas de buffer para responder a estacionalidad o interrupciones en la cadena de suministro. Use <strong>FAD</strong> (Factor de Ajuste de Demanda), <strong>FALTD</strong> (Factor de Ajuste de Lead Time) o <strong>FAZ</strong> (Factor de Ajuste de Zona) según el escenario.
+                    </p>
+</div>
+<button class="text-slate-400 hover:text-slate-600">
+<span class="material-icons-outlined text-sm">close</span>
+</button>
+</div>
+<!-- Table Card -->
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm">
+<!-- Table Toolbar -->
+<div class="px-6 py-4 border-b border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row gap-4 justify-between items-center">
+<div class="relative w-full sm:w-64">
+<span class="material-icons-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-800 border-none rounded-lg text-sm focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Buscar ajuste..." type="text"/>
+</div>
+<div class="flex items-center gap-2 w-full sm:w-auto">
+<button class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800">
+<span class="material-icons-outlined text-lg">filter_list</span>
+                            Filtros
+                        </button>
+<button class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800">
+<span class="material-icons-outlined text-lg">download</span>
+                            Exportar
+                        </button>
+</div>
+</div>
+<!-- Main Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50">
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Nombre del Ajuste</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Producto/Categoría</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Tipo</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Factor</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Vigencia</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Estado</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider text-right">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 font-medium text-slate-900 dark:text-white">Temporada Navidad</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Juguetería General</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">FAD</span>
+</td>
+<td class="px-6 py-4 text-sm font-semibold">1.5x</td>
+<td class="px-6 py-4 text-sm text-slate-500">01 Nov - 31 Dic</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-300">Expirado</span>
+</td>
+<td class="px-6 py-4 text-right space-x-1">
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors"><span class="material-icons-outlined text-lg">visibility</span></button>
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors"><span class="material-icons-outlined text-lg">edit</span></button>
+<button class="p-1.5 text-slate-400 hover:text-red-600 transition-colors"><span class="material-icons-outlined text-lg">delete</span></button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 font-medium text-slate-900 dark:text-white">Promo San Valentín</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Arreglos Florales</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300">FAZ</span>
+</td>
+<td class="px-6 py-4 text-sm font-semibold">1.2x</td>
+<td class="px-6 py-4 text-sm text-slate-500">01 Feb - 15 Feb</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300">
+<span class="pulse-dot"></span>Activo
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right space-x-1">
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors"><span class="material-icons-outlined text-lg">visibility</span></button>
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors"><span class="material-icons-outlined text-lg">edit</span></button>
+<button class="p-1.5 text-slate-400 hover:text-red-600 transition-colors"><span class="material-icons-outlined text-lg">delete</span></button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 font-medium text-slate-900 dark:text-white">Retraso Proveedor</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Comp. Electrónicos</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">FALTD</span>
+</td>
+<td class="px-6 py-4 text-sm font-semibold">1.3x</td>
+<td class="px-6 py-4 text-sm text-slate-500">15 Mar - 15 Abr</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300">
+<span class="pulse-dot"></span>Activo
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right space-x-1">
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors"><span class="material-icons-outlined text-lg">visibility</span></button>
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors"><span class="material-icons-outlined text-lg">edit</span></button>
+<button class="p-1.5 text-slate-400 hover:text-red-600 transition-colors"><span class="material-icons-outlined text-lg">delete</span></button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 font-medium text-slate-900 dark:text-white">Temporada Lluvias</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Construcción Pesada</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">FAD</span>
+</td>
+<td class="px-6 py-4 text-sm font-semibold">0.8x</td>
+<td class="px-6 py-4 text-sm text-slate-500">01 Jun - 31 Ago</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300">Programado</span>
+</td>
+<td class="px-6 py-4 text-right space-x-1">
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors"><span class="material-icons-outlined text-lg">visibility</span></button>
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors"><span class="material-icons-outlined text-lg">edit</span></button>
+<button class="p-1.5 text-slate-400 hover:text-red-600 transition-colors"><span class="material-icons-outlined text-lg">delete</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+<p class="text-sm text-slate-500">Mostrando <span class="font-medium">1-4</span> de <span class="font-medium">12</span> resultados</p>
+<div class="flex items-center gap-1">
+<button class="p-2 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-400 hover:bg-slate-50 disabled:opacity-50" disabled="">
+<span class="material-icons-outlined text-lg leading-none">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-lg font-medium text-sm">1</button>
+<button class="w-10 h-10 flex items-center justify-center hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg text-sm text-slate-600">2</button>
+<button class="w-10 h-10 flex items-center justify-center hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg text-sm text-slate-600">3</button>
+<button class="p-2 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-600 hover:bg-slate-50">
+<span class="material-icons-outlined text-lg leading-none">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Dashboard Map/Context Footer (Visual Decorative) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+<div class="bg-white dark:bg-slate-900 p-4 border border-slate-200 dark:border-slate-800 rounded-xl">
+<div class="flex items-center justify-between mb-4">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest">Cobertura Global</h4>
+<span class="material-icons-outlined text-slate-300">map</span>
+</div>
+<div class="relative h-40 w-full rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-800">
+<img alt="World Map Background" class="w-full h-full object-cover opacity-50" data-alt="World Map illustrating inventory locations" data-location="Global" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARztZOSAasIzchw1ZF3cBeEq43v69Ne-bf8naXEUmbpkw1pAYdJrmschlO95gXSSq6Vz4w-7u1mxijUOk6WNImSx_iu9ueyTnqbE1FgVm9mI1gZsqjrnXUKW-BNA0zjK1jEW1ZtN8Jylj8umkyosSpoyeXJ5adbamyfoAXZHtMeC5J5R6PyWF00NMnOfrC7yzUs8YoGjNIBhTqnvZcKXXfOfghuOm_ONcK87q63B_ZUQb6TTKCHKMoun2IStEW-nUN3qCTaCfKijhg"/>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+<span class="flex h-3 w-3 bg-primary rounded-full animate-ping absolute"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-4 border border-slate-200 dark:border-slate-800 rounded-xl flex flex-col justify-between">
+<div>
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest">Ajustes Totales</h4>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="text-3xl font-bold">24</span>
+<span class="text-xs font-medium text-green-500 flex items-center gap-0.5">
+<span class="material-icons-outlined text-xs">trending_up</span>+4
+                            </span>
+</div>
+</div>
+<div class="mt-4 flex gap-1 h-12 items-end">
+<div class="flex-1 bg-primary/20 rounded-t h-4/6"></div>
+<div class="flex-1 bg-primary/20 rounded-t h-3/6"></div>
+<div class="flex-1 bg-primary/40 rounded-t h-5/6"></div>
+<div class="flex-1 bg-primary/20 rounded-t h-2/6"></div>
+<div class="flex-1 bg-primary rounded-t h-full"></div>
+<div class="flex-1 bg-primary/60 rounded-t h-4/6"></div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-4 border border-slate-200 dark:border-slate-800 rounded-xl flex flex-col justify-between">
+<div>
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest">Estado de Buffers</h4>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="text-3xl font-bold">92.4%</span>
+<span class="text-xs font-medium text-slate-400">En zona ideal</span>
+</div>
+</div>
+<div class="mt-4 space-y-2">
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden flex">
+<div class="h-full bg-green-500 w-[60%]"></div>
+<div class="h-full bg-amber-500 w-[20%]"></div>
+<div class="h-full bg-red-500 w-[12.4%]"></div>
+</div>
+<div class="flex justify-between text-[10px] font-semibold text-slate-400 uppercase">
+<span>Ok</span>
+<span>Alert</span>
+<span>Critical</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

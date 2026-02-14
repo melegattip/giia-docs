@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-background-light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GIIA Application Shell</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1660e9",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                        "slate-900": "#0F172A",
+                        "slate-800": "#1E293B",
+                        "slate-400": "#94A3B8",
+                        "slate-300": "#CBD5E1",
+                        "slate-50": "#F8FAFC",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+    </style>
+</head>
+<body class="h-full overflow-hidden font-display antialiased text-slate-900">
+<div class="flex h-full">
+<!-- Sidebar -->
+<aside class="w-64 bg-slate-900 flex flex-col flex-shrink-0 z-50">
+<!-- Branding -->
+<div class="h-16 flex items-center px-6 gap-3 border-b border-slate-800">
+<div class="w-8 h-8 bg-primary flex items-center justify-center rounded">
+<span class="material-icons text-white text-xl">bar_chart</span>
+</div>
+<span class="text-white font-bold text-xl tracking-tight">GIIA</span>
+</div>
+<!-- Navigation -->
+<nav class="flex-1 overflow-y-auto custom-scrollbar py-4 px-3 space-y-6">
+<!-- Group: Principal -->
+<div>
+<h3 class="px-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-2">Principal</h3>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-white bg-primary/10 border-l-2 border-primary rounded-sm transition-colors group" href="#">
+<span class="material-icons text-[20px] text-primary">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+</div>
+</div>
+<!-- Group: Datos Maestros -->
+<div>
+<h3 class="px-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-2">Datos Maestros</h3>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-sm transition-colors group" href="#">
+<span class="material-icons text-[20px]">group</span>
+<span class="text-sm font-medium">Proveedores</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-sm transition-colors group" href="#">
+<span class="material-icons text-[20px]">category</span>
+<span class="text-sm font-medium">Categorías</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-sm transition-colors group" href="#">
+<span class="material-icons text-[20px]">inventory_2</span>
+<span class="text-sm font-medium">Productos</span>
+</a>
+</div>
+</div>
+<!-- Group: Transacciones -->
+<div>
+<h3 class="px-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-2">Transacciones</h3>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-sm transition-colors group" href="#">
+<span class="material-icons text-[20px]">shopping_cart</span>
+<span class="text-sm font-medium">Órdenes de Compra</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-sm transition-colors group" href="#">
+<span class="material-icons text-[20px]">sell</span>
+<span class="text-sm font-medium">Órdenes de Venta</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-sm transition-colors group" href="#">
+<span class="material-icons text-[20px]">tune</span>
+<span class="text-sm font-medium">Ajustes</span>
+</a>
+</div>
+</div>
+<!-- Group: DDMRP -->
+<div>
+<h3 class="px-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-2">DDMRP</h3>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-sm transition-colors group" href="#">
+<span class="material-icons text-[20px]">event_note</span>
+<span class="text-sm font-medium">Planificación</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-sm transition-colors group" href="#">
+<span class="material-icons text-[20px]">auto_fix_high</span>
+<span class="text-sm font-medium">Ajustes Dinámicos</span>
+</a>
+</div>
+</div>
+<!-- Group: Monitoreo -->
+<div>
+<h3 class="px-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-2">Monitoreo</h3>
+<div class="space-y-1">
+<a class="flex items-center justify-between px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-sm transition-colors group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-icons text-[20px]">notifications_active</span>
+<span class="text-sm font-medium">Alertas</span>
+</div>
+<span class="bg-red-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">3</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-sm transition-colors group" href="#">
+<span class="material-icons text-[20px]">insights</span>
+<span class="text-sm font-medium">KPIs</span>
+</a>
+</div>
+</div>
+<!-- Group: Administración -->
+<div>
+<h3 class="px-3 text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-2">Administración</h3>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-sm transition-colors group" href="#">
+<span class="material-icons text-[20px]">upload_file</span>
+<span class="text-sm font-medium">Importación</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-sm transition-colors group" href="#">
+<span class="material-icons text-[20px]">settings</span>
+<span class="text-sm font-medium">Configuración</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- Bottom Profile Link Placeholder -->
+<div class="p-4 border-t border-slate-800">
+<div class="flex items-center gap-3 px-2 py-2">
+<div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-xs font-bold text-white uppercase">JP</div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-white truncate w-32">Juan Pérez</span>
+<span class="text-[10px] text-slate-500">Administrador</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Wrapper -->
+<div class="flex-1 flex flex-col min-w-0 bg-slate-50">
+<!-- Header -->
+<header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-8 flex-shrink-0">
+<!-- Breadcrumbs -->
+<nav class="flex items-center text-sm font-medium text-slate-400">
+<span class="hover:text-primary cursor-pointer">GIIA</span>
+<span class="material-icons text-base mx-2">chevron_right</span>
+<span class="text-slate-900">Dashboard</span>
+</nav>
+<!-- Header Actions -->
+<div class="flex items-center gap-6">
+<!-- Notifications -->
+<button class="relative p-2 text-slate-400 hover:text-slate-600 transition-colors">
+<span class="material-icons">notifications</span>
+<span class="absolute top-2 right-2.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+</button>
+<!-- User Profile -->
+<div class="flex items-center gap-3 pl-6 border-l border-slate-200">
+<div class="flex flex-col text-right">
+<span class="text-sm font-semibold text-slate-900">Juan Pérez</span>
+<span class="text-xs text-slate-500">GIIA Ops Team</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold text-sm ring-2 ring-primary/10 ring-offset-1">
+                            JP
+                        </div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 relative overflow-hidden flex items-center justify-center">
+<!-- Empty State -->
+<div class="text-center max-w-sm px-6">
+<div class="mb-6 inline-flex items-center justify-center w-24 h-24 rounded-full bg-slate-100">
+<span class="material-icons text-slate-300 text-5xl">dashboard_customize</span>
+</div>
+<h2 class="text-xl font-semibold text-slate-900 mb-2">Módulo en espera</h2>
+<p class="text-slate-500 leading-relaxed">
+                        Selecciona una sección del menú lateral para comenzar a gestionar tu inventario y operaciones.
+                    </p>
+</div>
+<!-- Abstract Decor for Empty State -->
+<div class="absolute inset-0 -z-10 overflow-hidden pointer-events-none opacity-20">
+<div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-primary/10 blur-3xl"></div>
+<div class="absolute -bottom-[10%] -right-[10%] w-[40%] h-[40%] rounded-full bg-primary/5 blur-3xl"></div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

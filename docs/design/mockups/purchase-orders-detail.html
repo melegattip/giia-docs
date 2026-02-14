@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GIIA - Detalle de Orden de Compra</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#225fec",
+                "background-light": "#f6f6f8",
+                "background-dark": "#101622",
+              },
+              fontFamily: {
+                "display": ["Inter", "sans-serif"],
+                "mono": ["JetBrains Mono", "monospace"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .mono-text { font-family: 'JetBrains Mono', monospace; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex">
+<!-- Sidebar -->
+<aside class="w-64 bg-slate-900 text-slate-300 flex-shrink-0 flex flex-col hidden lg:flex">
+<div class="p-6 flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded flex items-center justify-center">
+<span class="text-white font-bold text-xl">G</span>
+</div>
+<span class="text-xl font-bold tracking-tight text-white">GIIA</span>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons text-sm">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons text-sm">inventory_2</span>
+<span class="text-sm font-medium">Inventario</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary text-white" href="#">
+<span class="material-icons text-sm">shopping_cart</span>
+<span class="text-sm font-medium">Órdenes de Compra</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons text-sm">local_shipping</span>
+<span class="text-sm font-medium">Proveedores</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons text-sm">analytics</span>
+<span class="text-sm font-medium">Reportes</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-800">
+<div class="flex items-center gap-3 px-3 py-2">
+<div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center">
+<span class="text-xs font-bold text-white">JD</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="text-sm font-medium text-white truncate">Juan Delgado</p>
+<p class="text-xs text-slate-500 truncate">Administrador</p>
+</div>
+<span class="material-icons text-slate-500 text-sm">settings</span>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+<!-- Top Header -->
+<header class="h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 z-10">
+<div class="flex items-center gap-4">
+<nav class="flex text-sm text-slate-500 dark:text-slate-400 gap-2">
+<span class="hover:text-primary cursor-pointer">Compras</span>
+<span>/</span>
+<span class="text-slate-900 dark:text-slate-100 font-medium">OC-2026-0045</span>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full relative">
+<span class="material-icons text-xl">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-900"></span>
+</button>
+<div class="h-8 w-[1px] bg-slate-200 dark:bg-slate-800"></div>
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
+<span class="material-icons text-xl">help_outline</span>
+</button>
+</div>
+</header>
+<!-- View Content -->
+<div class="flex-1 overflow-y-auto p-8 bg-background-light dark:bg-background-dark">
+<!-- Entity Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div class="flex items-center gap-4">
+<h1 class="text-2xl font-bold mono-text tracking-tight">OC-2026-0045</h1>
+<span class="px-3 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-xs font-bold uppercase tracking-wider rounded-full border border-amber-200 dark:border-amber-800">
+                        Pendiente
+                    </span>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-lg font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors flex items-center gap-2">
+<span class="material-icons text-sm">edit</span> Editar
+                    </button>
+<button class="px-4 py-2 border border-red-200 dark:border-red-900/30 text-red-600 dark:text-red-400 rounded-lg font-medium hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors flex items-center gap-2">
+<span class="material-icons text-sm">cancel</span> Cancelar OC
+                    </button>
+<button class="px-4 py-2 bg-primary text-white rounded-lg font-medium hover:bg-primary/90 transition-colors flex items-center gap-2 shadow-sm">
+<span class="material-icons text-sm">input</span> Registrar Recepción
+                    </button>
+</div>
+</div>
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+<!-- Info Card -->
+<div class="xl:col-span-1 space-y-8">
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-6">
+<h3 class="text-sm font-bold uppercase text-slate-400 dark:text-slate-500 mb-6 tracking-widest">Información General</h3>
+<div class="space-y-6">
+<div>
+<label class="text-xs text-slate-500 dark:text-slate-400 block mb-1">Proveedor</label>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-icons">business</span>
+</div>
+<div>
+<p class="font-semibold text-slate-900 dark:text-slate-100">Logística Global S.A.</p>
+<p class="text-xs text-slate-500">ID: PROV-99821</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="text-xs text-slate-500 dark:text-slate-400 block mb-1">Fecha Creación</label>
+<p class="text-sm font-medium">Oct 12, 2026</p>
+</div>
+<div>
+<label class="text-xs text-slate-500 dark:text-slate-400 block mb-1">Fecha Esperada</label>
+<p class="text-sm font-medium text-primary">Oct 20, 2026</p>
+</div>
+</div>
+<div class="pt-6 border-t border-slate-100 dark:border-slate-800">
+<label class="text-xs text-slate-500 dark:text-slate-400 block mb-1">Total de la Orden</label>
+<p class="text-2xl font-bold text-slate-900 dark:text-slate-100">$12,450.00</p>
+</div>
+</div>
+</div>
+<!-- Additional Details -->
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-6">
+<h3 class="text-sm font-bold uppercase text-slate-400 dark:text-slate-500 mb-4 tracking-widest text-center">Ubicación de Destino</h3>
+<div class="aspect-video bg-slate-100 dark:bg-slate-800 rounded-lg overflow-hidden relative">
+<img class="w-full h-full object-cover opacity-60 dark:opacity-40" data-alt="Mapa de la ubicación del almacén principal" data-location="Ciudad de México" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHop-eEbWttrntbNbidzA3xPZAG2uokjSoDwmp5lSjjRLagpcf1p-q6oce5hU6s8Kh4ccUUbvcSgHGjOmsiH-CIjPouwh0ZqqmlyWa9h-unAkinx5-uDR5Lz9gXAcy8qqr6b8SqduUWH_NwM5qRTIR0Ow1BoEqvOIEMIPMjrfqGC55Cr2APGoSMZ_L5R2IRuiMUK7jczv4idPaY1zlGgVDq6azf0hO6kaz-OWJ2pFovtKaf1ALkGEd52plm2VK5vTJgj6ctM8aPBrS"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-white dark:bg-slate-900 p-2 rounded shadow-lg border border-slate-200 dark:border-slate-700 flex flex-col items-center">
+<span class="material-icons text-primary">location_on</span>
+<span class="text-[10px] font-bold">Almacén Central</span>
+</div>
+</div>
+</div>
+<p class="text-xs text-slate-500 mt-4 text-center">Av. Industrial 500, Bodega 4, CDMX</p>
+</div>
+</div>
+<!-- Tables Section -->
+<div class="xl:col-span-2 space-y-8">
+<!-- Order Lines Table -->
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
+<h3 class="font-bold text-slate-800 dark:text-slate-200">Líneas de la Orden</h3>
+<span class="text-xs text-slate-500">2 productos listados</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 text-xs uppercase tracking-wider">
+<tr>
+<th class="px-6 py-3 font-semibold">SKU</th>
+<th class="px-6 py-3 font-semibold">Producto</th>
+<th class="px-6 py-3 font-semibold text-right">Cantidad</th>
+<th class="px-6 py-3 font-semibold text-right">Precio Unit.</th>
+<th class="px-6 py-3 font-semibold text-right">Subtotal</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr>
+<td class="px-6 py-4 mono-text text-sm text-slate-600 dark:text-slate-400">EL-MOD-4022</td>
+<td class="px-6 py-4">
+<p class="text-sm font-medium text-slate-900 dark:text-slate-100">Modulo Sensor Infrarrojo V3</p>
+</td>
+<td class="px-6 py-4 text-sm text-right">198</td>
+<td class="px-6 py-4 text-sm text-right">$45.00</td>
+<td class="px-6 py-4 text-sm text-right font-medium">$8,910.00</td>
+</tr>
+<tr>
+<td class="px-6 py-4 mono-text text-sm text-slate-600 dark:text-slate-400">EL-CAB-1005</td>
+<td class="px-6 py-4">
+<p class="text-sm font-medium text-slate-900 dark:text-slate-100">Cable Dupont M/H 20cm (Pack x40)</p>
+</td>
+<td class="px-6 py-4 text-sm text-right">100</td>
+<td class="px-6 py-4 text-sm text-right">$35.40</td>
+<td class="px-6 py-4 text-sm text-right font-medium">$3,540.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Reception Workspace -->
+<div class="bg-blue-50 dark:bg-primary/10 rounded-xl shadow-sm border border-primary/20 p-8">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center">
+<span class="material-icons">receipt_long</span>
+</div>
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Registrar Recepción</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400">Ingrese las cantidades físicas recibidas en almacén.</p>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-lg border border-primary/10 overflow-hidden mb-6">
+<table class="w-full text-left">
+<thead class="bg-slate-50 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-xs uppercase font-bold">
+<tr>
+<th class="px-6 py-3">Producto</th>
+<th class="px-6 py-3 text-center">Pedido</th>
+<th class="px-6 py-3 text-center">Recibido</th>
+<th class="px-6 py-3 text-right">Estado</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr>
+<td class="px-6 py-5">
+<p class="text-sm font-medium">Modulo Sensor Infrarrojo V3</p>
+<span class="text-[10px] mono-text text-slate-400">EL-MOD-4022</span>
+</td>
+<td class="px-6 py-5 text-center text-sm font-medium">198</td>
+<td class="px-6 py-5 text-center">
+<input class="w-24 px-3 py-1.5 border-slate-300 dark:border-slate-700 dark:bg-slate-800 rounded-md text-sm text-center focus:ring-primary focus:border-primary" type="number" value="198"/>
+</td>
+<td class="px-6 py-5 text-right">
+<span class="inline-flex items-center gap-1 text-green-600 dark:text-green-400 text-xs font-bold">
+<span class="material-icons text-sm">check_circle</span> Completo
+                                            </span>
+</td>
+</tr>
+<tr class="bg-amber-50/50 dark:bg-amber-900/10">
+<td class="px-6 py-5 border-l-4 border-amber-400">
+<p class="text-sm font-medium">Cable Dupont M/H 20cm (Pack x40)</p>
+<span class="text-[10px] mono-text text-slate-400">EL-CAB-1005</span>
+</td>
+<td class="px-6 py-5 text-center text-sm font-medium">100</td>
+<td class="px-6 py-5 text-center">
+<input class="w-24 px-3 py-1.5 border-amber-300 dark:border-amber-700 dark:bg-slate-800 rounded-md text-sm text-center focus:ring-primary focus:border-primary" type="number" value="80"/>
+</td>
+<td class="px-6 py-5 text-right">
+<span class="inline-flex items-center gap-1 text-amber-600 dark:text-amber-400 text-xs font-bold">
+<span class="material-icons text-sm">pending</span> Parcial (-20)
+                                            </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-2 text-sm text-slate-500">
+<span class="material-icons text-sm">info</span>
+<span>Se generará un reporte de discrepancia por los 20 artículos faltantes.</span>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-2.5 bg-primary text-white rounded-lg font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 flex items-center gap-2">
+<span class="material-icons">task_alt</span> Confirmar Recepción
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

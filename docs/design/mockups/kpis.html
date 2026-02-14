@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GIIA Performance KPIs Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2463eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                        "slate-50": "#f8fafc",
+                        "slate-100": "#f1f5f9",
+                        "slate-200": "#e2e8f0",
+                        "slate-300": "#cbd5e1",
+                        "slate-400": "#94a3b8",
+                        "slate-500": "#64748b",
+                        "slate-600": "#475569",
+                        "slate-700": "#334155",
+                        "slate-800": "#1e293b",
+                        "slate-900": "#0f172a",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .sparkline-svg { height: 40px; width: 100%; }
+        .tabular-nums { font-variant-numeric: tabular-nums; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex">
+<!-- Sidebar -->
+<aside class="w-64 bg-slate-900 dark:bg-slate-950 text-slate-300 flex-shrink-0 flex flex-col hidden lg:flex border-r border-slate-800">
+<div class="p-6 flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="text-white font-bold text-xl">G</span>
+</div>
+<span class="text-xl font-bold text-white tracking-tight">GIIA <span class="text-primary">Analytics</span></span>
+</div>
+<nav class="flex-1 px-4 py-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-icons-round text-xl">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-white bg-primary rounded-lg transition-colors" href="#">
+<span class="material-icons-round text-xl">insights</span>
+<span class="text-sm font-medium">KPIs Performance</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-icons-round text-xl">inventory_2</span>
+<span class="text-sm font-medium">Inventario</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-icons-round text-xl">reorder</span>
+<span class="text-sm font-medium">Pedidos DDMRP</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-icons-round text-xl">analytics</span>
+<span class="text-sm font-medium">Reportes</span>
+</a>
+<div class="pt-6 pb-2 px-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Sistema</div>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-icons-round text-xl">settings</span>
+<span class="text-sm font-medium">Configuración</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-800">
+<div class="flex items-center gap-3 px-3 py-2">
+<img alt="User" class="w-8 h-8 rounded-full" data-alt="Professional user avatar profile photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBDLsn2SKLDQgO74-3fpMvThC-4LqsNMkGWvKKosQcaMTmMHMedXFO7FIjXDnOoXozLMdEcdLeXJ7DoAIJWev8E9_ohLWh3icB_620JWtp13X7v179RJzjOP36qrVaLac9-JsWUdrpObXx8lvi7cAroPWQklSDxrhS2SdhvSFggyHLcgOV6zmM_O370Yq7km5kwNyvPj4mKKAHmk8eKDLvHfIJEBHJXJyakr6N9AEGC2hUqRqsj2Oi_mGOity7Q6Skvol3xS_E70Xs"/>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-white truncate">Alejandro M.</p>
+<p class="text-xs text-slate-500 truncate">Supply Chain Mgr</p>
+</div>
+<span class="material-icons-round text-slate-500 cursor-pointer hover:text-white">logout</span>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-screen overflow-y-auto">
+<!-- Header -->
+<header class="h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 sticky top-0 z-10">
+<div class="flex items-center gap-2 text-sm">
+<span class="text-slate-400">Analítica</span>
+<span class="material-icons-round text-base text-slate-300">chevron_right</span>
+<span class="text-slate-700 dark:text-slate-200 font-medium">Desempeño KPIs</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-icons-round">notifications</span>
+</button>
+<div class="h-8 w-px bg-slate-200 dark:bg-slate-700 mx-2"></div>
+<button class="flex items-center gap-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-3 py-1.5 rounded-lg text-sm font-medium hover:bg-slate-100 transition-colors">
+<span class="material-icons-round text-sm">file_download</span>
+                    Exportar PDF
+                </button>
+</div>
+</header>
+<!-- Dashboard Body -->
+<div class="p-8 space-y-8 bg-slate-50 dark:bg-background-dark min-h-[calc(100vh-64px)]">
+<!-- Controls Row -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h1 class="text-2xl font-bold text-slate-900 dark:text-white">Dashboard de Desempeño</h1>
+<p class="text-slate-500 text-sm">Resumen operativo y financiero del inventario bajo metodología DDMRP.</p>
+</div>
+<div class="flex items-center bg-white dark:bg-slate-900 p-1 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
+<div class="flex gap-1 pr-4 pl-2 border-r border-slate-200 dark:border-slate-700 mr-2">
+<button class="px-3 py-1.5 text-xs font-medium rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500">7 días</button>
+<button class="px-3 py-1.5 text-xs font-medium rounded-lg bg-primary/10 text-primary">Último mes</button>
+<button class="px-3 py-1.5 text-xs font-medium rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500">QTD</button>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg">
+<span class="material-icons-round text-slate-400 text-lg">calendar_today</span>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-200">01 Oct 2023 - 31 Oct 2023</span>
+<span class="material-icons-round text-slate-400 text-sm">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Row 2: KPI Summary Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+<!-- KPI Card 1 -->
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
+<span class="material-icons-round text-primary">payments</span>
+</div>
+<div class="flex items-center gap-1 text-emerald-500 text-xs font-bold">
+<span class="material-icons-round text-sm">trending_down</span>
+                            4.2%
+                        </div>
+</div>
+<div>
+<p class="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-1">Costo Total Inventario</p>
+<h3 class="text-2xl font-bold tabular-nums text-slate-900 dark:text-white">$1,245,600</h3>
+<p class="text-slate-400 text-[10px] mt-1">vs. Periodo anterior: $1,300,200</p>
+</div>
+<div class="mt-4">
+<svg class="sparkline-svg text-primary" preserveaspectratio="none" viewbox="0 0 100 40">
+<path d="M0,35 Q10,30 20,32 T40,25 T60,20 T80,28 T100,15" fill="none" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+<path class="fill-primary/10" d="M0,35 Q10,30 20,32 T40,25 T60,20 T80,28 T100,15 V40 H0 Z" vector-effect="non-scaling-stroke"></path>
+</svg>
+</div>
+</div>
+<!-- KPI Card 2 -->
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-purple-50 dark:bg-purple-900/30 rounded-lg">
+<span class="material-icons-round text-purple-600">timelapse</span>
+</div>
+<div class="flex items-center gap-1 text-rose-500 text-xs font-bold">
+<span class="material-icons-round text-sm">trending_up</span>
+                            2.1%
+                        </div>
+</div>
+<div>
+<p class="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-1">Días de Inventario Promedio</p>
+<h3 class="text-2xl font-bold tabular-nums text-slate-900 dark:text-white">42.5 <span class="text-sm font-medium text-slate-400">Días</span></h3>
+<p class="text-slate-400 text-[10px] mt-1">vs. Periodo anterior: 41.6 Días</p>
+</div>
+<div class="mt-4">
+<svg class="sparkline-svg text-purple-500" preserveaspectratio="none" viewbox="0 0 100 40">
+<path d="M0,15 Q15,20 30,10 T60,30 T100,25" fill="none" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+<path class="fill-purple-500/10" d="M0,15 Q15,20 30,10 T60,30 T100,25 V40 H0 Z" vector-effect="non-scaling-stroke"></path>
+</svg>
+</div>
+</div>
+<!-- KPI Card 3 -->
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-orange-50 dark:bg-orange-900/30 rounded-lg">
+<span class="material-icons-round text-orange-600">account_balance_wallet</span>
+</div>
+<div class="flex items-center gap-1 text-emerald-500 text-xs font-bold">
+<span class="material-icons-round text-sm">trending_down</span>
+                            12.8%
+                        </div>
+</div>
+<div>
+<p class="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-1">Capital Inmovilizado</p>
+<h3 class="text-2xl font-bold tabular-nums text-slate-900 dark:text-white">$318,450</h3>
+<p class="text-slate-400 text-[10px] mt-1">vs. Periodo anterior: $365,120</p>
+</div>
+<div class="mt-4">
+<svg class="sparkline-svg text-orange-500" preserveaspectratio="none" viewbox="0 0 100 40">
+<path d="M0,10 Q25,12 50,30 T100,35" fill="none" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+<path class="fill-orange-500/10" d="M0,10 Q25,12 50,30 T100,35 V40 H0 Z" vector-effect="non-scaling-stroke"></path>
+</svg>
+</div>
+</div>
+<!-- KPI Card 4 -->
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-indigo-50 dark:bg-indigo-900/30 rounded-lg">
+<span class="material-icons-round text-indigo-600">autorenew</span>
+</div>
+<div class="flex items-center gap-1 text-emerald-500 text-xs font-bold">
+<span class="material-icons-round text-sm">trending_up</span>
+                            8.5%
+                        </div>
+</div>
+<div>
+<p class="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-1">Rotación de Inventario</p>
+<h3 class="text-2xl font-bold tabular-nums text-slate-900 dark:text-white">8.4x</h3>
+<p class="text-slate-400 text-[10px] mt-1">vs. Periodo anterior: 7.7x</p>
+</div>
+<div class="mt-4">
+<svg class="sparkline-svg text-indigo-500" preserveaspectratio="none" viewbox="0 0 100 40">
+<path d="M0,35 Q20,30 40,20 T70,10 T100,5" fill="none" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+<path class="fill-indigo-500/10" d="M0,35 Q20,30 40,20 T70,10 T100,5 V40 H0 Z" vector-effect="non-scaling-stroke"></path>
+</svg>
+</div>
+</div>
+</div>
+<!-- Row 3: Main Chart Area -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 px-6 py-4">
+<h2 class="text-lg font-bold text-slate-900 dark:text-white">Tendencia Histórica de Valor</h2>
+<div class="flex p-1 bg-slate-100 dark:bg-slate-800 rounded-lg">
+<button class="px-4 py-1.5 text-xs font-bold rounded-md bg-white dark:bg-slate-700 shadow-sm text-primary">Inversión</button>
+<button class="px-4 py-1.5 text-xs font-medium rounded-md text-slate-500 hover:text-slate-700 dark:hover:text-slate-300">Nivel de Servicio</button>
+<button class="px-4 py-1.5 text-xs font-medium rounded-md text-slate-500 hover:text-slate-700 dark:hover:text-slate-300">Quiebres</button>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-6 mb-8">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="text-xs text-slate-500">Periodo Actual</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full border-2 border-slate-300 border-dashed"></div>
+<span class="text-xs text-slate-500">Periodo Anterior (Comparativa)</span>
+</div>
+</div>
+<!-- Main Chart Placeholder Graphics -->
+<div class="relative h-80 w-full">
+<!-- Y-Axis Labels -->
+<div class="absolute left-0 top-0 h-full flex flex-col justify-between text-[10px] text-slate-400 pr-4 border-r border-slate-100 dark:border-slate-800">
+<span>$1.5M</span>
+<span>$1.2M</span>
+<span>$900k</span>
+<span>$600k</span>
+<span>$300k</span>
+<span>0</span>
+</div>
+<!-- SVG Chart Area -->
+<div class="ml-12 h-full relative">
+<!-- Background Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between">
+<div class="border-b border-slate-100 dark:border-slate-800 w-full h-0"></div>
+<div class="border-b border-slate-100 dark:border-slate-800 w-full h-0"></div>
+<div class="border-b border-slate-100 dark:border-slate-800 w-full h-0"></div>
+<div class="border-b border-slate-100 dark:border-slate-800 w-full h-0"></div>
+<div class="border-b border-slate-100 dark:border-slate-800 w-full h-0"></div>
+<div class="border-b border-slate-400 dark:border-slate-700 w-full h-0"></div>
+</div>
+<svg class="w-full h-full" preserveaspectratio="none">
+<!-- Dashed Comparison Line -->
+<path d="M0,180 L100,160 L200,190 L300,150 L400,170 L500,140 L600,165 L700,155 L800,130 L900,145 L1000,120" fill="none" stroke="#94a3b8" stroke-dasharray="6,4" stroke-width="2" style="width: 100%" vector-effect="non-scaling-stroke"></path>
+<!-- Solid Primary Line with Area Fill -->
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#2463eb" stop-opacity="0.15"></stop>
+<stop offset="100%" stop-color="#2463eb" stop-opacity="0.01"></stop>
+</lineargradient>
+</defs>
+<path d="M0,220 L100,200 L200,210 L300,160 L400,140 L500,110 L600,90 L700,105 L800,75 L900,50 L1000,60" fill="none" stroke="#2463eb" stroke-width="3" vector-effect="non-scaling-stroke"></path>
+<path d="M0,220 L100,200 L200,210 L300,160 L400,140 L500,110 L600,90 L700,105 L800,75 L900,50 L1000,60 L1000,320 L0,320 Z" fill="url(#chartGradient)" vector-effect="non-scaling-stroke"></path>
+</svg>
+</div>
+<!-- X-Axis Labels -->
+<div class="ml-12 mt-4 flex justify-between text-[10px] text-slate-400">
+<span>01 Oct</span>
+<span>04 Oct</span>
+<span>07 Oct</span>
+<span>10 Oct</span>
+<span>13 Oct</span>
+<span>16 Oct</span>
+<span>19 Oct</span>
+<span>22 Oct</span>
+<span>25 Oct</span>
+<span>28 Oct</span>
+<span>31 Oct</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Row 4: Category Detail Table -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
+<h2 class="text-lg font-bold text-slate-900 dark:text-white">Detalle por Categoría</h2>
+<button class="text-primary text-sm font-medium hover:underline">Ver reporte completo</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50">
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider border-b border-slate-100 dark:border-slate-800">Categoría</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider border-b border-slate-100 dark:border-slate-800">Valor Inventario</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider border-b border-slate-100 dark:border-slate-800 text-center">Días de Inv.</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider border-b border-slate-100 dark:border-slate-800 text-center">Rotación</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider border-b border-slate-100 dark:border-slate-800 text-center">Nivel Servicio</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider border-b border-slate-100 dark:border-slate-800">Tendencia (30d)</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded flex items-center justify-center text-primary font-bold text-xs">MP</div>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-200">Materia Prima</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-semibold tabular-nums">$542,000</td>
+<td class="px-6 py-4 text-sm tabular-nums text-center">34.2</td>
+<td class="px-6 py-4 text-sm tabular-nums text-center">10.6x</td>
+<td class="px-6 py-4 text-center">
+<span class="px-2 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold rounded">98.5%</span>
+</td>
+<td class="px-6 py-4 w-40">
+<svg class="h-8 w-full text-emerald-500" preserveaspectratio="none" viewbox="0 0 100 40">
+<path d="M0,30 Q20,25 40,28 T60,15 T80,18 T100,5" fill="none" stroke="currentColor" stroke-width="2"></path>
+</svg>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-purple-100 dark:bg-purple-900/30 rounded flex items-center justify-center text-purple-600 font-bold text-xs">PT</div>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-200">Producto Terminado</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-semibold tabular-nums">$412,800</td>
+<td class="px-6 py-4 text-sm tabular-nums text-center">52.1</td>
+<td class="px-6 py-4 text-sm tabular-nums text-center">7.0x</td>
+<td class="px-6 py-4 text-center">
+<span class="px-2 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 text-[10px] font-bold rounded">94.2%</span>
+</td>
+<td class="px-6 py-4 w-40">
+<svg class="h-8 w-full text-primary" preserveaspectratio="none" viewbox="0 0 100 40">
+<path d="M0,15 Q25,20 50,15 T100,20" fill="none" stroke="currentColor" stroke-width="2"></path>
+</svg>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-orange-100 dark:bg-orange-900/30 rounded flex items-center justify-center text-orange-600 font-bold text-xs">EM</div>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-200">Empaque</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-semibold tabular-nums">$128,450</td>
+<td class="px-6 py-4 text-sm tabular-nums text-center">28.5</td>
+<td class="px-6 py-4 text-sm tabular-nums text-center">12.8x</td>
+<td class="px-6 py-4 text-center">
+<span class="px-2 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold rounded">99.1%</span>
+</td>
+<td class="px-6 py-4 w-40">
+<svg class="h-8 w-full text-emerald-500" preserveaspectratio="none" viewbox="0 0 100 40">
+<path d="M0,35 L20,32 L40,20 L60,15 L80,10 L100,5" fill="none" stroke="currentColor" stroke-width="2"></path>
+</svg>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-rose-100 dark:bg-rose-900/30 rounded flex items-center justify-center text-rose-600 font-bold text-xs">RP</div>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-200">Repuestos</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-semibold tabular-nums">$95,120</td>
+<td class="px-6 py-4 text-sm tabular-nums text-center">112.4</td>
+<td class="px-6 py-4 text-sm tabular-nums text-center">3.2x</td>
+<td class="px-6 py-4 text-center">
+<span class="px-2 py-1 bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 text-[10px] font-bold rounded">88.7%</span>
+</td>
+<td class="px-6 py-4 w-40">
+<svg class="h-8 w-full text-rose-500" preserveaspectratio="none" viewbox="0 0 100 40">
+<path d="M0,10 L20,15 L40,25 L60,20 L80,30 L100,35" fill="none" stroke="currentColor" stroke-width="2"></path>
+</svg>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-indigo-100 dark:bg-indigo-900/30 rounded flex items-center justify-center text-indigo-600 font-bold text-xs">SM</div>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-200">Suministros</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-semibold tabular-nums">$67,230</td>
+<td class="px-6 py-4 text-sm tabular-nums text-center">45.0</td>
+<td class="px-6 py-4 text-sm tabular-nums text-center">8.1x</td>
+<td class="px-6 py-4 text-center">
+<span class="px-2 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold rounded">96.8%</span>
+</td>
+<td class="px-6 py-4 w-40">
+<svg class="h-8 w-full text-slate-400" preserveaspectratio="none" viewbox="0 0 100 40">
+<path d="M0,20 L10,22 L20,18 L30,21 L40,19 L50,23 L60,20 L70,22 L80,18 L90,21 L100,20" fill="none" stroke="currentColor" stroke-width="2"></path>
+</svg>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</body></html>

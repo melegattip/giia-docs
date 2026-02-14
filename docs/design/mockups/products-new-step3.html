@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GIIA - Crear Producto: Perfil de Buffer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2424eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111121",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .ddmrp-zone-dark-red { background-color: #b91c1c; }
+        .ddmrp-zone-red { background-color: #ef4444; }
+        .ddmrp-zone-yellow { background-color: #facc15; }
+        .ddmrp-zone-green { background-color: #22c55e; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex">
+<!-- Sidebar -->
+<aside class="w-64 bg-slate-950 text-slate-300 flex flex-col hidden lg:flex">
+<div class="p-6">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-primary rounded flex items-center justify-center">
+<span class="text-white font-bold text-xl">G</span>
+</div>
+<span class="text-white font-bold text-xl tracking-tight">GIIA</span>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-2 mt-4">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-900 transition-colors" href="#">
+<span class="material-icons text-xl">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary text-white transition-colors" href="#">
+<span class="material-icons text-xl">inventory_2</span>
+<span class="text-sm font-medium">Productos</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-900 transition-colors" href="#">
+<span class="material-icons text-xl">assessment</span>
+<span class="text-sm font-medium">Reportes</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-900 transition-colors" href="#">
+<span class="material-icons text-xl">settings</span>
+<span class="text-sm font-medium">Configuración</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-800">
+<div class="flex items-center gap-3 px-2">
+<div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-xs font-bold text-white">JD</div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-white">Juan Delgado</span>
+<span class="text-[10px] text-slate-400">Administrador</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-screen overflow-hidden">
+<!-- Header / Navigation Bar -->
+<header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-8 py-4 flex items-center justify-between">
+<h1 class="text-xl font-bold">Crear Nuevo Producto</h1>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-icons">notifications</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-icons">help_outline</span>
+</button>
+</div>
+</header>
+<!-- Page Scrollable Area -->
+<div class="flex-1 overflow-y-auto p-8">
+<div class="max-w-4xl mx-auto">
+<!-- Horizontal Stepper -->
+<div class="mb-10 flex items-center justify-between">
+<div class="flex flex-col items-center flex-1 relative">
+<div class="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center mb-2 z-10">
+<span class="material-icons text-xl">check</span>
+</div>
+<span class="text-xs font-semibold text-slate-500">Información General</span>
+<div class="absolute top-5 left-1/2 w-full h-0.5 bg-green-500 -z-0"></div>
+</div>
+<div class="flex flex-col items-center flex-1 relative">
+<div class="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center mb-2 z-10">
+<span class="material-icons text-xl">check</span>
+</div>
+<span class="text-xs font-semibold text-slate-500">Categorización</span>
+<div class="absolute top-5 left-1/2 w-full h-0.5 bg-primary -z-0"></div>
+</div>
+<div class="flex flex-col items-center flex-1 relative">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center mb-2 z-10 border-4 border-primary/20">
+<span class="text-sm font-bold">3</span>
+</div>
+<span class="text-xs font-bold text-primary">Perfil de Buffer</span>
+<div class="absolute top-5 left-1/2 w-full h-0.5 bg-slate-200 dark:bg-slate-800 -z-0"></div>
+</div>
+<div class="flex flex-col items-center flex-1">
+<div class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-500 flex items-center justify-center mb-2 z-10">
+<span class="text-sm font-bold">4</span>
+</div>
+<span class="text-xs font-semibold text-slate-400">Resumen y Guardar</span>
+</div>
+</div>
+<!-- Main Configuration Card -->
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="p-8">
+<div class="mb-8">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">Configuración de Buffer DDMRP</h2>
+<p class="text-slate-500 dark:text-slate-400 mt-1">Defina los parámetros para el cálculo automático de zonas de inventario.</p>
+</div>
+<!-- Form Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Field 1: Category -->
+<div class="flex flex-col gap-2">
+<label class="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                                    Categoría Lead Time
+                                    <span class="material-icons text-slate-400 text-base cursor-help" title="Tiempo de entrega estimado del proveedor">info</span>
+</label>
+<div class="relative">
+<select class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-2.5 text-slate-900 dark:text-white appearance-none focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all">
+<option value="corto">Corto</option>
+<option selected="" value="medio">Medio</option>
+<option value="largo">Largo</option>
+</select>
+<span class="material-icons absolute right-3 top-2.5 text-slate-400 pointer-events-none">expand_more</span>
+</div>
+<p class="text-[11px] text-slate-400 mt-1 italic leading-relaxed">Nota: La categoría media aplica para plazos entre 7 y 21 días hábiles.</p>
+</div>
+<!-- Field 2: Factor LT -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Factor Lead Time</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-2.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" step="0.01" type="number" value="0.35"/>
+</div>
+<!-- Field 3: Factor Variability -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Factor Variabilidad</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-2.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" step="0.01" type="number" value="0.25"/>
+</div>
+<!-- CPD Info Box -->
+<div class="md:col-span-1 bg-primary/5 border border-primary/20 rounded-lg p-4 flex gap-4">
+<span class="material-icons text-primary text-xl">info</span>
+<p class="text-sm text-slate-600 dark:text-slate-400 leading-snug">
+                                    El <span class="font-bold text-slate-800 dark:text-slate-200 text-xs">CPD</span> (Consumo Promedio Diario) se calcula en base al historial de los últimos 30 días o proyección de ventas mensual.
+                                </p>
+</div>
+</div>
+<!-- Buffer Preview Section -->
+<div class="mt-12 border-t border-slate-100 dark:border-slate-800 pt-8">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Vista Previa de Zonas Calculadas</h3>
+<div class="bg-primary text-white px-4 py-1.5 rounded-full text-xs font-bold tracking-wide">
+                                    TOG: 210.0 uds
+                                </div>
+</div>
+<div class="w-full">
+<!-- Zone Progress Bar -->
+<div class="w-full h-12 rounded-lg flex overflow-hidden shadow-sm">
+<div class="ddmrp-zone-dark-red w-[15%] h-full flex items-center justify-center relative group">
+<span class="text-white font-bold text-xs">31.5</span>
+<div class="absolute -top-10 bg-slate-800 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">Rojo Oscuro</div>
+</div>
+<div class="ddmrp-zone-red w-[15%] h-full flex items-center justify-center relative group">
+<span class="text-white font-bold text-xs">31.5</span>
+<div class="absolute -top-10 bg-slate-800 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">Rojo</div>
+</div>
+<div class="ddmrp-zone-yellow w-[40%] h-full flex items-center justify-center relative group">
+<span class="text-slate-900 font-bold text-xs">84.0</span>
+<div class="absolute -top-10 bg-slate-800 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">Amarillo</div>
+</div>
+<div class="ddmrp-zone-green w-[30%] h-full flex items-center justify-center relative group">
+<span class="text-white font-bold text-xs">63.0</span>
+<div class="absolute -top-10 bg-slate-800 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">Verde</div>
+</div>
+</div>
+<!-- Bar Labels -->
+<div class="flex justify-between mt-3 px-1 text-[11px] font-bold text-slate-500 uppercase tracking-widest">
+<span class="w-[15%] text-center">Rojo Osc.</span>
+<span class="w-[15%] text-center">Rojo</span>
+<span class="w-[40%] text-center">Amarillo</span>
+<span class="w-[30%] text-center">Verde</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Actions Footer -->
+<div class="mt-8 flex items-center justify-between pb-12">
+<button class="flex items-center gap-2 px-6 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 font-semibold hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+<span class="material-icons">arrow_back</span>
+                        Anterior
+                    </button>
+<div class="flex gap-4">
+<button class="px-6 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 font-semibold hover:text-slate-900 transition-colors">
+                            Guardar Borrador
+                        </button>
+<button class="flex items-center gap-2 px-10 py-2.5 rounded-lg bg-primary text-white font-bold shadow-lg shadow-primary/25 hover:opacity-90 transition-all">
+                            Siguiente
+                            <span class="material-icons">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

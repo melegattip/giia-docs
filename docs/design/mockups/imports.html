@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GIIA - Importación CSV</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2463eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                        "sidebar-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex">
+<!-- Sidebar -->
+<aside class="w-64 bg-sidebar-dark text-slate-300 hidden md:flex flex-col flex-shrink-0">
+<div class="p-6 flex items-center space-x-3">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="text-white font-bold">G</span>
+</div>
+<span class="text-xl font-bold text-white tracking-tight">GIIA DDMRP</span>
+</div>
+<nav class="mt-4 flex-1 px-4 space-y-1">
+<a class="flex items-center space-x-3 p-3 rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons text-xl">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center space-x-3 p-3 rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons text-xl">inventory_2</span>
+<span>Inventario</span>
+</a>
+<a class="flex items-center space-x-3 p-3 rounded-lg bg-primary text-white font-medium" href="#">
+<span class="material-icons text-xl">upload_file</span>
+<span>Importación CSV</span>
+</a>
+<a class="flex items-center space-x-3 p-3 rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons text-xl">analytics</span>
+<span>Análisis</span>
+</a>
+<a class="flex items-center space-x-3 p-3 rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons text-xl">settings</span>
+<span>Configuración</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-800">
+<div class="flex items-center space-x-3 p-2">
+<div class="w-10 h-10 rounded-full bg-slate-700 overflow-hidden">
+<img alt="Usuario" data-alt="Portrait of a professional man in a suit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtRPTLgt1TxhASgparNncvGcPxtr_GInhpmJ0q0BtpTVfE06PhzNQCRpIp-S0-43Sh4cEw6wT6YGRNoCcY9ehZGgVVxKWQdLlVDP2S5OPMiHC_uIF0Bm0hNZK4dX_Wzr_hoO647DFnQ6GZj9Sms7b2t0mv5fq-DfzPBOH3xP0w1A4y6uT06F_L37BKQSW5mFPRK0AD4yvCdn5NstkN7_VUn3S7wnTO3N9zmSgJBjrMDRW7vLu8pFWVZ2OzNEMVKKt_N6_B-gvTb75S"/>
+</div>
+<div>
+<p class="text-sm font-medium text-white">Carlos Méndez</p>
+<p class="text-xs text-slate-500 text-ellipsis overflow-hidden">Administrador</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col overflow-hidden">
+<!-- Header -->
+<header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 h-16 flex items-center justify-between px-8 z-10">
+<div class="flex items-center space-x-4">
+<h1 class="text-lg font-semibold text-slate-800 dark:text-white">Importación de Datos</h1>
+<div class="flex items-center text-sm text-slate-400">
+<span class="material-icons text-base">chevron_right</span>
+<span class="ml-2">Nueva Importación</span>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<button class="text-slate-500 hover:text-slate-700 dark:hover:text-slate-300">
+<span class="material-icons">notifications</span>
+</button>
+<button class="text-slate-500 hover:text-slate-700 dark:hover:text-slate-300">
+<span class="material-icons">help_outline</span>
+</button>
+</div>
+</header>
+<!-- Page Content -->
+<div class="flex-1 overflow-y-auto p-8 space-y-8">
+<!-- Progress Stepper -->
+<div class="max-w-4xl mx-auto">
+<div class="flex items-center justify-between relative">
+<!-- Progress Line -->
+<div class="absolute top-1/2 left-0 w-full h-0.5 bg-slate-200 dark:bg-slate-700 -translate-y-1/2 -z-0"></div>
+<!-- Step 1 (Active) -->
+<div class="relative z-10 flex flex-col items-center bg-background-light dark:bg-background-dark px-4">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white ring-4 ring-white dark:ring-slate-900">
+<span class="font-bold">1</span>
+</div>
+<span class="mt-2 text-sm font-semibold text-primary">Subir Archivo</span>
+</div>
+<!-- Step 2 -->
+<div class="relative z-10 flex flex-col items-center bg-background-light dark:bg-background-dark px-4">
+<div class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-slate-500 ring-4 ring-white dark:ring-slate-900">
+<span class="font-bold">2</span>
+</div>
+<span class="mt-2 text-sm font-medium text-slate-500">Mapeo de Datos</span>
+</div>
+<!-- Step 3 -->
+<div class="relative z-10 flex flex-col items-center bg-background-light dark:bg-background-dark px-4">
+<div class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-slate-500 ring-4 ring-white dark:ring-slate-900">
+<span class="font-bold">3</span>
+</div>
+<span class="mt-2 text-sm font-medium text-slate-500">Revisión Final</span>
+</div>
+</div>
+</div>
+<!-- Upload Main Section -->
+<div class="max-w-4xl mx-auto space-y-6">
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-8">
+<div class="mb-6">
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2" for="data-type">Tipo de datos*</label>
+<select class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-slate-800 dark:text-slate-200 focus:ring-primary focus:border-primary" id="data-type">
+<option value="">Selecciona el tipo de información a importar</option>
+<option value="productos">Maestro de Productos</option>
+<option value="proveedores">Proveedores</option>
+<option value="historial">Historial de Consumo</option>
+<option value="pedidos">Pedidos Pendientes</option>
+</select>
+</div>
+<!-- Drag & Drop Zone -->
+<div class="border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-xl p-12 flex flex-col items-center justify-center bg-slate-50/50 dark:bg-slate-800/50 hover:border-primary/50 transition-all cursor-pointer group">
+<div class="w-16 h-16 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
+<span class="material-icons text-5xl">cloud_upload</span>
+</div>
+<h3 class="text-lg font-semibold text-slate-800 dark:text-white">Arrastra y suelta tu archivo CSV aquí</h3>
+<p class="text-slate-500 dark:text-slate-400 mt-2">o haz clic para buscar en tu dispositivo</p>
+<div class="mt-6 flex items-center space-x-4 text-xs font-medium text-slate-400">
+<span class="flex items-center"><span class="material-icons text-base mr-1">description</span> SOLO CSV</span>
+<span class="flex items-center"><span class="material-icons text-base mr-1">straighten</span> MÁX. 10MB</span>
+</div>
+</div>
+<!-- Template Download Section -->
+<div class="mt-8 pt-8 border-t border-slate-100 dark:border-slate-800">
+<h4 class="text-sm font-semibold text-slate-800 dark:text-white mb-4 flex items-center">
+<span class="material-icons text-primary mr-2 text-lg">download</span>
+                            Plantillas disponibles
+                        </h4>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+<a class="flex items-center p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons text-slate-400 mr-3">table_view</span>
+<div class="text-xs">
+<p class="font-medium text-slate-700 dark:text-slate-300">Productos</p>
+<p class="text-slate-500">CSV Template</p>
+</div>
+</a>
+<a class="flex items-center p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons text-slate-400 mr-3">person_pin</span>
+<div class="text-xs">
+<p class="font-medium text-slate-700 dark:text-slate-300">Proveedores</p>
+<p class="text-slate-500">CSV Template</p>
+</div>
+</a>
+<a class="flex items-center p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons text-slate-400 mr-3">history</span>
+<div class="text-xs">
+<p class="font-medium text-slate-700 dark:text-slate-300">Historial</p>
+<p class="text-slate-500">CSV Template</p>
+</div>
+</a>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="flex items-center justify-between">
+<button class="px-6 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-medium hover:bg-white dark:hover:bg-slate-800 transition-colors">
+                        Cancelar
+                    </button>
+<button class="px-8 py-2.5 rounded-lg bg-primary/50 text-white font-medium cursor-not-allowed flex items-center" disabled="">
+                        Continuar
+                        <span class="material-icons ml-2 text-base">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Recent Imports Table -->
+<div class="max-w-4xl mx-auto">
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<h3 class="font-semibold text-slate-800 dark:text-white">Importaciones Recientes</h3>
+<button class="text-primary text-sm font-medium hover:underline">Ver todo el historial</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 text-xs uppercase tracking-wider">
+<th class="px-6 py-3 font-semibold">Fecha</th>
+<th class="px-6 py-3 font-semibold">Nombre de Archivo</th>
+<th class="px-6 py-3 font-semibold">Tipo</th>
+<th class="px-6 py-3 font-semibold">Registros</th>
+<th class="px-6 py-3 font-semibold">Estado</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr class="text-sm hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400">12 Oct 2023, 14:30</td>
+<td class="px-6 py-4 font-medium text-slate-800 dark:text-white">inventario_final_q3.csv</td>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400">Productos</td>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400">1,240</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                                            Completado
+                                        </span>
+</td>
+</tr>
+<tr class="text-sm hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400">11 Oct 2023, 09:15</td>
+<td class="px-6 py-4 font-medium text-slate-800 dark:text-white">proveedores_asia.csv</td>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400">Proveedores</td>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400">85</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400">
+                                            Error
+                                        </span>
+</td>
+</tr>
+<tr class="text-sm hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400">10 Oct 2023, 16:45</td>
+<td class="px-6 py-4 font-medium text-slate-800 dark:text-white">ventas_septiembre.csv</td>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400">Historial</td>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400">5,600</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400">
+                                            Procesando
+                                        </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

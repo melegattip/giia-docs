@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GIIA Inventory Health Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#2463eb",
+                "background-light": "#f6f6f8",
+                "background-dark": "#111621",
+                "ddmrp-red": "#ef4444",
+                "ddmrp-yellow": "#eab308",
+                "ddmrp-green": "#22c55e",
+                "slate-900": "#0f172a",
+                "slate-800": "#1e293b",
+                "slate-50": "#f8fafc",
+                "slate-500": "#64748b",
+              },
+              fontFamily: {
+                "display": ["Inter", "sans-serif"],
+                "mono": ["JetBrains Mono", "monospace"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .sidebar-item-active {
+            background-color: rgba(36, 99, 235, 0.1);
+            border-left: 4px solid #2463eb;
+            color: #2463eb;
+        }
+        .ddmrp-zone-red { background-color: #ef4444; }
+        .ddmrp-zone-yellow { background-color: #eab308; }
+        .ddmrp-zone-green { background-color: #22c55e; }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen flex">
+<!-- Sidebar -->
+<aside class="w-64 bg-slate-900 text-white flex-shrink-0 hidden lg:flex flex-col border-r border-slate-800">
+<div class="p-6 flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-icons-round text-white">analytics</span>
+</div>
+<span class="text-xl font-bold tracking-tight">GIIA</span>
+</div>
+<nav class="flex-1 px-4 py-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/10 text-primary font-medium" href="#">
+<span class="material-icons-round text-xl">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-white transition-all" href="#">
+<span class="material-icons-round text-xl">inventory_2</span>
+                Inventory Analysis
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-white transition-all" href="#">
+<span class="material-icons-round text-xl">shopping_cart</span>
+                Orders &amp; Planning
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-white transition-all" href="#">
+<span class="material-icons-round text-xl">precision_manufacturing</span>
+                Production
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-white transition-all" href="#">
+<span class="material-icons-round text-xl">insights</span>
+                KPI Analytics
+            </a>
+<div class="pt-8 pb-2 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Administration</div>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-white transition-all" href="#">
+<span class="material-icons-round text-xl">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="p-4 border-t border-slate-800">
+<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-800 cursor-pointer">
+<img alt="User Profile" class="w-10 h-10 rounded-full object-cover" data-alt="Professional male user profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyjDFDZuQWMTVSCALrNtub9EPSJiOBPi4MjNJh2ZqJue-URNwBmBE_c_zSfWMnkvHnaj2syEoKMTLmmB27SIS8goMPqV-FaoXcZ2Zf0JvJ2-pYCd7eLvELMRZHZodpugBeBqDWVyB4NBLN62jVgyYQSVXqlDTx7bHZJkYtRbueIFyqGOho1ReelJeRvOeGVlryFQWderLHALABNNJCgXwtXvvyQM2xSPeijHUHrU69NYcnKCVChyVN_d-cUrYX0YPoL61S4BrHsQ4F"/>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium truncate">Marcus Chen</p>
+<p class="text-xs text-slate-500 truncate">Supply Chain Director</p>
+</div>
+<span class="material-icons-round text-slate-500 text-sm">more_vert</span>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+<!-- Header -->
+<header class="h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 z-10">
+<div class="flex items-center gap-4 text-sm text-slate-500">
+<span>Application</span>
+<span class="material-icons-round text-xs">chevron_right</span>
+<span class="text-slate-900 dark:text-white font-medium">Dashboard</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative">
+<span class="material-icons-round text-slate-400 hover:text-slate-600 cursor-pointer">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+</div>
+<div class="h-8 w-px bg-slate-200"></div>
+<div class="flex items-center gap-2">
+<span class="text-xs font-semibold px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded">v2.4.1</span>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<div class="flex-1 overflow-y-auto bg-slate-50 dark:bg-background-dark p-8 custom-scrollbar">
+<!-- Row 1: Title & Filters -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div>
+<div class="flex items-center gap-3">
+<h1 class="text-2xl font-bold text-slate-900 dark:text-white">Inventory Health</h1>
+<span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                            Updated 15s ago
+                        </span>
+</div>
+<p class="text-slate-500 text-sm mt-1">Real-time DDMRP buffer analysis across all facilities.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-medium hover:bg-slate-50">
+<span class="material-icons-round text-lg">calendar_today</span>
+                        Last 30 Days
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-medium hover:bg-slate-50">
+<span class="material-icons-round text-lg">filter_list</span>
+                        Filters
+                    </button>
+<button class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors shadow-sm flex items-center gap-2">
+<span class="material-icons-round text-lg">download</span>
+                        Export Report
+                    </button>
+</div>
+</div>
+<!-- Row 2: KPI Grid -->
+<div class="grid grid-cols-1 md:grid-cols-5 gap-6 mb-8">
+<!-- Health Donut -->
+<div class="col-span-1 bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+<h3 class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4">Stock Health</h3>
+<div class="relative h-32 w-32 mx-auto">
+<!-- Simplified SVG Donut representation -->
+<svg class="w-full h-full transform -rotate-90">
+<circle cx="64" cy="64" fill="transparent" r="50" stroke="#f1f5f9" stroke-width="12"></circle>
+<circle cx="64" cy="64" fill="transparent" r="50" stroke="#22c55e" stroke-dasharray="314" stroke-dashoffset="100" stroke-width="12"></circle>
+<circle cx="64" cy="64" fill="transparent" r="50" stroke="#eab308" stroke-dasharray="314" stroke-dashoffset="250" stroke-width="12"></circle>
+<circle cx="64" cy="64" fill="transparent" r="50" stroke="#ef4444" stroke-dasharray="314" stroke-dashoffset="290" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-xl font-bold">68%</span>
+<span class="text-[10px] text-slate-400 uppercase">Optimal</span>
+</div>
+</div>
+<div class="mt-4 flex flex-wrap gap-2 justify-center">
+<div class="flex items-center gap-1 text-[10px] font-medium text-slate-600">
+<span class="w-2 h-2 rounded-full bg-ddmrp-green"></span> 68%
+                        </div>
+<div class="flex items-center gap-1 text-[10px] font-medium text-slate-600">
+<span class="w-2 h-2 rounded-full bg-ddmrp-yellow"></span> 22%
+                        </div>
+<div class="flex items-center gap-1 text-[10px] font-medium text-slate-600">
+<span class="w-2 h-2 rounded-full bg-ddmrp-red"></span> 10%
+                        </div>
+</div>
+</div>
+<!-- KPI 1 -->
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-2">
+<span class="text-sm font-semibold text-slate-500">Total Cost</span>
+<span class="text-red-500 text-xs font-bold flex items-center">
+<span class="material-icons-round text-sm">trending_up</span> 4.2%
+                            </span>
+</div>
+<div class="text-2xl font-bold">$2.48M</div>
+</div>
+<div class="mt-4 h-12 w-full bg-slate-50 dark:bg-slate-900 rounded-lg flex items-end px-1 gap-1 overflow-hidden">
+<div class="flex-1 bg-primary/20 rounded-t h-1/2"></div>
+<div class="flex-1 bg-primary/20 rounded-t h-2/3"></div>
+<div class="flex-1 bg-primary/20 rounded-t h-1/3"></div>
+<div class="flex-1 bg-primary/20 rounded-t h-3/4"></div>
+<div class="flex-1 bg-primary/20 rounded-t h-full"></div>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-2">
+<span class="text-sm font-semibold text-slate-500">Days of Inventory</span>
+<span class="text-green-500 text-xs font-bold flex items-center">
+<span class="material-icons-round text-sm">trending_down</span> 12%
+                            </span>
+</div>
+<div class="text-2xl font-bold">42 Days</div>
+</div>
+<div class="mt-4 h-12 w-full bg-slate-50 dark:bg-slate-900 rounded-lg flex items-end px-1 gap-1 overflow-hidden">
+<div class="flex-1 bg-primary/20 rounded-t h-full"></div>
+<div class="flex-1 bg-primary/20 rounded-t h-3/4"></div>
+<div class="flex-1 bg-primary/20 rounded-t h-2/3"></div>
+<div class="flex-1 bg-primary/20 rounded-t h-1/2"></div>
+<div class="flex-1 bg-primary/20 rounded-t h-1/3"></div>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-2">
+<span class="text-sm font-semibold text-slate-500">Immobilized Cap.</span>
+<span class="text-slate-400 text-xs font-bold flex items-center">
+<span class="material-icons-round text-sm">horizontal_rule</span> 0%
+                            </span>
+</div>
+<div class="text-2xl font-bold">$124K</div>
+</div>
+<div class="mt-4 h-12 w-full bg-slate-50 dark:bg-slate-900 rounded-lg flex items-center justify-center">
+<span class="text-[10px] text-slate-400">Stable range</span>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-2">
+<span class="text-sm font-semibold text-slate-500">Turnover Rate</span>
+<span class="text-green-500 text-xs font-bold flex items-center">
+<span class="material-icons-round text-sm">trending_up</span> 2.1%
+                            </span>
+</div>
+<div class="text-2xl font-bold">8.4x</div>
+</div>
+<div class="mt-4 h-12 w-full bg-slate-50 dark:bg-slate-900 rounded-lg flex items-end px-1 gap-1 overflow-hidden">
+<div class="flex-1 bg-primary/20 rounded-t h-1/3"></div>
+<div class="flex-1 bg-primary/20 rounded-t h-1/2"></div>
+<div class="flex-1 bg-primary/20 rounded-t h-2/3"></div>
+<div class="flex-1 bg-primary/20 rounded-t h-3/4"></div>
+<div class="flex-1 bg-primary/20 rounded-t h-full"></div>
+</div>
+</div>
+</div>
+<!-- Row 3: Critical Products Table -->
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm mb-8 overflow-hidden">
+<div class="p-6 border-b border-slate-200 dark:border-slate-700 flex justify-between items-center">
+<h2 class="text-lg font-bold text-slate-900 dark:text-white">Productos Críticos</h2>
+<div class="flex items-center gap-2">
+<span class="text-sm text-slate-500">Items requiring reorder action</span>
+<button class="p-1 hover:bg-slate-100 rounded text-slate-400">
+<span class="material-icons-round">more_horiz</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-slate-50 dark:bg-slate-900/50 text-slate-500 uppercase text-[10px] font-bold tracking-widest">
+<tr>
+<th class="px-6 py-4">SKU</th>
+<th class="px-6 py-4">Product Name</th>
+<th class="px-6 py-4">Category</th>
+<th class="px-6 py-4">Buffer Position</th>
+<th class="px-6 py-4">On-Hand</th>
+<th class="px-6 py-4 bg-primary/5 text-primary">Suggestion</th>
+<th class="px-6 py-4">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-700 text-sm">
+<!-- Table Row Template -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
+<td class="px-6 py-4 font-mono text-xs text-primary font-medium">GI-9042-X</td>
+<td class="px-6 py-4 font-medium">Hydraulic Valve Pro V2</td>
+<td class="px-6 py-4 text-slate-500">Core Components</td>
+<td class="px-6 py-4 min-w-[180px]">
+<div class="h-2 w-full rounded-full flex overflow-hidden bg-slate-100 relative group">
+<div class="h-full w-1/4 bg-ddmrp-red"></div>
+<div class="h-full w-2/4 bg-ddmrp-yellow"></div>
+<div class="h-full w-1/4 bg-ddmrp-green"></div>
+<!-- Net Flow Pointer -->
+<div class="absolute top-0 bottom-0 w-0.5 bg-black z-10 shadow-sm" style="left: 15%;">
+<div class="absolute -top-1 -left-0.5 w-1.5 h-1.5 bg-black rounded-full"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-900 dark:text-slate-100">42 units</td>
+<td class="px-6 py-4 bg-primary/5 font-semibold text-primary">+250 Units</td>
+<td class="px-6 py-4">
+<button class="text-slate-400 hover:text-primary"><span class="material-icons-round text-lg">add_shopping_cart</span></button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
+<td class="px-6 py-4 font-mono text-xs text-primary font-medium">GI-8812-B</td>
+<td class="px-6 py-4 font-medium">Gasket Seal 40mm</td>
+<td class="px-6 py-4 text-slate-500">Consumables</td>
+<td class="px-6 py-4 min-w-[180px]">
+<div class="h-2 w-full rounded-full flex overflow-hidden bg-slate-100 relative">
+<div class="h-full w-1/4 bg-ddmrp-red"></div>
+<div class="h-full w-2/4 bg-ddmrp-yellow"></div>
+<div class="h-full w-1/4 bg-ddmrp-green"></div>
+<div class="absolute top-0 bottom-0 w-0.5 bg-black z-10" style="left: 8%;">
+<div class="absolute -top-1 -left-0.5 w-1.5 h-1.5 bg-black rounded-full"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-900 dark:text-slate-100">12 units</td>
+<td class="px-6 py-4 bg-primary/5 font-semibold text-primary">+1,200 Units</td>
+<td class="px-6 py-4">
+<button class="text-slate-400 hover:text-primary"><span class="material-icons-round text-lg">add_shopping_cart</span></button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
+<td class="px-6 py-4 font-mono text-xs text-primary font-medium">GI-4421-Z</td>
+<td class="px-6 py-4 font-medium">Electronic Controller A1</td>
+<td class="px-6 py-4 text-slate-500">Electronics</td>
+<td class="px-6 py-4 min-w-[180px]">
+<div class="h-2 w-full rounded-full flex overflow-hidden bg-slate-100 relative">
+<div class="h-full w-1/4 bg-ddmrp-red"></div>
+<div class="h-full w-2/4 bg-ddmrp-yellow"></div>
+<div class="h-full w-1/4 bg-ddmrp-green"></div>
+<div class="absolute top-0 bottom-0 w-0.5 bg-black z-10" style="left: 22%;">
+<div class="absolute -top-1 -left-0.5 w-1.5 h-1.5 bg-black rounded-full"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-900 dark:text-slate-100">5 units</td>
+<td class="px-6 py-4 bg-primary/5 font-semibold text-primary">+15 Units</td>
+<td class="px-6 py-4">
+<button class="text-slate-400 hover:text-primary"><span class="material-icons-round text-lg">add_shopping_cart</span></button>
+</td>
+</tr>
+<!-- More rows for visual density -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
+<td class="px-6 py-4 font-mono text-xs text-primary font-medium">GI-1102-S</td>
+<td class="px-6 py-4 font-medium">Structural Bracket XL</td>
+<td class="px-6 py-4 text-slate-500">Frame</td>
+<td class="px-6 py-4 min-w-[180px]">
+<div class="h-2 w-full rounded-full flex overflow-hidden bg-slate-100 relative">
+<div class="h-full w-1/4 bg-ddmrp-red"></div>
+<div class="h-full w-2/4 bg-ddmrp-yellow"></div>
+<div class="h-full w-1/4 bg-ddmrp-green"></div>
+<div class="absolute top-0 bottom-0 w-0.5 bg-black z-10" style="left: 28%;">
+<div class="absolute -top-1 -left-0.5 w-1.5 h-1.5 bg-black rounded-full"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-900 dark:text-slate-100">110 units</td>
+<td class="px-6 py-4 bg-primary/5 font-semibold text-primary">+50 Units</td>
+<td class="px-6 py-4">
+<button class="text-slate-400 hover:text-primary"><span class="material-icons-round text-lg">add_shopping_cart</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 bg-slate-50 dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-700 flex justify-center">
+<button class="text-sm font-semibold text-primary hover:underline">View all critical products (24)</button>
+</div>
+</div>
+<!-- Row 4: Tendencia Area Chart Card -->
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm p-6 overflow-hidden">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h2 class="text-lg font-bold text-slate-900 dark:text-white">Tendencia de Inventario</h2>
+<p class="text-sm text-slate-500">Net Flow vs DDMRP Zones (Last 30 Days)</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-sm bg-ddmrp-green opacity-30"></span>
+<span class="text-xs text-slate-600">Green Zone</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-sm bg-ddmrp-yellow opacity-30"></span>
+<span class="text-xs text-slate-600">Yellow Zone</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-sm bg-ddmrp-red opacity-30"></span>
+<span class="text-xs text-slate-600">Red Zone</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-4 h-0.5 bg-black"></span>
+<span class="text-xs font-bold text-black">Net Flow</span>
+</div>
+</div>
+</div>
+<!-- Simulation of a Stacked Area Chart -->
+<div class="relative h-72 w-full mt-4 flex items-end">
+<!-- Zones (Stacked Backgrounds) -->
+<div class="absolute inset-0 flex flex-col">
+<div class="flex-1 bg-ddmrp-green opacity-10"></div>
+<div class="h-2/5 bg-ddmrp-yellow opacity-10"></div>
+<div class="h-1/5 bg-ddmrp-red opacity-10"></div>
+</div>
+<!-- X-Axis Labels -->
+<div class="absolute bottom-0 left-0 right-0 flex justify-between px-2 transform translate-y-6">
+<span class="text-[10px] text-slate-400 uppercase font-bold">Oct 01</span>
+<span class="text-[10px] text-slate-400 uppercase font-bold">Oct 07</span>
+<span class="text-[10px] text-slate-400 uppercase font-bold">Oct 14</span>
+<span class="text-[10px] text-slate-400 uppercase font-bold">Oct 21</span>
+<span class="text-[10px] text-slate-400 uppercase font-bold">Today</span>
+</div>
+<!-- Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none">
+<div class="border-t border-slate-100 dark:border-slate-700 w-full"></div>
+<div class="border-t border-slate-100 dark:border-slate-700 w-full"></div>
+<div class="border-t border-slate-100 dark:border-slate-700 w-full"></div>
+<div class="border-t border-slate-100 dark:border-slate-700 w-full"></div>
+</div>
+<!-- Visual Line (Using an SVG for a curved trend line) -->
+<svg class="absolute inset-0 h-full w-full" preserveaspectratio="none">
+<path d="M0,180 C50,160 100,220 150,210 C200,200 250,150 300,160 C350,170 400,140 450,130 C500,120 550,180 600,190 C650,200 700,170 750,180 C800,190 850,220 900,210 C950,200 1000,150 1050,140 C1100,130 1150,180 1200,170" fill="none" stroke="black" stroke-width="2.5" vector-effect="non-scaling-stroke"></path>
+</svg>
+<!-- Data Points Highlights -->
+<div class="absolute top-[130px] left-[450px] group cursor-pointer">
+<div class="w-3 h-3 bg-white border-2 border-black rounded-full shadow-sm"></div>
+<div class="hidden group-hover:block absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-slate-900 text-white text-[10px] px-2 py-1 rounded whitespace-nowrap z-20">
+                            Oct 12: Optimal Zone
+                        </div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

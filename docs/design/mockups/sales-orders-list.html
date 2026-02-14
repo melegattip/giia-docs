@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GIIA - Órdenes de Venta</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2463eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                        "slate-custom": {
+                            50: "#f8fafc",
+                            100: "#f1f5f9",
+                            200: "#e2e8f0",
+                            300: "#cbd5e1",
+                            400: "#94a3b8",
+                            500: "#64748b",
+                            600: "#475569",
+                            700: "#334155",
+                            800: "#1e293b",
+                            900: "#0f172a",
+                        }
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .sidebar-item-active { background-color: rgba(36, 99, 235, 0.15); border-right: 4px solid #2463eb; color: #fff; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-custom-800 dark:text-slate-custom-100">
+<div class="flex min-h-screen">
+<!-- Sidebar -->
+<aside class="w-64 bg-slate-custom-900 text-slate-custom-300 hidden lg:flex flex-col">
+<div class="p-6 flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-xl">G</div>
+<span class="text-xl font-bold text-white tracking-tight">GIIA Inventory</span>
+</div>
+<nav class="mt-4 flex-1">
+<div class="px-4 mb-2 text-xs font-semibold text-slate-custom-500 uppercase tracking-wider">Dashboard</div>
+<a class="flex items-center px-6 py-3 hover:bg-slate-custom-800 transition-colors" href="#">
+<span class="material-icons-outlined mr-3 text-xl">dashboard</span>
+                    Resumen
+                </a>
+<div class="px-4 mt-6 mb-2 text-xs font-semibold text-slate-custom-500 uppercase tracking-wider">Ventas</div>
+<a class="flex items-center px-6 py-3 sidebar-item-active text-white" href="#">
+<span class="material-icons-outlined mr-3 text-xl text-primary">receipt_long</span>
+                    Órdenes de Venta
+                </a>
+<a class="flex items-center px-6 py-3 hover:bg-slate-custom-800 transition-colors" href="#">
+<span class="material-icons-outlined mr-3 text-xl">people</span>
+                    Clientes
+                </a>
+<div class="px-4 mt-6 mb-2 text-xs font-semibold text-slate-custom-500 uppercase tracking-wider">Inventario</div>
+<a class="flex items-center px-6 py-3 hover:bg-slate-custom-800 transition-colors" href="#">
+<span class="material-icons-outlined mr-3 text-xl">inventory_2</span>
+                    Productos
+                </a>
+<a class="flex items-center px-6 py-3 hover:bg-slate-custom-800 transition-colors" href="#">
+<span class="material-icons-outlined mr-3 text-xl">warehouse</span>
+                    Almacenes
+                </a>
+</nav>
+<div class="p-4 border-t border-slate-custom-800">
+<div class="flex items-center gap-3 p-2">
+<img alt="Avatar" class="w-8 h-8 rounded-full border border-slate-custom-700" data-alt="Profile picture of a professional user" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC10NZaby0CnkVCivGYyUy7qKdUmE94WxZaHZ7EJYzpLOWWivOIBeX9YVav8Aj4bkUZXimXcAW1q_KlO3_Q9Rc0YYiCsCTxkCQOg82Lo7geWcHL2zmAzswRId4eMKiVBys1hxNW3F_1nzKtvV9NsOCHSyUHKR7NbxmmywiH9JzNcOOZc3TGeDC5i7k9V_dF2DjPWxcd_Sk7y0UtGHCEDyxF8aftmf82FaMwMXOFZuQb9vcabrlHynflq8yo7V86K2S02aceBwY4Ldla"/>
+<div class="flex flex-col">
+<span class="text-sm font-medium text-white">Carlos Ortega</span>
+<span class="text-xs text-slate-custom-500">Administrador</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+<!-- Header -->
+<header class="bg-white dark:bg-slate-custom-900 border-b border-slate-custom-200 dark:border-slate-custom-800 h-16 flex items-center justify-between px-8 z-10">
+<div class="flex items-center text-sm text-slate-custom-500">
+<span class="hover:text-primary cursor-pointer">Home</span>
+<span class="material-icons-outlined text-sm mx-2">chevron_right</span>
+<span class="hover:text-primary cursor-pointer">Ventas</span>
+<span class="material-icons-outlined text-sm mx-2">chevron_right</span>
+<span class="text-slate-custom-800 dark:text-white font-medium">Órdenes de Venta</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-custom-500 hover:bg-slate-custom-100 dark:hover:bg-slate-custom-800 rounded-full transition-colors relative">
+<span class="material-icons-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-custom-900"></span>
+</button>
+<div class="h-8 w-px bg-slate-custom-200 dark:bg-slate-custom-800"></div>
+<button class="p-2 text-slate-custom-500 hover:bg-slate-custom-100 dark:hover:bg-slate-custom-800 rounded-full transition-colors">
+<span class="material-icons-outlined">settings</span>
+</button>
+</div>
+</header>
+<!-- Page Body -->
+<div class="flex-1 overflow-y-auto p-8 space-y-6">
+<!-- Title & Primary Action -->
+<div class="flex items-center justify-between">
+<div>
+<h1 class="text-2xl font-bold text-slate-custom-900 dark:text-white">Órdenes de Venta</h1>
+<p class="text-slate-custom-500 text-sm mt-1">Gestiona y monitorea todos tus pedidos de clientes.</p>
+</div>
+<button class="bg-primary hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium flex items-center gap-2 shadow-sm transition-all active:scale-95">
+<span class="material-icons-outlined text-lg">add</span>
+                        Nueva OV
+                    </button>
+</div>
+<!-- Filters -->
+<div class="bg-white dark:bg-slate-custom-900 p-4 rounded-xl border border-slate-custom-200 dark:border-slate-custom-800 shadow-sm flex flex-wrap gap-4 items-center">
+<div class="flex-1 min-w-[300px] relative">
+<span class="material-icons-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-custom-400">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-custom-50 dark:bg-slate-custom-800 border-slate-custom-200 dark:border-slate-custom-700 rounded-lg text-sm focus:ring-primary focus:border-primary" placeholder="Buscar por número de OV o cliente..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<label class="text-xs font-semibold text-slate-custom-500 uppercase">Estado:</label>
+<select class="text-sm bg-slate-custom-50 dark:bg-slate-custom-800 border-slate-custom-200 dark:border-slate-custom-700 rounded-lg py-2 pl-3 pr-10 focus:ring-primary focus:border-primary">
+<option>Todos los estados</option>
+<option>En Firme</option>
+<option>Efectuada</option>
+<option>Cancelada</option>
+</select>
+</div>
+<div class="flex items-center gap-2">
+<label class="text-xs font-semibold text-slate-custom-500 uppercase">Fecha:</label>
+<div class="relative">
+<span class="material-icons-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-custom-400 text-sm">calendar_today</span>
+<input class="pl-9 pr-4 py-2 bg-slate-custom-50 dark:bg-slate-custom-800 border-slate-custom-200 dark:border-slate-custom-700 rounded-lg text-sm focus:ring-primary focus:border-primary w-56" type="text" value="01/10/2023 - 31/10/2023"/>
+</div>
+</div>
+<button class="p-2 text-slate-custom-500 hover:text-primary transition-colors">
+<span class="material-icons-outlined">filter_list</span>
+</button>
+</div>
+<!-- Table Card -->
+<div class="bg-white dark:bg-slate-custom-900 rounded-xl border border-slate-custom-200 dark:border-slate-custom-800 shadow-sm overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-custom-50 dark:bg-slate-custom-800/50 border-b border-slate-custom-200 dark:border-slate-custom-800">
+<th class="px-6 py-4 text-xs font-semibold text-slate-custom-500 uppercase tracking-wider">OV #</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-custom-500 uppercase tracking-wider">Cliente</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-custom-500 uppercase tracking-wider">Fecha</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-custom-500 uppercase tracking-wider">Productos</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-custom-500 uppercase tracking-wider">Total</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-custom-500 uppercase tracking-wider">Estado</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-custom-500 uppercase tracking-wider text-right">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-custom-100 dark:divide-slate-custom-800">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-custom-50 dark:hover:bg-slate-custom-800/40 transition-colors group">
+<td class="px-6 py-4">
+<span class="font-mono text-sm font-medium text-primary">OV-00128</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-medium">Logística del Norte S.A.</span>
+<span class="text-xs text-slate-custom-400">C-4920</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-custom-600 dark:text-slate-custom-400">
+                                    24 Oct 2023
+                                </td>
+<td class="px-6 py-4 text-sm">
+                                    12 ítems
+                                </td>
+<td class="px-6 py-4 text-sm font-semibold">
+                                    $4,520.00
+                                </td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
+                                        En Firme
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-1 text-slate-custom-400 hover:text-primary transition-colors"><span class="material-icons-outlined text-xl">visibility</span></button>
+<button class="p-1 text-slate-custom-400 hover:text-primary transition-colors"><span class="material-icons-outlined text-xl">edit</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-custom-50 dark:hover:bg-slate-custom-800/40 transition-colors group">
+<td class="px-6 py-4">
+<span class="font-mono text-sm font-medium text-primary">OV-00127</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-medium">Distribuidora Global</span>
+<span class="text-xs text-slate-custom-400">C-1102</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-custom-600 dark:text-slate-custom-400">
+                                    23 Oct 2023
+                                </td>
+<td class="px-6 py-4 text-sm">
+                                    5 ítems
+                                </td>
+<td class="px-6 py-4 text-sm font-semibold">
+                                    $1,200.50
+                                </td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300">
+                                        Efectuada
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-1 text-slate-custom-400 hover:text-primary transition-colors"><span class="material-icons-outlined text-xl">visibility</span></button>
+<button class="p-1 text-slate-custom-400 hover:text-primary transition-colors"><span class="material-icons-outlined text-xl">edit</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-custom-50 dark:hover:bg-slate-custom-800/40 transition-colors group">
+<td class="px-6 py-4">
+<span class="font-mono text-sm font-medium text-primary">OV-00126</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-medium">Constructora Delta</span>
+<span class="text-xs text-slate-custom-400">C-0843</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-custom-600 dark:text-slate-custom-400">
+                                    22 Oct 2023
+                                </td>
+<td class="px-6 py-4 text-sm">
+                                    28 ítems
+                                </td>
+<td class="px-6 py-4 text-sm font-semibold">
+                                    $12,840.00
+                                </td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-custom-100 text-slate-custom-700 dark:bg-slate-custom-800 dark:text-slate-custom-400">
+                                        Cancelada
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-1 text-slate-custom-400 hover:text-primary transition-colors"><span class="material-icons-outlined text-xl">visibility</span></button>
+<button class="p-1 text-slate-custom-400 hover:text-primary transition-colors"><span class="material-icons-outlined text-xl">edit</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-custom-50 dark:hover:bg-slate-custom-800/40 transition-colors group">
+<td class="px-6 py-4">
+<span class="font-mono text-sm font-medium text-primary">OV-00125</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-medium">Tecnología Avanzada</span>
+<span class="text-xs text-slate-custom-400">C-3321</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-custom-600 dark:text-slate-custom-400">
+                                    21 Oct 2023
+                                </td>
+<td class="px-6 py-4 text-sm">
+                                    2 ítems
+                                </td>
+<td class="px-6 py-4 text-sm font-semibold">
+                                    $890.00
+                                </td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300">
+                                        Efectuada
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-1 text-slate-custom-400 hover:text-primary transition-colors"><span class="material-icons-outlined text-xl">visibility</span></button>
+<button class="p-1 text-slate-custom-400 hover:text-primary transition-colors"><span class="material-icons-outlined text-xl">edit</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-slate-custom-50 dark:hover:bg-slate-custom-800/40 transition-colors group">
+<td class="px-6 py-4">
+<span class="font-mono text-sm font-medium text-primary">OV-00124</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-medium">Boutique de Ropa Luna</span>
+<span class="text-xs text-slate-custom-400">C-0021</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-custom-600 dark:text-slate-custom-400">
+                                    21 Oct 2023
+                                </td>
+<td class="px-6 py-4 text-sm">
+                                    15 ítems
+                                </td>
+<td class="px-6 py-4 text-sm font-semibold">
+                                    $3,120.00
+                                </td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
+                                        En Firme
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-1 text-slate-custom-400 hover:text-primary transition-colors"><span class="material-icons-outlined text-xl">visibility</span></button>
+<button class="p-1 text-slate-custom-400 hover:text-primary transition-colors"><span class="material-icons-outlined text-xl">edit</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-slate-custom-50 dark:hover:bg-slate-custom-800/40 transition-colors group">
+<td class="px-6 py-4">
+<span class="font-mono text-sm font-medium text-primary">OV-00123</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-medium">Insumos Médicos Express</span>
+<span class="text-xs text-slate-custom-400">C-9920</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-custom-600 dark:text-slate-custom-400">
+                                    20 Oct 2023
+                                </td>
+<td class="px-6 py-4 text-sm">
+                                    6 ítems
+                                </td>
+<td class="px-6 py-4 text-sm font-semibold">
+                                    $1,740.00
+                                </td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300">
+                                        Efectuada
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-1 text-slate-custom-400 hover:text-primary transition-colors"><span class="material-icons-outlined text-xl">visibility</span></button>
+<button class="p-1 text-slate-custom-400 hover:text-primary transition-colors"><span class="material-icons-outlined text-xl">edit</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination -->
+<div class="px-6 py-4 flex items-center justify-between bg-slate-custom-50 dark:bg-slate-custom-800/30 border-t border-slate-custom-200 dark:border-slate-custom-800">
+<span class="text-sm text-slate-custom-500">
+                            Mostrando <span class="font-medium text-slate-custom-800 dark:text-white">1-6</span> de <span class="font-medium text-slate-custom-800 dark:text-white">89</span> resultados
+                        </span>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-lg border border-slate-custom-200 dark:border-slate-custom-700 hover:bg-white dark:hover:bg-slate-custom-800 text-slate-custom-400 disabled:opacity-50 transition-all" disabled="">
+<span class="material-icons-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary text-white font-medium text-sm flex items-center justify-center">1</button>
+<button class="w-8 h-8 rounded-lg text-slate-custom-600 dark:text-slate-custom-400 hover:bg-slate-custom-200 dark:hover:bg-slate-custom-800 font-medium text-sm flex items-center justify-center transition-all">2</button>
+<button class="w-8 h-8 rounded-lg text-slate-custom-600 dark:text-slate-custom-400 hover:bg-slate-custom-200 dark:hover:bg-slate-custom-800 font-medium text-sm flex items-center justify-center transition-all">3</button>
+<span class="text-slate-custom-400">...</span>
+<button class="w-8 h-8 rounded-lg text-slate-custom-600 dark:text-slate-custom-400 hover:bg-slate-custom-200 dark:hover:bg-slate-custom-800 font-medium text-sm flex items-center justify-center transition-all">15</button>
+<button class="p-2 rounded-lg border border-slate-custom-200 dark:border-slate-custom-700 hover:bg-white dark:hover:bg-slate-custom-800 text-slate-custom-400 transition-all">
+<span class="material-icons-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GIIA - Gestión de Inventario Inteligente | Iniciar Sesión</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1660e9",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                        "slate-custom": {
+                            50: "#f8fafc",
+                            200: "#e2e8f0",
+                            400: "#94a3b8",
+                            500: "#64748b",
+                            900: "#0f172a",
+                        }
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .bg-gradient-mesh {
+            background-color: #f8fafc;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(22, 96, 233, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(22, 96, 233, 0.05) 0px, transparent 50%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col font-display transition-colors duration-300">
+<!-- Background Wrapper -->
+<div class="flex-grow flex items-center justify-center p-6 bg-gradient-mesh">
+<!-- Main Login Card -->
+<main class="w-full max-w-md bg-white dark:bg-slate-900 shadow-xl shadow-primary/5 rounded-xl border border-slate-custom-200 dark:border-slate-800 overflow-hidden">
+<div class="p-8 md:p-10">
+<!-- Logo & Header -->
+<div class="flex flex-col items-center mb-8">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-icons text-2xl">bar_chart</span>
+</div>
+<h1 class="text-3xl font-bold tracking-tight text-slate-custom-900 dark:text-white">GIIA</h1>
+</div>
+<p class="text-slate-custom-500 dark:text-slate-400 text-sm font-medium">Gestión de Inventario Inteligente</p>
+</div>
+<!-- Login Form -->
+<form action="#" class="space-y-5" method="POST">
+<!-- Email Field -->
+<div>
+<label class="block text-sm font-semibold text-slate-custom-900 dark:text-slate-200 mb-1.5" for="email">
+                            Correo electrónico
+                        </label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-icons text-slate-custom-400 text-lg">mail_outline</span>
+</div>
+<input class="block w-full h-[40px] pl-10 pr-3 py-2 border border-slate-custom-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all text-sm placeholder-slate-custom-400" id="email" name="email" placeholder="ejemplo@giia.com" required="" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div>
+<div class="flex items-center justify-between mb-1.5">
+<label class="block text-sm font-semibold text-slate-custom-900 dark:text-slate-200" for="password">
+                                Contraseña
+                            </label>
+</div>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-icons text-slate-custom-400 text-lg">lock_outline</span>
+</div>
+<input class="block w-full h-[40px] pl-10 pr-10 py-2 border border-slate-custom-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all text-sm placeholder-slate-custom-400" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+<button class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-custom-400 hover:text-slate-custom-500" type="button">
+<span class="material-icons text-lg">visibility</span>
+</button>
+</div>
+</div>
+<!-- Forgot Password Link -->
+<div class="flex justify-end">
+<a class="text-sm font-medium text-primary hover:text-blue-700 transition-colors" href="#">
+                            ¿Olvidé mi contraseña?
+                        </a>
+</div>
+<!-- Submit Button -->
+<button class="w-full bg-primary hover:bg-blue-700 text-white font-semibold py-2.5 rounded-lg shadow-sm shadow-primary/20 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 active:scale-[0.98]" type="submit">
+                        Iniciar Sesión
+                    </button>
+</form>
+<!-- Alternative Access / Help -->
+<div class="mt-8 pt-6 border-t border-slate-custom-200 dark:border-slate-800 flex justify-center">
+<p class="text-sm text-slate-custom-500 dark:text-slate-400">
+                        ¿Problemas para acceder? 
+                        <a class="text-primary font-semibold hover:underline" href="#">Contactar soporte</a>
+</p>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="py-6 text-center">
+<p class="text-slate-custom-400 dark:text-slate-500 text-xs tracking-wide">
+            GIIA v1.0 — © 2026 Todos los derechos reservados.
+        </p>
+</footer>
+<!-- Image for Context (Optional hidden or decorative) -->
+<div class="hidden">
+<img alt="Decoration" data-alt="Abstract blue geometric background with soft gradients" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYYJfXiKIxvjfS-KIXPeA-OoUU0DGlxhR8GzTAbgPQz8C3AMby7GdNFFubgH4yW2TyldUU_XqgshhZQjBUSou8NufO-ajZ7GnHBJSrstlBdGK7HWesPnvYNToZ-Td-AhVDjTJ_vgX_mfGVPWcnPIEdLF0e353ncrlCYXhmgcG_O4hr8eAgj_PLSHOsYGydL5EAg0FSttsrcC1lP6K4aWJ3OECeUsisNU1QCebgzKnG7DbYHPUMwJQqm3gMBJKPHAerk2Y1iRC673-8"/>
+</div>
+</body></html>
