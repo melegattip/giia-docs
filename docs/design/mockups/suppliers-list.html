@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2424eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111121",
+                        "slate-900": "#0f172a",
+                        "slate-800": "#1e293b",
+                        "slate-700": "#334155",
+                        "slate-500": "#64748b",
+                        "slate-50": "#f8fafc",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+<title>GIIA - Gestión de Proveedores</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-200 antialiased h-screen overflow-hidden flex">
+<!-- Sidebar -->
+<aside class="w-64 bg-slate-900 text-white flex-shrink-0 hidden lg:flex flex-col border-r border-slate-800">
+<div class="p-6 flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-icons text-sm">inventory_2</span>
+</div>
+<span class="text-xl font-bold tracking-tight">GIIA Admin</span>
+</div>
+<nav class="flex-1 px-4 mt-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons text-xl">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons text-xl">inventory</span>
+<span class="text-sm font-medium">Inventario</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary text-white shadow-lg shadow-primary/20" href="#">
+<span class="material-icons text-xl">local_shipping</span>
+<span class="text-sm font-medium">Proveedores</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons text-xl">shopping_cart</span>
+<span class="text-sm font-medium">Pedidos</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons text-xl">analytics</span>
+<span class="text-sm font-medium">Reportes</span>
+</a>
+</nav>
+<div class="p-4 mt-auto border-t border-slate-800">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons text-xl">settings</span>
+<span class="text-sm font-medium">Configuración</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+<!-- Header -->
+<header class="h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 z-10">
+<div class="flex items-center gap-4">
+<nav aria-label="Breadcrumb" class="flex text-sm text-slate-500 font-medium">
+<ol class="flex items-center space-x-2">
+<li><a class="hover:text-primary transition-colors" href="#">GIIA</a></li>
+<li class="flex items-center space-x-2">
+<span class="material-icons text-xs">chevron_right</span>
+<span class="text-slate-800 dark:text-slate-200">Proveedores</span>
+</li>
+</ol>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-icons">notifications</span>
+</button>
+<div class="flex items-center gap-3 pl-6 border-l border-slate-200 dark:border-slate-800">
+<div class="text-right">
+<p class="text-xs font-semibold text-slate-900 dark:text-white leading-tight">Admin User</p>
+<p class="text-[10px] text-slate-500">Super Admin</p>
+</div>
+<img alt="User Profile" class="w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700" data-alt="Profile photo of a male administrator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqIlJN7zn-8EmmNBxTxbSP_INBIs85qHWVQnu8vwLalbGcuK76Ew39BzACx2NLonPttHLZKDfSeLTjlSDvrSAmC11PnydwI4FbtwgN_JAJsYQrT6740L2BqbH0iCwWuvKARmNgRP8WO73saxNeyfklsSJVsSFLgzo7YnFETJKm9EI0LdQhPTDNNnhzYyf_6KXPp-l1Fb6E1ADyiNn1AL-Rebfk-yIcY59Ej5QVirFs18WMWSYJoyntBn2blCqyfwPb_-PomfuYk5Rl"/>
+</div>
+</div>
+</header>
+<!-- View Content -->
+<section class="flex-1 overflow-y-auto p-8 bg-slate-50 dark:bg-background-dark/50">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div>
+<h1 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">Proveedores</h1>
+<p class="text-sm text-slate-500 mt-1">Gestiona las relaciones con tus socios comerciales y suministros.</p>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-semibold transition-all shadow-lg shadow-primary/20">
+<span class="material-icons text-xl">add</span>
+<span>Nuevo Proveedor</span>
+</button>
+</div>
+<!-- Filters Bar -->
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-wrap gap-4 items-center mb-6 shadow-sm">
+<div class="flex-1 min-w-[300px] relative">
+<span class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary/50 text-sm transition-all outline-none" placeholder="Buscar por nombre, contacto o email..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Estado:</label>
+<select class="bg-slate-50 dark:bg-slate-800 border-none rounded-lg py-2 pl-3 pr-8 text-sm focus:ring-2 focus:ring-primary/50 cursor-pointer">
+<option>Todos los estados</option>
+<option>Activos</option>
+<option>Inactivos</option>
+</select>
+</div>
+<button class="p-2 bg-slate-100 dark:bg-slate-800 text-slate-500 rounded-lg hover:bg-slate-200 transition-colors">
+<span class="material-icons">filter_list</span>
+</button>
+</div>
+<!-- Data Table Card -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50/50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Nombre del Proveedor</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Contacto Principal</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Teléfono / Email</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Ubicación</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Productos</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Estado</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-right">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">TM</div>
+<span class="font-semibold text-slate-900 dark:text-white">TechMakers S.A.</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-medium text-slate-600 dark:text-slate-400">Carlos Méndez</td>
+<td class="px-6 py-4">
+<div class="text-sm">
+<p class="text-slate-700 dark:text-slate-300">+34 912 345 678</p>
+<p class="text-xs text-slate-500">carlos.m@techmakers.com</p>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Madrid, España</td>
+<td class="px-6 py-4">
+<a class="text-primary font-semibold text-sm hover:underline flex items-center gap-1" href="#">
+                                        42 <span class="text-xs font-normal text-slate-400">Productos</span>
+</a>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full text-[11px] font-bold uppercase tracking-wider">Activo</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors" title="Ver detalle">
+<span class="material-icons text-xl">visibility</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors" title="Editar">
+<span class="material-icons text-xl">edit</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:text-red-500 transition-colors" title="Desactivar">
+<span class="material-icons text-xl">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-500 flex items-center justify-center font-bold text-xs">GL</div>
+<span class="font-semibold text-slate-900 dark:text-white">Global Logistics Corp</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-medium text-slate-600 dark:text-slate-400">Elena Rodríguez</td>
+<td class="px-6 py-4">
+<div class="text-sm">
+<p class="text-slate-700 dark:text-slate-300">+34 931 876 543</p>
+<p class="text-xs text-slate-500">e.rodriguez@globallog.io</p>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Barcelona, España</td>
+<td class="px-6 py-4">
+<a class="text-primary font-semibold text-sm hover:underline flex items-center gap-1" href="#">
+                                        15 <span class="text-xs font-normal text-slate-400">Productos</span>
+</a>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full text-[11px] font-bold uppercase tracking-wider">Activo</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors" title="Ver detalle">
+<span class="material-icons text-xl">visibility</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors" title="Editar">
+<span class="material-icons text-xl">edit</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:text-red-500 transition-colors" title="Desactivar">
+<span class="material-icons text-xl">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-500 flex items-center justify-center font-bold text-xs">IS</div>
+<span class="font-semibold text-slate-900 dark:text-white">Industrias del Sur</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-medium text-slate-600 dark:text-slate-400">Juan Pablo Soto</td>
+<td class="px-6 py-4">
+<div class="text-sm">
+<p class="text-slate-700 dark:text-slate-300">+34 954 123 987</p>
+<p class="text-xs text-slate-500">contacto@indusur.es</p>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Sevilla, España</td>
+<td class="px-6 py-4">
+<a class="text-primary font-semibold text-sm hover:underline flex items-center gap-1" href="#">
+                                        0 <span class="text-xs font-normal text-slate-400">Productos</span>
+</a>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-500 rounded-full text-[11px] font-bold uppercase tracking-wider">Inactivo</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors" title="Ver detalle">
+<span class="material-icons text-xl">visibility</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors" title="Editar">
+<span class="material-icons text-xl">edit</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:text-green-500 transition-colors" title="Activar">
+<span class="material-icons text-xl">check_circle</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">BP</div>
+<span class="font-semibold text-slate-900 dark:text-white">BluePrint Solutions</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-medium text-slate-600 dark:text-slate-400">Marta Villa</td>
+<td class="px-6 py-4">
+<div class="text-sm">
+<p class="text-slate-700 dark:text-slate-300">+34 963 444 222</p>
+<p class="text-xs text-slate-500">mvilla@blueprint.com</p>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Valencia, España</td>
+<td class="px-6 py-4">
+<a class="text-primary font-semibold text-sm hover:underline flex items-center gap-1" href="#">
+                                        8 <span class="text-xs font-normal text-slate-400">Productos</span>
+</a>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full text-[11px] font-bold uppercase tracking-wider">Activo</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors" title="Ver detalle">
+<span class="material-icons text-xl">visibility</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors" title="Editar">
+<span class="material-icons text-xl">edit</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:text-red-500 transition-colors" title="Desactivar">
+<span class="material-icons text-xl">block</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 flex flex-col sm:flex-row items-center justify-between gap-4">
+<p class="text-xs font-medium text-slate-500">
+                        Mostrando <span class="text-slate-900 dark:text-white">1 a 10</span> de <span class="text-slate-900 dark:text-white">45</span> proveedores
+                    </p>
+<nav class="flex items-center gap-1">
+<button class="p-1.5 rounded-lg border border-slate-200 dark:border-slate-800 hover:bg-white dark:hover:bg-slate-800 text-slate-400 transition-colors">
+<span class="material-icons text-xl leading-none">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary text-white text-xs font-bold shadow-md shadow-primary/20">1</button>
+<button class="w-8 h-8 rounded-lg hover:bg-white dark:hover:bg-slate-800 border border-transparent hover:border-slate-200 dark:hover:border-slate-800 text-xs font-medium text-slate-600 dark:text-slate-400 transition-colors">2</button>
+<button class="w-8 h-8 rounded-lg hover:bg-white dark:hover:bg-slate-800 border border-transparent hover:border-slate-200 dark:hover:border-slate-800 text-xs font-medium text-slate-600 dark:text-slate-400 transition-colors">3</button>
+<span class="px-1 text-slate-400">...</span>
+<button class="w-8 h-8 rounded-lg hover:bg-white dark:hover:bg-slate-800 border border-transparent hover:border-slate-200 dark:hover:border-slate-800 text-xs font-medium text-slate-600 dark:text-slate-400 transition-colors">5</button>
+<button class="p-1.5 rounded-lg border border-slate-200 dark:border-slate-800 hover:bg-white dark:hover:bg-slate-800 text-slate-400 transition-colors">
+<span class="material-icons text-xl leading-none">chevron_right</span>
+</button>
+</nav>
+</div>
+</div>
+<!-- Footer Small Message -->
+<div class="mt-8 text-center">
+<p class="text-[11px] text-slate-400 uppercase tracking-widest font-semibold">GIIA Inventory System v2.4.0 • Dashboard de Proveedores</p>
+</div>
+</section>
+</main>
+</body></html>

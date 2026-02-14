@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GIIA - Crear Orden de Compra</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#225fec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .mono-font { font-family: 'JetBrains Mono', monospace; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 antialiased h-screen flex overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 bg-slate-900 flex-shrink-0 flex flex-col border-r border-slate-800">
+<div class="p-6 flex items-center space-x-3">
+<div class="w-8 h-8 bg-primary rounded flex items-center justify-center">
+<span class="text-white font-bold text-xl">G</span>
+</div>
+<span class="text-white font-bold text-xl tracking-tight">GIIA Inventory</span>
+</div>
+<nav class="flex-1 px-4 space-y-1 mt-4">
+<a class="flex items-center space-x-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded transition-colors" href="#">
+<span class="material-icons-outlined text-xl">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded transition-colors" href="#">
+<span class="material-icons-outlined text-xl">inventory_2</span>
+<span class="text-sm font-medium">Inventario</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2 bg-primary/10 text-primary border-l-2 border-primary rounded-r transition-colors" href="#">
+<span class="material-icons-outlined text-xl text-primary">shopping_cart</span>
+<span class="text-sm font-medium">Órdenes de Compra</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded transition-colors" href="#">
+<span class="material-icons-outlined text-xl">local_shipping</span>
+<span class="text-sm font-medium">Proveedores</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded transition-colors" href="#">
+<span class="material-icons-outlined text-xl">analytics</span>
+<span class="text-sm font-medium">Reportes</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-800">
+<div class="flex items-center space-x-3 px-3 py-2 text-slate-400">
+<div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center">
+<span class="material-icons-outlined text-sm">person</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="text-xs font-semibold text-white truncate">Admin Usuario</p>
+<p class="text-[10px] truncate">admin@giia.com</p>
+</div>
+<span class="material-icons-outlined text-sm cursor-pointer hover:text-white">settings</span>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col overflow-hidden">
+<!-- Header -->
+<header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-8">
+<div class="flex flex-col">
+<div class="flex items-center space-x-2 text-xs text-slate-400">
+<span>Órdenes de Compra</span>
+<span class="material-icons-outlined text-[14px]">chevron_right</span>
+<span class="text-slate-600 font-medium">Crear</span>
+</div>
+<h1 class="text-lg font-bold text-slate-800">Crear Orden de Compra</h1>
+</div>
+<div class="flex items-center space-x-4">
+<div class="relative">
+<span class="material-icons-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="pl-10 pr-4 py-1.5 text-sm border border-slate-200 rounded-lg w-64 focus:ring-1 focus:ring-primary focus:border-primary outline-none" placeholder="Buscar..." type="text"/>
+</div>
+<span class="material-icons-outlined text-slate-400 cursor-pointer hover:text-primary">notifications</span>
+</div>
+</header>
+<!-- Content Area -->
+<div class="flex-1 overflow-y-auto p-8 bg-background-light">
+<div class="max-w-6xl mx-auto space-y-6">
+<!-- Main Form Card -->
+<div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+<div class="grid grid-cols-12 gap-8">
+<!-- Form Inputs -->
+<div class="col-span-8 space-y-6">
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1.5">
+<label class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Proveedor</label>
+<div class="relative">
+<input class="w-full border-slate-200 rounded focus:ring-primary focus:border-primary text-sm pl-10" type="text" value="ProveedorA S.A."/>
+<span class="material-icons-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary">business</span>
+<span class="material-icons-outlined absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">keyboard_arrow_down</span>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Fecha de Emisión</label>
+<div class="relative">
+<input class="w-full border-slate-200 rounded focus:ring-primary focus:border-primary text-sm pl-10" type="date" value="2023-10-27"/>
+<span class="material-icons-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">calendar_today</span>
+</div>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Notas Internas</label>
+<textarea class="w-full border-slate-200 rounded focus:ring-primary focus:border-primary text-sm resize-none" placeholder="Añadir comentarios sobre la orden..." rows="3"></textarea>
+</div>
+</div>
+<!-- Info Sidebar (Within Form) -->
+<div class="col-span-4 space-y-4">
+<div class="bg-primary/5 rounded-lg border border-primary/20 p-4">
+<h3 class="text-xs font-bold text-primary uppercase tracking-widest mb-3 flex items-center">
+<span class="material-icons-outlined text-sm mr-2">info</span>
+                                    Detalles de Logística
+                                </h3>
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<span class="text-xs text-slate-500">Lead Time del Proveedor:</span>
+<span class="text-xs font-semibold text-slate-700">5 Días hábiles</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs text-slate-500">Llegada Estimada:</span>
+<span class="text-xs font-semibold text-slate-700">01 Nov 2023</span>
+</div>
+<div class="pt-2 border-t border-primary/10">
+<div class="flex items-center text-xs text-slate-400">
+<span class="material-icons-outlined text-[14px] mr-1">history</span>
+                                            Última orden hace 15 días
+                                        </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Line Items Table -->
+<div class="mt-8 border-t border-slate-100 pt-8">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-sm font-bold text-slate-800 uppercase tracking-wide">Líneas de la Orden</h2>
+<button class="text-xs font-semibold text-primary flex items-center hover:underline">
+<span class="material-icons-outlined text-sm mr-1">add_circle_outline</span>
+                                AGREGAR LÍNEA
+                            </button>
+</div>
+<div class="overflow-hidden border border-slate-200 rounded">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 text-[11px] font-bold text-slate-500 uppercase">
+<th class="px-4 py-3 border-b border-slate-200 w-2/5">Producto</th>
+<th class="px-4 py-3 border-b border-slate-200 text-center w-1/12">Buffer</th>
+<th class="px-4 py-3 border-b border-slate-200 text-center">Cantidad</th>
+<th class="px-4 py-3 border-b border-slate-200 text-right">Precio Unitario</th>
+<th class="px-4 py-3 border-b border-slate-200 text-right">Subtotal</th>
+<th class="px-4 py-3 border-b border-slate-200 text-center"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50/50">
+<td class="px-4 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-800">Pintura Latex Blanca 20L</span>
+<span class="text-[10px] mono-font text-slate-400">SKU: PN-LX-20-WH</span>
+<div class="mt-2 flex items-center space-x-2">
+<span class="text-[10px] text-slate-400">Flujo neto: +12 un/semana</span>
+</div>
+</div>
+</td>
+<td class="px-4 py-4 align-top pt-8">
+<div class="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-full" style="width: 35%"></div>
+</div>
+<p class="text-[9px] text-center mt-1 text-slate-400">35% stock</p>
+</td>
+<td class="px-4 py-4 text-center">
+<input class="w-20 text-center text-sm border-slate-200 rounded focus:ring-primary focus:border-primary py-1 px-2" type="number" value="150"/>
+</td>
+<td class="px-4 py-4 text-right mono-font text-sm">
+<div class="flex items-center justify-end">
+<span class="text-slate-400 text-xs mr-1">$</span>
+<span>345.00</span>
+</div>
+</td>
+<td class="px-4 py-4 text-right mono-font text-sm font-semibold">
+<div class="flex items-center justify-end">
+<span class="text-slate-400 text-xs mr-1">$</span>
+<span>51,750.00</span>
+</div>
+</td>
+<td class="px-4 py-4 text-center">
+<button class="text-slate-300 hover:text-red-500">
+<span class="material-icons-outlined text-lg">delete</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50/50">
+<td class="px-4 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-800">Cemento Portland 50kg</span>
+<span class="text-[10px] mono-font text-slate-400">SKU: CM-PT-50-GY</span>
+<div class="mt-2 flex items-center space-x-2">
+<span class="text-[10px] text-slate-400">Flujo neto: +85 un/semana</span>
+</div>
+</div>
+</td>
+<td class="px-4 py-4 align-top pt-8">
+<div class="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+<div class="bg-red-400 h-full" style="width: 12%"></div>
+</div>
+<p class="text-[9px] text-center mt-1 text-slate-400">12% stock</p>
+</td>
+<td class="px-4 py-4 text-center">
+<input class="w-20 text-center text-sm border-slate-200 rounded focus:ring-primary focus:border-primary py-1 px-2" type="number" value="150"/>
+</td>
+<td class="px-4 py-4 text-right mono-font text-sm">
+<div class="flex items-center justify-end">
+<span class="text-slate-400 text-xs mr-1">$</span>
+<span>66.00</span>
+</div>
+</td>
+<td class="px-4 py-4 text-right mono-font text-sm font-semibold">
+<div class="flex items-center justify-end">
+<span class="text-slate-400 text-xs mr-1">$</span>
+<span>9,900.00</span>
+</div>
+</td>
+<td class="px-4 py-4 text-center">
+<button class="text-slate-300 hover:text-red-500">
+<span class="material-icons-outlined text-lg">delete</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Totals Section -->
+<div class="mt-6 flex justify-end">
+<div class="w-64 space-y-3">
+<div class="flex justify-between text-sm text-slate-500">
+<span>Subtotal:</span>
+<span class="mono-font">$61,650.00</span>
+</div>
+<div class="flex justify-between text-sm text-slate-500">
+<span>Impuestos (0%):</span>
+<span class="mono-font">$0.00</span>
+</div>
+<div class="flex justify-between items-center pt-3 border-t border-slate-100">
+<span class="text-base font-bold text-slate-800">Total:</span>
+<span class="text-2xl font-bold text-primary mono-font">$61,650.00</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="flex items-center justify-between bg-white rounded-lg border border-slate-200 p-4">
+<div class="flex items-center space-x-2 text-slate-400 text-xs">
+<span class="material-icons-outlined text-sm">help_outline</span>
+<span>Se creará un borrador antes de enviar al proveedor.</span>
+</div>
+<div class="flex items-center space-x-3">
+<button class="px-6 py-2 text-sm font-semibold text-slate-600 border border-slate-300 rounded hover:bg-slate-50 transition-colors">
+                            Cancelar
+                        </button>
+<button class="px-8 py-2 text-sm font-semibold text-white bg-primary rounded hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all">
+                            Crear Orden de Compra
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

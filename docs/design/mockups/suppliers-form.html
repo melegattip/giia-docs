@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GIIA - Crear Proveedor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#2424eb",
+                "background-light": "#f6f6f8",
+                "background-dark": "#111121",
+              },
+              fontFamily: {
+                "display": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex">
+<!-- Sidebar -->
+<aside class="w-64 bg-slate-950 text-slate-400 flex flex-col border-r border-slate-800 hidden lg:flex">
+<div class="p-6 flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="text-white font-bold">G</span>
+</div>
+<span class="text-white font-bold text-xl tracking-tight">GIIA</span>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-900 transition-colors" href="#">
+<span class="material-icons text-xl">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-900 transition-colors" href="#">
+<span class="material-icons text-xl">inventory_2</span>
+<span class="text-sm font-medium">Inventario</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary" href="#">
+<span class="material-icons text-xl">groups</span>
+<span class="text-sm font-medium">Proveedores</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-900 transition-colors" href="#">
+<span class="material-icons text-xl">shopping_cart</span>
+<span class="text-sm font-medium">Órdenes</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-900 transition-colors" href="#">
+<span class="material-icons text-xl">assessment</span>
+<span class="text-sm font-medium">Reportes</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-800">
+<div class="flex items-center gap-3 px-3 py-2">
+<img alt="Usuario" class="w-8 h-8 rounded-full bg-slate-800" data-alt="Profile picture of a professional user" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVSLBjNyhy5Gcwr-nBA1Bc3HCvcmQ1Rxk1dwr2KLR8hvGIGI1841qWO6OTfjE3PyrC7Dt6g1jkNIc-obHtnKiG0W4olGawgv5yVxFZ7oUBnrLb19WgxlZA4QJnNAEP03UewNVSPJUs4lfILXEyCtAq8Bh8UZD7jODfzoW3I0a95pkzOZwlBIT0emwP_oQKCTyAANOAQaf9YRLzelmLgVp5yLsUfVHXq55Dmt5ptMRofpoLkrMXWbSULgiCeMocMYa_x71EqK_1-Sxn"/>
+<div class="overflow-hidden">
+<p class="text-sm font-medium text-white truncate">Admin User</p>
+<p class="text-xs truncate">admin@giia.com</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0">
+<!-- Header -->
+<header class="h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 sticky top-0 z-10">
+<div class="flex items-center gap-4">
+<nav aria-label="Breadcrumb" class="flex text-sm text-slate-500 dark:text-slate-400">
+<ol class="flex items-center space-x-2">
+<li><a class="hover:text-primary transition-colors" href="#">Dashboard</a></li>
+<li class="flex items-center space-x-2">
+<span class="material-icons text-sm">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Proveedores</a>
+</li>
+<li class="flex items-center space-x-2">
+<span class="material-icons text-sm">chevron_right</span>
+<span class="text-slate-900 dark:text-slate-100 font-medium">Crear Proveedor</span>
+</li>
+</ol>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500">
+<span class="material-icons">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500">
+<span class="material-icons">settings</span>
+</button>
+</div>
+</header>
+<!-- Form Area -->
+<div class="flex-1 overflow-y-auto p-8 flex justify-center">
+<div class="w-full max-w-4xl">
+<div class="mb-6">
+<h1 class="text-2xl font-bold text-slate-900 dark:text-white">Crear Nuevo Proveedor</h1>
+<p class="text-slate-500 dark:text-slate-400 mt-1">Complete la información detallada para registrar un nuevo proveedor en el sistema.</p>
+</div>
+<!-- Form Card -->
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<form class="p-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+<!-- Left Column -->
+<div class="space-y-6">
+<div>
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" for="company_name">
+                                        Nombre de empresa <span class="text-red-500">*</span>
+</label>
+<input class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" id="company_name" name="company_name" placeholder="Ej. Logística Global S.A." type="text"/>
+</div>
+<div>
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" for="email">
+                                        Email <span class="text-red-500">*</span>
+</label>
+<input class="w-full px-4 py-2 rounded-lg border-2 border-red-500 dark:bg-slate-800 focus:ring-2 focus:ring-red-500 outline-none transition-all" id="email" name="email" type="email" value="proveedor@invalido"/>
+<p class="mt-1 text-xs text-red-500 font-medium">El formato del email no es válido</p>
+</div>
+<div>
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" for="address">
+                                        Dirección
+                                    </label>
+<input class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" id="address" name="address" placeholder="Av. Insurgentes Sur 1234" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" for="country">
+                                        País <span class="text-red-500">*</span>
+</label>
+<div class="relative">
+<select class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-primary outline-none appearance-none transition-all" id="country" name="country">
+<option selected="" value="MX">México</option>
+<option value="US">Estados Unidos</option>
+<option value="CA">Canadá</option>
+<option value="ES">España</option>
+<option value="CO">Colombia</option>
+</select>
+<div class="absolute inset-y-0 right-3 flex items-center pointer-events-none">
+<span class="material-icons text-slate-400">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column -->
+<div class="space-y-6">
+<div>
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" for="contact_name">
+                                        Nombre de contacto <span class="text-red-500">*</span>
+</label>
+<input class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" id="contact_name" name="contact_name" placeholder="Ej. Juan Pérez" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" for="phone">
+                                        Teléfono
+                                    </label>
+<input class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" id="phone" name="phone" placeholder="+52 (55) 0000-0000" type="tel"/>
+</div>
+<div>
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" for="city">
+                                        Ciudad <span class="text-red-500">*</span>
+</label>
+<input class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" id="city" name="city" placeholder="Ciudad de México" type="text"/>
+</div>
+</div>
+<!-- Full Width Section -->
+<div class="md:col-span-2 mt-2">
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" for="notes">
+                                    Notas
+                                </label>
+<textarea class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all resize-none" id="notes" name="notes" placeholder="Agregue información adicional sobre este proveedor..." rows="4"></textarea>
+</div>
+</div>
+</form>
+<!-- Sticky Footer -->
+<div class="px-8 py-5 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-200 dark:border-slate-800 flex justify-end items-center gap-4">
+<button class="px-6 py-2.5 rounded-lg border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 font-semibold text-sm hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" type="button">
+                            Cancelar
+                        </button>
+<button class="px-6 py-2.5 rounded-lg bg-primary text-white font-semibold text-sm hover:bg-primary/90 transition-colors shadow-sm shadow-primary/20" type="submit">
+                            Guardar Proveedor
+                        </button>
+</div>
+</div>
+<!-- Additional Helper Info -->
+<div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 opacity-60">
+<div class="flex items-start gap-3">
+<span class="material-icons text-primary text-lg">verified_user</span>
+<div>
+<p class="text-xs font-bold uppercase tracking-wider">Seguridad</p>
+<p class="text-xs">Los datos están encriptados y protegidos.</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-icons text-primary text-lg">sync</span>
+<div>
+<p class="text-xs font-bold uppercase tracking-wider">Sincronización</p>
+<p class="text-xs">Los cambios se reflejan en tiempo real.</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-icons text-primary text-lg">help_outline</span>
+<div>
+<p class="text-xs font-bold uppercase tracking-wider">Soporte</p>
+<p class="text-xs">Consulte el centro de ayuda para más info.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

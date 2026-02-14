@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GIIA - Órdenes de Compra</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#225fec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "neutral-slate": "#475569",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased h-screen overflow-hidden flex">
+<!-- Sidebar -->
+<aside class="w-64 bg-slate-900 dark:bg-black text-slate-300 flex-shrink-0 flex flex-col hidden lg:flex">
+<div class="p-6 flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="text-white font-bold text-xl">G</span>
+</div>
+<span class="text-white font-bold text-xl tracking-tight">GIIA</span>
+</div>
+<nav class="flex-1 px-4 space-y-1 mt-4">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons-outlined text-xl">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<div class="pt-4 pb-2">
+<span class="px-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Compras</span>
+</div>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary text-white shadow-lg shadow-primary/20" href="#">
+<span class="material-icons-outlined text-xl">shopping_cart</span>
+<span class="text-sm font-medium">Órdenes de Compra</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons-outlined text-xl">group</span>
+<span class="text-sm font-medium">Proveedores</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons-outlined text-xl">inventory_2</span>
+<span class="text-sm font-medium">Inventario</span>
+</a>
+<div class="pt-4 pb-2">
+<span class="px-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Sistema</span>
+</div>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons-outlined text-xl">settings</span>
+<span class="text-sm font-medium">Configuración</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-800">
+<div class="flex items-center gap-3 px-3 py-2">
+<div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-xs font-bold text-white overflow-hidden">
+<img alt="User Profile" data-alt="Corporate headshot of a business professional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJ5PazvgVbNjdIqY4bryhhCbU339dt-Wkr0oo9DS0aXbRp1ShVkipjVwxp2Vozi8BfLQ1RhRV5674W_18L74zkXemozIu-P_bEWcbQ-SvYaMY5W5uBr1kFlDEheZfNuhbuu05MkK1Rjv3MtL1CYwsE8LzcqgpH_3j9zakA4X_Xt2P81BG8a8_h0YveygkYY-CwkV4VsgM0fUUI5_v_U4hdzZ_OAoJGxCiqlWMOqokbDxGKukmu3v7oO9vKQMHTXpWeoJQRVoc47Z88"/>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="text-xs font-semibold text-white truncate">Carlos Méndez</p>
+<p class="text-[10px] text-slate-500 truncate">Admin de Compras</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+<!-- Header -->
+<header class="h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 flex-shrink-0">
+<div class="flex items-center gap-2">
+<nav class="flex text-sm text-slate-500 dark:text-slate-400">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="mx-2 text-slate-300">/</span>
+<a class="hover:text-primary transition-colors" href="#">Compras</a>
+<span class="mx-2 text-slate-300">/</span>
+<span class="font-medium text-slate-900 dark:text-white">Órdenes</span>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 transition-colors relative">
+<span class="material-icons-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-900"></span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 transition-colors">
+<span class="material-icons-outlined">help_outline</span>
+</button>
+</div>
+</header>
+<!-- Page Content -->
+<div class="flex-1 overflow-y-auto p-8 space-y-6">
+<!-- Page Title and CTA -->
+<div class="flex items-center justify-between">
+<div>
+<h1 class="text-2xl font-bold text-slate-900 dark:text-white">Órdenes de Compra</h1>
+<p class="text-sm text-slate-500 mt-1">Gestiona tus órdenes y realiza seguimiento a proveedores.</p>
+</div>
+<button class="bg-primary hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium transition-all shadow-lg shadow-primary/25">
+<span class="material-icons-outlined text-lg">add</span>
+                    Nueva OC
+                </button>
+</div>
+<!-- Filters Bar -->
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-wrap gap-4 items-center">
+<div class="flex-1 min-w-[240px] relative">
+<span class="material-icons-outlined absolute left-3 top-2.5 text-slate-400 text-lg">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary transition-all" placeholder="Buscar por OC #..." type="text"/>
+</div>
+<div class="w-48">
+<select class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary py-2">
+<option>Todos los Proveedores</option>
+<option>TechLogistics S.A.</option>
+<option>Global Suministros</option>
+<option>Importaciones Rápidas</option>
+</select>
+</div>
+<div class="w-48">
+<select class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary py-2">
+<option>Todos los Estados</option>
+<option>Pendiente</option>
+<option>Enviada</option>
+<option>Recibida</option>
+<option>Cancelada</option>
+</select>
+</div>
+<div class="w-48 relative">
+<span class="material-icons-outlined absolute right-3 top-2.5 text-slate-400 text-lg">calendar_today</span>
+<input class="w-full pr-10 pl-3 py-2 bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary" placeholder="Rango de fecha" type="text" value="01/10/2023 - 31/10/2023"/>
+</div>
+<button class="p-2 text-slate-500 hover:text-primary hover:bg-primary/10 rounded-lg transition-colors">
+<span class="material-icons-outlined">filter_list</span>
+</button>
+</div>
+<!-- Table Card -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">OC #</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Proveedor</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Fecha Emisión</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Est. Llegada</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Productos</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Total</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Estado</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-right">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+<!-- Row 1: Sent -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors group">
+<td class="px-6 py-4 font-mono text-sm font-medium text-primary">PO-2023-085</td>
+<td class="px-6 py-4 text-sm font-medium">TechLogistics S.A.</td>
+<td class="px-6 py-4 text-sm text-slate-500">24/10/2023</td>
+<td class="px-6 py-4 text-sm text-slate-500">28/10/2023</td>
+<td class="px-6 py-4 text-sm text-slate-500">14 items</td>
+<td class="px-6 py-4 text-sm font-semibold">$3,450.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">Enviada</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors"><span class="material-icons-outlined text-lg">visibility</span></button>
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors"><span class="material-icons-outlined text-lg">edit</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Pending -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors group">
+<td class="px-6 py-4 font-mono text-sm font-medium text-primary">PO-2023-084</td>
+<td class="px-6 py-4 text-sm font-medium">Global Suministros</td>
+<td class="px-6 py-4 text-sm text-slate-500">22/10/2023</td>
+<td class="px-6 py-4 text-sm text-slate-500">02/11/2023</td>
+<td class="px-6 py-4 text-sm text-slate-500">5 items</td>
+<td class="px-6 py-4 text-sm font-semibold">$1,250.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">Pendiente</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors"><span class="material-icons-outlined text-lg">visibility</span></button>
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors"><span class="material-icons-outlined text-lg">edit</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Received -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors group">
+<td class="px-6 py-4 font-mono text-sm font-medium text-primary">PO-2023-083</td>
+<td class="px-6 py-4 text-sm font-medium">Importaciones Rápidas</td>
+<td class="px-6 py-4 text-sm text-slate-500">20/10/2023</td>
+<td class="px-6 py-4 text-sm text-slate-500">25/10/2023</td>
+<td class="px-6 py-4 text-sm text-slate-500">28 items</td>
+<td class="px-6 py-4 text-sm font-semibold">$12,800.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">Recibida</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors"><span class="material-icons-outlined text-lg">visibility</span></button>
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors"><span class="material-icons-outlined text-lg">edit</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Cancelled -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors group">
+<td class="px-6 py-4 font-mono text-sm font-medium text-primary">PO-2023-082</td>
+<td class="px-6 py-4 text-sm font-medium">Equipos Industriales</td>
+<td class="px-6 py-4 text-sm text-slate-500">18/10/2023</td>
+<td class="px-6 py-4 text-sm text-slate-500">-</td>
+<td class="px-6 py-4 text-sm text-slate-500">2 items</td>
+<td class="px-6 py-4 text-sm font-semibold text-slate-400">$890.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-400">Cancelada</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors"><span class="material-icons-outlined text-lg">visibility</span></button>
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors"><span class="material-icons-outlined text-lg">edit</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 5: Sent -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors group">
+<td class="px-6 py-4 font-mono text-sm font-medium text-primary">PO-2023-081</td>
+<td class="px-6 py-4 text-sm font-medium">Distribuidora Central</td>
+<td class="px-6 py-4 text-sm text-slate-500">15/10/2023</td>
+<td class="px-6 py-4 text-sm text-slate-500">20/10/2023</td>
+<td class="px-6 py-4 text-sm text-slate-500">60 items</td>
+<td class="px-6 py-4 text-sm font-semibold">$5,210.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">Enviada</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors"><span class="material-icons-outlined text-lg">visibility</span></button>
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors"><span class="material-icons-outlined text-lg">edit</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<span class="text-sm text-slate-500">Mostrando 1 a 5 de 142 resultados</span>
+<div class="flex items-center gap-1">
+<button class="p-2 rounded-lg hover:bg-white dark:hover:bg-slate-700 text-slate-400 disabled:opacity-50" disabled="">
+<span class="material-icons-outlined text-lg">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary text-white text-sm font-medium">1</button>
+<button class="w-8 h-8 rounded-lg hover:bg-white dark:hover:bg-slate-700 text-sm font-medium">2</button>
+<button class="w-8 h-8 rounded-lg hover:bg-white dark:hover:bg-slate-700 text-sm font-medium">3</button>
+<span class="px-1 text-slate-400">...</span>
+<button class="w-8 h-8 rounded-lg hover:bg-white dark:hover:bg-slate-700 text-sm font-medium">29</button>
+<button class="p-2 rounded-lg hover:bg-white dark:hover:bg-slate-700 text-slate-400">
+<span class="material-icons-outlined text-lg">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

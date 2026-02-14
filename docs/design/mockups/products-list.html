@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GIIA Product List Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2424eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111121",
+                        "ddmrp-red": "#ef4444",
+                        "ddmrp-yellow": "#f59e0b",
+                        "ddmrp-green": "#22c55e",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .sidebar-item-active {
+            background-color: rgba(36, 36, 235, 0.1);
+            border-right: 4px solid #2424eb;
+            color: #2424eb;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased h-screen overflow-hidden flex">
+<!-- Sidebar -->
+<aside class="w-64 bg-slate-900 dark:bg-slate-950 text-slate-400 flex flex-col border-r border-slate-800 shrink-0">
+<div class="p-6 flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold">G</div>
+<span class="text-xl font-bold text-white tracking-tight">GIIA <span class="text-primary">SaaS</span></span>
+</div>
+<nav class="flex-1 px-4 py-4 space-y-1">
+<div class="text-xs font-semibold text-slate-500 uppercase tracking-wider px-2 mb-2">Principal</div>
+<a class="flex items-center gap-3 px-3 py-2 rounded hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons text-sm">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg sidebar-item-active transition-colors text-white font-medium" href="#">
+<span class="material-icons text-sm">inventory_2</span> Productos
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons text-sm">factory</span> Proveedores
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons text-sm">warehouse</span> Almacenes
+            </a>
+<div class="text-xs font-semibold text-slate-500 uppercase tracking-wider px-2 mt-8 mb-2">Análisis DDMRP</div>
+<a class="flex items-center gap-3 px-3 py-2 rounded hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons text-sm">analytics</span> Buffer Status
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons text-sm">trending_up</span> Flujo Neto
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons text-sm">settings</span> Configuración
+            </a>
+</nav>
+<div class="p-4 border-t border-slate-800">
+<div class="flex items-center gap-3 px-2">
+<img alt="User Profile" class="w-8 h-8 rounded-full" data-alt="Profile picture of a professional user" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkp-erfoB6RWJQEle-tKyVo0jpGk-P0RiTvNpM70POKaQ9B6RQXB0ie4_w6913LfVfnhLiohnLEqpb9B7w0XvAv2Yvp-htUPcvhFG8pIEEm8YXk7xsa6_4g4UoYrEkKQoZfoxpZ1B42-VT0lFdE1xssrcBC_cZ-HE1gzRk3oitkl_po--StAB6ad3CMWK8vrcOe9oKlj2www5NH-dyvH-cah4vzK8JMiryAiqwRZGwwY_6R_FaTOBtCj49JVWH7FPJRbSIVoAO73Rr"/>
+<div class="flex-1 overflow-hidden">
+<p class="text-sm font-medium text-white truncate">Carlos Méndez</p>
+<p class="text-xs truncate">Admin de Inventario</p>
+</div>
+<span class="material-icons text-slate-500 cursor-pointer">logout</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-hidden">
+<!-- Header -->
+<header class="h-16 bg-white dark:bg-background-dark border-bottom border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 z-10">
+<div class="flex items-center gap-2 text-sm text-slate-500">
+<span>Inventario</span>
+<span class="material-icons text-xs">chevron_right</span>
+<span class="text-slate-900 dark:text-slate-100 font-medium">Productos</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full relative">
+<span class="material-icons text-slate-600 dark:text-slate-400">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-background-dark"></span>
+</button>
+<div class="h-8 w-px bg-slate-200 dark:bg-slate-800"></div>
+<button class="flex items-center gap-2 px-3 py-1.5 border border-slate-200 dark:border-slate-800 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800">
+<span class="material-icons text-sm">help_outline</span> Soporte
+                </button>
+</div>
+</header>
+<!-- Content Scrollable Container -->
+<div class="flex-1 overflow-y-auto p-8 custom-scrollbar">
+<!-- Action Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div>
+<h1 class="text-2xl font-bold text-slate-900 dark:text-white">Productos</h1>
+<p class="text-slate-500 text-sm">Gestione su catálogo de productos y estados de buffer DDMRP.</p>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white px-5 py-2.5 rounded-lg font-semibold flex items-center gap-2 transition-all shadow-sm shadow-primary/20">
+<span class="material-icons text-lg">add</span> Nuevo Producto
+                </button>
+</div>
+<!-- Filter Ribbon -->
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-wrap gap-4 mb-6">
+<div class="flex-1 min-w-[240px] relative">
+<span class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary" placeholder="Buscar por SKU o nombre..." type="text"/>
+</div>
+<div class="flex gap-4 flex-wrap">
+<select class="bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm py-2 px-3 pr-8 focus:ring-primary">
+<option>Categoría: Todas</option>
+<option>Componentes</option>
+<option>Materia Prima</option>
+<option>Producto Final</option>
+</select>
+<select class="bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm py-2 px-3 pr-8 focus:ring-primary">
+<option>Proveedor: Todos</option>
+<option>SteelCorp S.A.</option>
+<option>LogiTech Ind.</option>
+</select>
+<select class="bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm py-2 px-3 pr-8 focus:ring-primary">
+<option>Buffer Status: Todos</option>
+<option>Rojo (Crítico)</option>
+<option>Amarillo (Alerta)</option>
+<option>Verde (Saludable)</option>
+</select>
+<select class="bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm py-2 px-3 pr-8 focus:ring-primary">
+<option>Estado: Activo</option>
+<option>Estado: Inactivo</option>
+</select>
+<button class="flex items-center gap-2 px-4 py-2 border border-slate-200 dark:border-slate-700 rounded-lg text-sm text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800">
+<span class="material-icons text-sm">filter_list</span> Más filtros
+                    </button>
+</div>
+</div>
+<!-- Table Container -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+<th class="p-4 w-12 text-center">
+<input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+</th>
+<th class="p-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">SKU</th>
+<th class="p-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Producto</th>
+<th class="p-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Categoría</th>
+<th class="p-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Costo</th>
+<th class="p-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">CPD</th>
+<th class="p-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Buffer Health</th>
+<th class="p-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Flujo Neto</th>
+<th class="p-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Estado</th>
+<th class="p-4 text-xs font-semibold text-slate-500 uppercase tracking-wider text-right">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Row 1: Green Status -->
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="p-4 text-center">
+<input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="p-4 font-mono text-xs font-medium text-slate-600 dark:text-slate-400">GIIA-A092</td>
+<td class="p-4">
+<div class="font-medium text-slate-900 dark:text-white">Motor Trifásico 5HP</div>
+<div class="text-xs text-slate-400">Mantenimiento Industrial</div>
+</td>
+<td class="p-4 text-sm">Componentes</td>
+<td class="p-4 text-sm font-medium">$450.00</td>
+<td class="p-4 text-sm">12.5</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="flex h-2 w-24 rounded-full overflow-hidden bg-slate-100 dark:bg-slate-800">
+<div class="h-full bg-ddmrp-red" style="width: 33%"></div>
+<div class="h-full bg-ddmrp-yellow" style="width: 33%"></div>
+<div class="h-full bg-ddmrp-green" style="width: 25%"></div>
+</div>
+<span class="text-[10px] font-bold text-ddmrp-green">91%</span>
+</div>
+</td>
+<td class="p-4">
+<span class="px-2 py-1 rounded bg-ddmrp-green/10 text-ddmrp-green text-xs font-bold border border-ddmrp-green/20">842 units</span>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400">Activo</span>
+</td>
+<td class="p-4 text-right">
+<div class="flex justify-end gap-2 text-slate-400">
+<button class="hover:text-primary"><span class="material-icons text-lg">edit</span></button>
+<button class="hover:text-red-500"><span class="material-icons text-lg">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Red Status -->
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="p-4 text-center">
+<input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="p-4 font-mono text-xs font-medium text-slate-600 dark:text-slate-400">GIIA-B114</td>
+<td class="p-4">
+<div class="font-medium text-slate-900 dark:text-white">Cojinete Eje Frontal</div>
+<div class="text-xs text-slate-400">Repuestos Heavy Duty</div>
+</td>
+<td class="p-4 text-sm">Componentes</td>
+<td class="p-4 text-sm font-medium">$85.20</td>
+<td class="p-4 text-sm">45.0</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="flex h-2 w-24 rounded-full overflow-hidden bg-slate-100 dark:bg-slate-800">
+<div class="h-full bg-ddmrp-red" style="width: 15%"></div>
+</div>
+<span class="text-[10px] font-bold text-ddmrp-red">15%</span>
+</div>
+</td>
+<td class="p-4">
+<span class="px-2 py-1 rounded bg-ddmrp-red/10 text-ddmrp-red text-xs font-bold border border-ddmrp-red/20">110 units</span>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400">Activo</span>
+</td>
+<td class="p-4 text-right">
+<div class="flex justify-end gap-2 text-slate-400">
+<button class="hover:text-primary"><span class="material-icons text-lg">edit</span></button>
+<button class="hover:text-red-500"><span class="material-icons text-lg">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Yellow Status -->
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="p-4 text-center">
+<input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="p-4 font-mono text-xs font-medium text-slate-600 dark:text-slate-400">GIIA-C402</td>
+<td class="p-4">
+<div class="font-medium text-slate-900 dark:text-white">Cable Alta Tensión 20m</div>
+<div class="text-xs text-slate-400">Electrónica</div>
+</td>
+<td class="p-4 text-sm">Materia Prima</td>
+<td class="p-4 text-sm font-medium">$12.50</td>
+<td class="p-4 text-sm">115.8</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="flex h-2 w-24 rounded-full overflow-hidden bg-slate-100 dark:bg-slate-800">
+<div class="h-full bg-ddmrp-red" style="width: 33%"></div>
+<div class="h-full bg-ddmrp-yellow" style="width: 15%"></div>
+</div>
+<span class="text-[10px] font-bold text-ddmrp-yellow">48%</span>
+</div>
+</td>
+<td class="p-4">
+<span class="px-2 py-1 rounded bg-ddmrp-yellow/10 text-ddmrp-yellow text-xs font-bold border border-ddmrp-yellow/20">2150 units</span>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400">Activo</span>
+</td>
+<td class="p-4 text-right">
+<div class="flex justify-end gap-2 text-slate-400">
+<button class="hover:text-primary"><span class="material-icons text-lg">edit</span></button>
+<button class="hover:text-red-500"><span class="material-icons text-lg">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Filler Rows for Density -->
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors opacity-75">
+<td class="p-4 text-center"><input class="rounded border-slate-300" type="checkbox"/></td>
+<td class="p-4 font-mono text-xs">GIIA-D512</td>
+<td class="p-4"><div class="font-medium">Aceite Industrial SAE40</div></td>
+<td class="p-4 text-sm">Consumibles</td>
+<td class="p-4 text-sm font-medium">$25.00</td>
+<td class="p-4 text-sm">22.1</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="flex h-2 w-24 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+<div class="h-full bg-ddmrp-red w-1/3"></div><div class="h-full bg-ddmrp-yellow w-1/3"></div><div class="h-full bg-ddmrp-green w-1/4"></div>
+</div>
+<span class="text-[10px] font-bold text-ddmrp-green">85%</span>
+</div>
+</td>
+<td class="p-4"><span class="px-2 py-1 rounded bg-ddmrp-green/10 text-ddmrp-green text-xs font-bold">540 units</span></td>
+<td class="p-4"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Inactivo</span></td>
+<td class="p-4 text-right text-slate-400"><span class="material-icons text-lg">more_vert</span></td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="p-4 text-center">
+<input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="p-4 font-mono text-xs font-medium text-slate-600 dark:text-slate-400">GIIA-E901</td>
+<td class="p-4">
+<div class="font-medium text-slate-900 dark:text-white">Soldadura de Plata 2mm</div>
+<div class="text-xs text-slate-400">Producción</div>
+</td>
+<td class="p-4 text-sm">Materia Prima</td>
+<td class="p-4 text-sm font-medium">$125.00</td>
+<td class="p-4 text-sm">5.2</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="flex h-2 w-24 rounded-full overflow-hidden bg-slate-100 dark:bg-slate-800">
+<div class="h-full bg-ddmrp-red" style="width: 20%"></div>
+</div>
+<span class="text-[10px] font-bold text-ddmrp-red">20%</span>
+</div>
+</td>
+<td class="p-4">
+<span class="px-2 py-1 rounded bg-ddmrp-red/10 text-ddmrp-red text-xs font-bold border border-ddmrp-red/20">42 units</span>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400">Activo</span>
+</td>
+<td class="p-4 text-right">
+<div class="flex justify-end gap-2 text-slate-400">
+<button class="hover:text-primary"><span class="material-icons text-lg">edit</span></button>
+<button class="hover:text-red-500"><span class="material-icons text-lg">delete</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="p-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+<span class="text-sm text-slate-500">Mostrando <span class="font-medium text-slate-900 dark:text-white">1-15</span> de <span class="font-medium text-slate-900 dark:text-white">210</span> resultados</span>
+<div class="flex gap-2">
+<button class="flex items-center px-3 py-1.5 border border-slate-200 dark:border-slate-700 rounded-lg text-sm text-slate-400 cursor-not-allowed">
+<span class="material-icons text-sm">chevron_left</span> Anterior
+                        </button>
+<div class="flex items-center gap-1">
+<button class="w-8 h-8 rounded bg-primary text-white text-sm font-medium">1</button>
+<button class="w-8 h-8 rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-sm font-medium">2</button>
+<button class="w-8 h-8 rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-sm font-medium">3</button>
+<span class="px-1">...</span>
+<button class="w-8 h-8 rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-sm font-medium">14</button>
+</div>
+<button class="flex items-center px-3 py-1.5 border border-slate-200 dark:border-slate-700 rounded-lg text-sm text-primary hover:bg-primary/5 transition-colors">
+                            Siguiente <span class="material-icons text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Stats Recap (Subtle Bottom Cards) -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-8">
+<div class="bg-white dark:bg-slate-900 p-5 rounded-xl border-l-4 border-ddmrp-red shadow-sm border border-slate-200 dark:border-slate-800">
+<p class="text-xs font-semibold text-slate-500 uppercase">Alertas Rojas</p>
+<p class="text-2xl font-bold mt-1">12</p>
+<p class="text-xs text-red-500 mt-1 flex items-center gap-1">
+<span class="material-icons text-xs">trending_up</span> +3 desde ayer
+                    </p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-5 rounded-xl border-l-4 border-ddmrp-yellow shadow-sm border border-slate-200 dark:border-slate-800">
+<p class="text-xs font-semibold text-slate-500 uppercase">Zonas de Reorden</p>
+<p class="text-2xl font-bold mt-1">45</p>
+<p class="text-xs text-slate-500 mt-1">Estable (85%)</p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-5 rounded-xl border-l-4 border-ddmrp-green shadow-sm border border-slate-200 dark:border-slate-800">
+<p class="text-xs font-semibold text-slate-500 uppercase">Zonas Verdes</p>
+<p class="text-2xl font-bold mt-1">153</p>
+<p class="text-xs text-ddmrp-green mt-1 flex items-center gap-1">
+<span class="material-icons text-xs">check_circle</span> Saludable
+                    </p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-5 rounded-xl border-l-4 border-primary shadow-sm border border-slate-200 dark:border-slate-800">
+<p class="text-xs font-semibold text-slate-500 uppercase">Inversión Total</p>
+<p class="text-2xl font-bold mt-1">$1.2M</p>
+<p class="text-xs text-slate-500 mt-1">USD</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Bulk Actions (Hidden by default, shown here conceptually as absolute bottom) -->
+<div class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-6 z-50 animate-bounce">
+<span class="text-sm font-medium">3 productos seleccionados</span>
+<div class="w-px h-4 bg-slate-700"></div>
+<div class="flex gap-4">
+<button class="flex items-center gap-1 text-sm hover:text-primary transition-colors">
+<span class="material-icons text-lg">edit</span> Editar
+            </button>
+<button class="flex items-center gap-1 text-sm hover:text-primary transition-colors">
+<span class="material-icons text-lg">archive</span> Archivar
+            </button>
+<button class="flex items-center gap-1 text-sm hover:text-red-500 transition-colors">
+<span class="material-icons text-lg">delete</span> Eliminar
+            </button>
+</div>
+<button class="material-icons text-slate-500 hover:text-white">close</button>
+</div>
+</body></html>

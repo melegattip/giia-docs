@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GIIA - Confirmación de Ejecución de Orden de Venta</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#2463eb",
+                "background-light": "#f6f6f8",
+                "background-dark": "#111621",
+              },
+              fontFamily: {
+                "display": ["Inter", "sans-serif"],
+                "mono": ["JetBrains Mono", "monospace"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-display { font-family: 'Inter', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased overflow-hidden">
+<!-- Layout Wrapper -->
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 bg-slate-900 text-white flex flex-col hidden lg:flex">
+<div class="p-6 flex items-center space-x-3">
+<div class="w-8 h-8 bg-primary rounded flex items-center justify-center font-bold text-lg">G</div>
+<span class="text-xl font-bold tracking-tight uppercase">GIIA Inventory</span>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center space-x-3 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons-outlined text-xl">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2 rounded-lg bg-primary text-white" href="#">
+<span class="material-icons-outlined text-xl">shopping_cart</span>
+<span class="font-medium">Ventas</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons-outlined text-xl">inventory_2</span>
+<span class="font-medium">Inventario</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons-outlined text-xl">people</span>
+<span class="font-medium">Clientes</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons-outlined text-xl">bar_chart</span>
+<span class="font-medium">Reportes</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-800">
+<div class="flex items-center space-x-3 px-3 py-2">
+<div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center">
+<span class="material-icons-outlined text-sm">person</span>
+</div>
+<div class="overflow-hidden">
+<p class="text-sm font-medium truncate">Carlos Ruiz</p>
+<p class="text-xs text-slate-400 truncate">Administrador</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col relative overflow-y-auto">
+<!-- Header -->
+<header class="h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 sticky top-0 z-10">
+<div class="flex items-center space-x-4">
+<nav class="flex text-sm text-slate-500 space-x-2">
+<span>Ventas</span>
+<span>/</span>
+<span class="text-slate-900 dark:text-white font-medium">Órdenes de Venta</span>
+</nav>
+</div>
+<div class="flex items-center space-x-4">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-icons-outlined">notifications</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-icons-outlined">settings</span>
+</button>
+</div>
+</header>
+<!-- Background Content: Sales Order View -->
+<div class="p-8">
+<div class="max-w-6xl mx-auto">
+<!-- Page Action Bar -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<div class="flex items-center space-x-3 mb-1">
+<h1 class="text-2xl font-bold font-mono text-slate-900 dark:text-white">OV-2026-0123</h1>
+<span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">
+                                    En Firme
+                                </span>
+</div>
+<p class="text-slate-500">Creada el 24 de Mayo, 2024 por Carlos Ruiz</p>
+</div>
+<div class="flex space-x-3">
+<button class="px-4 py-2 border border-slate-300 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 font-medium">Editar</button>
+<button class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 font-medium shadow-sm">Efectuar Orden</button>
+</div>
+</div>
+<!-- Order Details Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Información del Cliente</h3>
+<div class="space-y-3">
+<div>
+<p class="text-sm text-slate-500">Nombre</p>
+<p class="font-medium">Distribuidora Logística S.A.</p>
+</div>
+<div>
+<p class="text-sm text-slate-500">RFC / ID</p>
+<p class="font-medium font-mono text-xs">DLO123456789</p>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Dirección de Envío</h3>
+<p class="text-sm leading-relaxed">
+                                Av. de la Industria 450, Nave 4<br/>
+                                Parque Industrial Santa Fe<br/>
+                                Ciudad de México, CP 01210
+                            </p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Detalles de Pago</h3>
+<div class="space-y-3">
+<div>
+<p class="text-sm text-slate-500">Método</p>
+<p class="font-medium">Transferencia SPEI</p>
+</div>
+<div>
+<p class="text-sm text-slate-500">Términos</p>
+<p class="font-medium">Net 30 días</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Line Items Table -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden mb-8">
+<table class="w-full text-left">
+<thead class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+<tr>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">SKU</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Producto</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-right">Cantidad</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-right">Precio Unitario</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-right">Total</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+<tr>
+<td class="px-6 py-4 font-mono text-sm text-slate-500">PRD-X9-001</td>
+<td class="px-6 py-4 font-medium">Sensor Proximity Industrial 12mm</td>
+<td class="px-6 py-4 text-right">25</td>
+<td class="px-6 py-4 text-right">$450.00</td>
+<td class="px-6 py-4 text-right font-medium">$11,250.00</td>
+</tr>
+<tr>
+<td class="px-6 py-4 font-mono text-sm text-slate-500">PRD-L2-442</td>
+<td class="px-6 py-4 font-medium">Cable Blindado Cat6 SFTP 10m</td>
+<td class="px-6 py-4 text-right">50</td>
+<td class="px-6 py-4 text-right">$125.00</td>
+<td class="px-6 py-4 text-right font-medium">$6,250.00</td>
+</tr>
+<tr>
+<td class="px-6 py-4 font-mono text-sm text-slate-500">PRD-M1-105</td>
+<td class="px-6 py-4 font-medium">Módulo I/O Digital 8 Salidas</td>
+<td class="px-6 py-4 text-right">10</td>
+<td class="px-6 py-4 text-right">$2,100.00</td>
+<td class="px-6 py-4 text-right font-medium">$21,000.00</td>
+</tr>
+</tbody>
+</table>
+<div class="p-6 bg-slate-50 dark:bg-slate-800/30 flex justify-end">
+<div class="w-64 space-y-3">
+<div class="flex justify-between text-sm">
+<span class="text-slate-500">Subtotal:</span>
+<span class="font-medium">$38,500.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-500">IVA (16%):</span>
+<span class="font-medium">$6,160.00</span>
+</div>
+<div class="flex justify-between text-lg font-bold border-t border-slate-300 dark:border-slate-700 pt-3">
+<span>Total:</span>
+<span class="text-primary">$44,660.00</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal Backdrop -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm px-4">
+<!-- Confirmation Modal -->
+<div class="bg-white dark:bg-slate-900 w-full max-w-lg rounded-xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="p-8">
+<div class="flex items-center space-x-4 mb-6">
+<div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-primary">
+<span class="material-icons-outlined text-3xl">task_alt</span>
+</div>
+<h2 class="text-xl font-bold text-slate-900 dark:text-white leading-tight">
+                                ¿Efectuar esta Orden de Venta?
+                            </h2>
+</div>
+<div class="space-y-4 text-slate-600 dark:text-slate-400">
+<p class="leading-relaxed">
+                                Estás a punto de procesar la orden <span class="font-mono font-bold text-slate-900 dark:text-white">OV-2026-0123</span>. 
+                            </p>
+<div class="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800/50 flex space-x-3">
+<span class="material-icons-outlined text-amber-600 dark:text-amber-500 text-sm mt-0.5">warning</span>
+<p class="text-sm text-amber-800 dark:text-amber-300">
+                                    Al confirmar, se descontará el stock de los productos seleccionados del inventario y el estado cambiará a <strong>'Ejecutada'</strong>. Esta acción no se puede deshacer.
+                                </p>
+</div>
+</div>
+</div>
+<div class="px-8 py-5 bg-slate-50 dark:bg-slate-800/50 flex flex-col sm:flex-row sm:justify-end space-y-3 sm:space-y-0 sm:space-x-3">
+<button class="px-6 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-sm transition-all focus:ring-2 focus:ring-slate-300">
+                            Cancelar
+                        </button>
+<button class="px-6 py-2.5 bg-primary text-white rounded-lg hover:bg-primary/90 font-semibold text-sm shadow-md transition-all focus:ring-4 focus:ring-primary/30">
+                            Sí, Efectuar
+                        </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

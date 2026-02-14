@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#225fec",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"],
+              "mono": ["JetBrains Mono", "monospace"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .mono-sku { font-family: 'JetBrains Mono', monospace; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased min-h-screen flex">
+<!-- Sidebar -->
+<aside class="w-64 bg-background-dark text-slate-400 flex flex-col border-r border-slate-800 hidden lg:flex">
+<div class="p-6 flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-xl">G</div>
+<span class="text-white font-bold tracking-tight text-xl">GIIA</span>
+</div>
+<nav class="flex-1 px-4 py-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-icons-outlined text-xl">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary text-white transition-colors" href="#">
+<span class="material-icons-outlined text-xl">shopping_cart</span>
+<span class="font-medium">Órdenes de Venta</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-icons-outlined text-xl">inventory_2</span>
+<span class="font-medium">Inventario</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-icons-outlined text-xl">people</span>
+<span class="font-medium">Clientes</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-icons-outlined text-xl">bar_chart</span>
+<span class="font-medium">Reportes</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-800">
+<div class="flex items-center gap-3 px-3 py-2">
+<div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center">
+<span class="material-icons-outlined text-sm">person</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="text-sm font-medium text-white truncate">Admin Usuario</p>
+<p class="text-xs truncate">admin@giia.com</p>
+</div>
+<span class="material-icons-outlined text-sm">logout</span>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0">
+<!-- Header -->
+<header class="h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8">
+<div class="flex items-center gap-4">
+<nav class="flex text-sm text-slate-500 font-medium">
+<span class="hover:text-primary cursor-pointer">Órdenes de Venta</span>
+<span class="mx-2 text-slate-300">/</span>
+<span class="text-slate-900 dark:text-slate-100">Nueva Orden</span>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
+<span class="material-icons-outlined">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
+<span class="material-icons-outlined">help_outline</span>
+</button>
+</div>
+</header>
+<!-- Body Content -->
+<div class="p-8 overflow-y-auto">
+<div class="max-w-6xl mx-auto">
+<div class="flex items-center justify-between mb-6">
+<h1 class="text-2xl font-bold text-slate-900 dark:text-white">Registrar Orden de Venta</h1>
+<div class="flex gap-3">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
+                            Borrador
+                        </span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<!-- Form Section -->
+<div class="p-6 grid grid-cols-1 md:grid-cols-3 gap-6 border-b border-slate-100 dark:border-slate-800">
+<div>
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Referencia del cliente</label>
+<input class="w-full rounded-lg border-slate-300 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary text-sm" placeholder="Nombre o ID del cliente" type="text" value="Ferretería Norte"/>
+</div>
+<div>
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Fecha de Entrega</label>
+<div class="relative">
+<input class="w-full rounded-lg border-slate-300 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary text-sm pl-10" type="date" value="2023-10-27"/>
+<span class="material-icons-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">calendar_today</span>
+</div>
+</div>
+<div class="md:row-span-2">
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Notas internas</label>
+<textarea class="w-full rounded-lg border-slate-300 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary text-sm" placeholder="Agregar notas sobre el pedido..." rows="4"></textarea>
+</div>
+<div class="md:col-span-2">
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Almacén de origen</label>
+<select class="w-full rounded-lg border-slate-300 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary text-sm">
+<option>Almacén Central - Zona A</option>
+<option>Almacén Secundario - Sur</option>
+</select>
+</div>
+</div>
+<!-- Table Section -->
+<div class="p-6">
+<h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-4">Líneas de la Orden</h3>
+<div class="overflow-x-auto">
+<table class="w-full border-separate border-spacing-y-2">
+<thead>
+<tr class="text-left text-xs font-semibold text-slate-500 uppercase">
+<th class="pb-2 px-4 w-12">#</th>
+<th class="pb-2 px-4 min-w-[300px]">Producto</th>
+<th class="pb-2 px-4 w-32">Cantidad</th>
+<th class="pb-2 px-4 w-40">Precio Unit.</th>
+<th class="pb-2 px-4 w-40">Subtotal</th>
+<th class="pb-2 px-4 w-12 text-center"></th>
+</tr>
+</thead>
+<tbody>
+<!-- Row with Warning -->
+<tr class="bg-amber-50/50 dark:bg-amber-900/10 border-2 border-amber-500 rounded-lg group">
+<td class="py-4 px-4 text-sm font-medium text-slate-500 border-y border-l border-amber-500 rounded-l-lg">1</td>
+<td class="py-4 px-4 border-y border-amber-500">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="text-sm font-semibold text-slate-900 dark:text-white">Pintura Latex Blanca 20L</span>
+<span class="mono-sku text-[10px] px-1.5 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-500 rounded font-bold">SKU-PT-029</span>
+</div>
+<div class="mt-2 flex items-center gap-1.5 text-amber-700 dark:text-amber-400 text-xs font-medium">
+<span class="material-icons-outlined text-sm">report_problem</span>
+                                                    Stock actual: 12 uds. La cantidad solicitada excede el stock.
+                                                </div>
+</div>
+</td>
+<td class="py-4 px-4 border-y border-amber-500">
+<input class="w-full bg-white dark:bg-slate-800 rounded border-amber-400 focus:ring-amber-500 focus:border-amber-500 text-sm font-semibold" type="number" value="15"/>
+</td>
+<td class="py-4 px-4 border-y border-amber-500">
+<div class="flex items-center text-sm font-medium text-slate-600 dark:text-slate-300">
+                                                $ <input class="w-full border-none bg-transparent p-0 ml-1 focus:ring-0 text-sm" type="text" value="125.00"/>
+</div>
+</td>
+<td class="py-4 px-4 border-y border-amber-500">
+<span class="text-sm font-bold text-slate-900 dark:text-white">$1,875.00</span>
+</td>
+<td class="py-4 px-4 border-y border-r border-amber-500 rounded-r-lg text-center">
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-icons-outlined">delete_outline</span>
+</button>
+</td>
+</tr>
+<!-- Standard Row -->
+<tr class="bg-white dark:bg-slate-800/50 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors rounded-lg group">
+<td class="py-4 px-4 text-sm font-medium text-slate-500 border-y border-l border-slate-200 dark:border-slate-700 rounded-l-lg">2</td>
+<td class="py-4 px-4 border-y border-slate-200 dark:border-slate-700">
+<div class="flex items-center gap-2">
+<span class="text-sm font-semibold text-slate-900 dark:text-white">Rodillo Profesional 22cm</span>
+<span class="mono-sku text-[10px] px-1.5 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-500 rounded font-bold">SKU-AC-112</span>
+</div>
+</td>
+<td class="py-4 px-4 border-y border-slate-200 dark:border-slate-700">
+<input class="w-full bg-transparent rounded border-slate-200 dark:border-slate-700 focus:ring-primary focus:border-primary text-sm" type="number" value="10"/>
+</td>
+<td class="py-4 px-4 border-y border-slate-200 dark:border-slate-700">
+<div class="flex items-center text-sm font-medium text-slate-600 dark:text-slate-300">
+                                                $ <input class="w-full border-none bg-transparent p-0 ml-1 focus:ring-0 text-sm" type="text" value="85.00"/>
+</div>
+</td>
+<td class="py-4 px-4 border-y border-slate-200 dark:border-slate-700">
+<span class="text-sm font-bold text-slate-900 dark:text-white">$850.00</span>
+</td>
+<td class="py-4 px-4 border-y border-r border-slate-200 dark:border-slate-700 rounded-r-lg text-center">
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-icons-outlined">delete_outline</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<button class="mt-4 flex items-center gap-2 text-primary font-semibold text-sm hover:underline py-2">
+<span class="material-icons-outlined text-lg">add_circle_outline</span>
+                            Agregar Línea
+                        </button>
+</div>
+<!-- Footer / Totals -->
+<div class="bg-slate-50 dark:bg-slate-800/30 p-8 flex flex-col items-end">
+<div class="w-full max-w-xs space-y-3">
+<div class="flex justify-between text-sm text-slate-500">
+<span>Subtotal</span>
+<span>$2,725.00</span>
+</div>
+<div class="flex justify-between text-sm text-slate-500">
+<span>Impuestos (0%)</span>
+<span>$0.00</span>
+</div>
+<div class="h-px bg-slate-200 dark:bg-slate-700 w-full"></div>
+<div class="flex justify-between text-xl font-bold text-slate-900 dark:text-white">
+<span>Total</span>
+<span>$2,725.00</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Global Actions -->
+<div class="mt-8 flex items-center justify-between">
+<button class="flex items-center gap-2 px-6 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="material-icons-outlined text-lg">close</span>
+                        Cancelar
+                    </button>
+<div class="flex gap-3">
+<button class="px-6 py-2.5 rounded-lg border border-primary text-primary font-semibold hover:bg-primary/5 transition-colors">
+                            Guardar Borrador
+                        </button>
+<button class="px-6 py-2.5 rounded-lg bg-primary text-white font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all flex items-center gap-2">
+<span class="material-icons-outlined">check_circle</span>
+                            Registrar OV en Firme
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

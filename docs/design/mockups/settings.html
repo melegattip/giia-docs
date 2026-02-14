@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GIIA General System Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2463eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                        "slate-neutral": "#64748b",
+                        "slate-bg": "#f8fafc"
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .sidebar-item-active { background-color: #2463eb; color: white; }
+        .custom-shadow { box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display h-full flex flex-col">
+<!-- Main Wrapper -->
+<div class="flex h-full overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 bg-background-dark text-slate-300 flex flex-col shrink-0">
+<div class="p-6 flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="text-white font-bold text-xl">G</span>
+</div>
+<span class="text-white font-bold tracking-tight text-xl uppercase">GIIA</span>
+</div>
+<nav class="flex-1 px-4 space-y-1 mt-4">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons text-sm">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons text-sm">inventory_2</span>
+<span class="text-sm font-medium">Inventarios</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons text-sm">analytics</span>
+<span class="text-sm font-medium">Reportes</span>
+</a>
+<div class="pt-4 pb-2">
+<p class="px-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Sistema</p>
+</div>
+<a class="sidebar-item-active flex items-center gap-3 px-3 py-2 rounded-lg transition-colors" href="#">
+<span class="material-icons text-sm">settings</span>
+<span class="text-sm font-medium">Configuración</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons text-sm">people</span>
+<span class="text-sm font-medium">Usuarios</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-800">
+<div class="flex items-center gap-3 px-2">
+<img alt="User" class="w-8 h-8 rounded-full border border-slate-700" data-alt="Professional avatar of a tech executive" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDUkopl6g4jHBne_t_1-Qbs3d8P4Fr5P0cEOjoNxFGE03_vypWI7MeGz4R9t4AYzSuC-htoEKOshtDhwAHI619ohrny11VVVutUEzzR_d3B-Az01YMzjxOc-tfYuyfkMAtbhylSPdYtzD4ZZlGKKRtgM28GV12Vx0D8tl-3zBlkdZcgssr9gMpp-JMZhl8VxBmqN4_SbzIOY3KjzLlssIHwvWcz3MWV58CZv5SdNL5f9ITj8fuh1F8_Pz5ElnJd3ivvG1H4xVzrJ0j"/>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-white">Admin GIIA</span>
+<span class="text-[10px] text-slate-500">Premium Plan</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-hidden bg-slate-bg">
+<!-- Header -->
+<header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-8 shrink-0">
+<div class="flex flex-col">
+<div class="flex items-center gap-2 text-xs text-slate-500 mb-0.5">
+<span>Configuración</span>
+<span class="material-icons text-[10px]">chevron_right</span>
+<span>General</span>
+</div>
+<h1 class="text-lg font-bold text-slate-900 leading-none">General System Settings</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-400 hover:text-slate-600">
+<span class="material-icons">notifications</span>
+</button>
+<div class="h-8 w-[1px] bg-slate-200"></div>
+<div class="text-right">
+<p class="text-xs font-medium text-slate-900">Empresa Global S.A.</p>
+<p class="text-[10px] text-primary">ID: 882910-X</p>
+</div>
+</div>
+</header>
+<!-- Scrollable Settings Sections -->
+<div class="flex-1 overflow-y-auto p-8 space-y-6">
+<!-- Card 1: Organización -->
+<section class="bg-white rounded-xl border border-slate-200 custom-shadow overflow-hidden">
+<div class="p-6 border-b border-slate-100 flex items-center gap-3">
+<span class="material-icons text-primary">business</span>
+<h2 class="font-bold text-slate-800">Organización</h2>
+</div>
+<div class="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+<div>
+<label class="block text-xs font-semibold text-slate-600 uppercase mb-2">Nombre de la Empresa</label>
+<input class="w-full rounded-lg border-slate-300 focus:ring-primary focus:border-primary text-sm text-slate-800" placeholder="Nombre de la empresa" type="text" value="Empresa Global S.A."/>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-600 uppercase mb-2">Moneda Base (Principal)</label>
+<div class="relative">
+<input class="w-full rounded-lg bg-slate-50 border-slate-200 text-sm text-slate-400 cursor-not-allowed" disabled="" type="text" value="USD"/>
+<span class="material-icons absolute right-3 top-2.5 text-slate-300 text-sm">lock</span>
+</div>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-600 uppercase mb-2">Moneda Local</label>
+<div class="flex gap-2">
+<select class="w-full rounded-lg border-slate-300 focus:ring-primary focus:border-primary text-sm text-slate-800">
+<option selected="">MXN - Peso Mexicano</option>
+<option>EUR - Euro</option>
+<option>BRL - Real Brasileño</option>
+</select>
+<div class="bg-primary/10 border border-primary/20 rounded-lg px-3 py-2 flex items-center shrink-0">
+<span class="text-[10px] font-bold text-primary">TC: 17.05</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Card 2: Parámetros DDMRP -->
+<section class="bg-white rounded-xl border border-slate-200 custom-shadow overflow-hidden">
+<div class="p-6 border-b border-slate-100 flex items-center gap-3">
+<span class="material-icons text-primary">settings_input_component</span>
+<h2 class="font-bold text-slate-800">Parámetros DDMRP</h2>
+</div>
+<div class="p-6 space-y-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div>
+<label class="block text-xs font-semibold text-slate-600 uppercase mb-2">Ventana CPD (Días de Planeación)</label>
+<div class="flex items-center gap-3">
+<input class="w-32 rounded-lg border-slate-300 focus:ring-primary focus:border-primary text-sm text-slate-800" type="number" value="7"/>
+<span class="text-sm text-slate-500">Días naturales para el cálculo del promedio de demanda.</span>
+</div>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-600 uppercase mb-2">Umbral de Pico (Spike Threshold)</label>
+<div class="flex items-center gap-3">
+<div class="relative w-32">
+<input class="w-full rounded-lg border-slate-300 focus:ring-primary focus:border-primary text-sm text-slate-800 pr-8" type="number" value="50"/>
+<span class="absolute right-3 top-2 text-sm text-slate-400">%</span>
+</div>
+<span class="text-sm text-slate-500">Porcentaje de demanda sobre el promedio diario.</span>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-600 uppercase mb-4">Umbrales de Lead Time (Días)</label>
+<div class="overflow-hidden border border-slate-200 rounded-lg">
+<table class="w-full text-sm text-left">
+<thead class="bg-slate-50 text-slate-500 text-[10px] uppercase font-bold tracking-wider">
+<tr>
+<th class="px-4 py-3 border-b">Categoría</th>
+<th class="px-4 py-3 border-b">Mínimo</th>
+<th class="px-4 py-3 border-b">Máximo</th>
+<th class="px-4 py-3 border-b text-center">Acción</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<tr>
+<td class="px-4 py-3 font-medium text-slate-800">Short (Corto)</td>
+<td class="px-4 py-3"><input class="w-20 p-1 border rounded text-sm" type="number" value="0"/></td>
+<td class="px-4 py-3"><input class="w-20 p-1 border rounded text-sm" type="number" value="7"/></td>
+<td class="px-4 py-3 text-center"><button class="text-primary hover:text-blue-700 text-xs font-semibold">Editar</button></td>
+</tr>
+<tr>
+<td class="px-4 py-3 font-medium text-slate-800">Medium (Medio)</td>
+<td class="px-4 py-3"><input class="w-20 p-1 border rounded text-sm" type="number" value="8"/></td>
+<td class="px-4 py-3"><input class="w-20 p-1 border rounded text-sm" type="number" value="21"/></td>
+<td class="px-4 py-3 text-center"><button class="text-primary hover:text-blue-700 text-xs font-semibold">Editar</button></td>
+</tr>
+<tr>
+<td class="px-4 py-3 font-medium text-slate-800">Long (Largo)</td>
+<td class="px-4 py-3"><input class="w-20 p-1 border rounded text-sm" type="number" value="22"/></td>
+<td class="px-4 py-3"><input class="w-20 p-1 border rounded text-sm" type="number" value="999"/></td>
+<td class="px-4 py-3 text-center"><button class="text-primary hover:text-blue-700 text-xs font-semibold">Editar</button></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-600 uppercase mb-2">Alerta Anticipación Llegadas</label>
+<div class="flex items-center gap-3">
+<input class="w-32 rounded-lg border-slate-300 focus:ring-primary focus:border-primary text-sm text-slate-800" type="number" value="3"/>
+<span class="text-sm text-slate-500">Días de anticipación para notificar una llegada de material.</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Card 3: Notificaciones -->
+<section class="bg-white rounded-xl border border-slate-200 custom-shadow overflow-hidden mb-24">
+<div class="p-6 border-b border-slate-100 flex items-center gap-3">
+<span class="material-icons text-primary">notifications_active</span>
+<h2 class="font-bold text-slate-800">Notificaciones de Sistema</h2>
+</div>
+<div class="p-6 divide-y divide-slate-100">
+<!-- Notification Item -->
+<div class="py-4 flex items-center justify-between first:pt-0">
+<div class="max-w-md">
+<p class="text-sm font-semibold text-slate-900">Alerta de Buffer Rojo</p>
+<p class="text-xs text-slate-500">Notificar inmediatamente cuando un SKU entre en zona roja de inventario.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Notification Item -->
+<div class="py-4 flex items-center justify-between">
+<div class="max-w-md">
+<p class="text-sm font-semibold text-slate-900">Llegadas Próximas</p>
+<p class="text-xs text-slate-500">Avisos diarios de órdenes de compra con fecha de arribo cercana.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Notification Item -->
+<div class="py-4 flex items-center justify-between">
+<div class="max-w-md">
+<p class="text-sm font-semibold text-slate-900">Cambio en Lead Times</p>
+<p class="text-xs text-slate-500">Reporte semanal de variaciones detectadas en tiempos de entrega de proveedores.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Notification Item -->
+<div class="py-4 flex items-center justify-between last:pb-0">
+<div class="max-w-md">
+<p class="text-sm font-semibold text-slate-900">Alertas de Suministro (Stockout Risk)</p>
+<p class="text-xs text-slate-500">Enviar aviso crítico si el flujo neto es inferior a la demanda proyectada.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+</div>
+<!-- Sticky Footer Actions -->
+<footer class="absolute bottom-0 left-64 right-0 h-20 bg-white border-t border-slate-200 px-8 flex items-center justify-between shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+<div class="flex items-center gap-4">
+<span class="text-xs text-slate-400 italic">Última modificación: hace 2 horas por Admin</span>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-2.5 text-sm font-semibold text-slate-600 hover:bg-slate-50 border border-slate-300 rounded-lg transition-all">
+                        Descartar
+                    </button>
+<button class="px-8 py-2.5 text-sm font-bold text-white bg-primary hover:bg-blue-700 rounded-lg shadow-sm shadow-primary/20 transition-all flex items-center gap-2">
+<span class="material-icons text-sm">save</span>
+                        Guardar Cambios
+                    </button>
+</div>
+</footer>
+</main>
+</div>
+</body></html>
