@@ -1,0 +1,5 @@
+- [ ] Pensar el calculo optimo de proyeccion de buffer a futuro.
+- [ ] A futuro pensar en aplicar algun patron que nos permita deshacer cambios (tipo, memory, etc).
+- [ ] POST	/planning/create-po	Crear OC desde sugerencias seleccionadas	Admin, User -> replantear
+- [ ] Revisar flujo de importacion de CSV,  pensar que capa es responsable de hacerlo - 4.6.4 Flujo de Importacion CSV - como hacer el mapeo de columnas de manera eficiente para no sobrecargar al front tampoco.
+- [ ] Revisar que es lt threshold y los endpoints, y como se usa en la logica
